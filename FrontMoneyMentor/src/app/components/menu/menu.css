@@ -1,0 +1,78 @@
+/* Contenedor principal */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+}
+
+/* Barra superior personalizada */
+.custom-toolbar {
+  background-color: #fff;
+  color: #1976d2;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 24px;
+  width: 80%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo dentro de la barra */
+.imagen {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Botón del menú */
+.custom-toolbar button[mat-button] {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.custom-toolbar button[mat-button]:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+  border-radius: 8px;
+}
+
+/* Ícono del menú */
+mat-icon {
+  margin-right: 8px;
+  font-size: 22px;
+}
+
+/* Menú desplegable */
+.mat-menu-panel {
+  border-radius: 10px !important;
+  background-color: #fefefe;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Opciones del menú */
+.mat-menu-item {
+  color: #1976d2 !important;
+  font-weight: 500;
+}
+
+.mat-menu-item:hover {
+  background-color: rgba(25, 118, 210, 0.1) !important;
+}
