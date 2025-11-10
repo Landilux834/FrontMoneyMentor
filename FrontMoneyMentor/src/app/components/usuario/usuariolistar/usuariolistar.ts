@@ -15,7 +15,7 @@ import { UsuarioService } from "../../../services/usuario-service";
 })
 export class usuariolistar implements OnInit {
     dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
-    displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4' ];
+    displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5' ];
     constructor(private uS:UsuarioService) {}
     ngOnInit(): void {
         this.uS.list().subscribe((data) => {
@@ -26,4 +26,11 @@ export class usuariolistar implements OnInit {
             this.dataSource = new MatTableDataSource(data);
         });
     }
+    eliminar(id:number){
+    this.uS.delete(id).subscribe((data)=>{
+      this.uS.list().subscribe((data)=>{
+        this.uS.setList(data)
+      })
+    })
+  }
 }
