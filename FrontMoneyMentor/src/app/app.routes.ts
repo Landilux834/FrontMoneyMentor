@@ -7,7 +7,8 @@ import { usuarioregistrar } from './components/usuario/usuarioregistrar/usuarior
 export const routes: Routes = [
     {path:'usuarios',component:Usuario
         ,children:[{path:'',component:usuariolistar}
-        ,{path:'nuevo',component:usuarioregistrar}]
+        ,{path:'nuevo',component:usuarioregistrar}
+        ,{path:'edits/:id', component:usuarioregistrar}]
 
    }
 ];

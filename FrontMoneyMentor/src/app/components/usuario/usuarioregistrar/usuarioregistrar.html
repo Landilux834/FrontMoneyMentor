@@ -4,8 +4,17 @@
   </div>
 
   <div style="text-align: center; margin: 5%;">
-    <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+        <mat-form-field>
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="codigo" />
+          <mat-error>
+            @if (form.get('codigo')?.hasError('required')) { Ingrese id}
+          </mat-error>
+        </mat-form-field>
 
+      }
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="nombre" />
@@ -37,7 +46,7 @@
       <br />
 
       <div>
-        <button mat-raised-button color="primary" type="submit">Registrar</button>
+        <button mat-raised-button color="primary">Registrar</button>
       </div>
 
     </form>
