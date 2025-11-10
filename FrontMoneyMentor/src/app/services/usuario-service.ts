@@ -35,4 +35,8 @@ export class UsuarioService  implements OnInit{
     update(u: Usuario){
     return this.http.put(`${this.url}/update`, u,{responseType: 'text'})
   }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/delete/${id}`, { responseType: 'text' });
+  }
 }
