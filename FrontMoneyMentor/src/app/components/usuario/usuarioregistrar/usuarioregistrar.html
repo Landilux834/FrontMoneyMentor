@@ -1,0 +1,45 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h2>Registro de Usuario</h2>
+  </div>
+
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" />
+        <mat-error *ngIf="form.get('correo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="contrasenia" type="password" />
+        <mat-error *ngIf="form.get('contrasenia')?.hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <div>
+        <button mat-raised-button color="primary" type="submit">Registrar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

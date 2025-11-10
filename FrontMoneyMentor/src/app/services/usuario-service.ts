@@ -12,18 +12,19 @@ const base_url = environment.base;
 })
 export class UsuarioService  implements OnInit{
     private url = `${base_url}/usuarios`;
-    ///private listaCambio = new Subject<Usuario[]>();
+    private listaCambio = new Subject<Usuario[]>();
     constructor(private http: HttpClient) {}
     ngOnInit(): void {}
     list(){
          return this.http.get<Usuario[]>(`${this.url}/listar`);
     }
-    ///insert(a:Usuario):Observable<String>{
-    ///    return this.http.post(this.url,a,{responseType:'text'});
-    ///}
-    ///setList(listaNueva:Usuario[]){
-    ///    this.listaCambio.next(listaNueva);
-    ///}
+    insert(a:Usuario):Observable<String>{
+          console.log(" Enviando al backend:", a);
+  return this.http.post(`${this.url}/register`, a, { responseType: 'text' });
+    }
+    setList(listaNueva:Usuario[]){
+        this.listaCambio.next(listaNueva);
+    }
     ///getList(){
     ///    return this.listaCambio.asObservable();
     ///}
