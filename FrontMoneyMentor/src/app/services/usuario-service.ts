@@ -25,7 +25,14 @@ export class UsuarioService  implements OnInit{
     setList(listaNueva:Usuario[]){
         this.listaCambio.next(listaNueva);
     }
-    ///getList(){
-    ///    return this.listaCambio.asObservable();
-    ///}
+    getList(){
+        return this.listaCambio.asObservable();
+    }
+    ListId(id: number){ //alt+9+6 para comillas
+    return this.http.get<Usuario>(`${this.url}/listar/${id}`)
+  }
+
+    update(u: Usuario){
+    return this.http.put(`${this.url}/update`, u,{responseType: 'text'})
+  }
 }
