@@ -31,18 +31,36 @@
         <mat-error *ngIf="form.get('correo')?.hasError('required')">
           El correo es obligatorio
         </mat-error>
+<<<<<<< HEAD
       </mat-form-field>
 
       <br />
 
+=======
+         <mat-error *ngIf="form.get('correo')?.hasError('email')">
+    Debe ingresar un correo válido (debe incluir "@")
+  </mat-error>
+      </mat-form-field>
+
+      <br />
+    <ng-container *ngIf="!edicion">
+>>>>>>> Omar
       <mat-form-field appearance="fill">
         <mat-label>Contraseña</mat-label>
         <input matInput formControlName="contrasenia" type="password" />
         <mat-error *ngIf="form.get('contrasenia')?.hasError('required')">
           La contraseña es obligatoria
         </mat-error>
+<<<<<<< HEAD
       </mat-form-field>
 
+=======
+        <mat-error *ngIf="form.get('contrasenia')?.hasError('minlength')">
+      La contraseña debe tener 10 caracteres o mas
+    </mat-error>
+      </mat-form-field>
+</ng-container>
+>>>>>>> Omar
       <br />
 
       <div>

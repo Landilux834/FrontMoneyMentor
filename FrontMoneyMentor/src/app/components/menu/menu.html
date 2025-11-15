@@ -5,10 +5,24 @@
             [matMenuTriggerFor]="menuUsuario">
             <mat-icon> menu </mat-icon>Usuarios 
         </button>
+<<<<<<< HEAD
+=======
+        <button mat-button aria-label="example icon-button with menu icon"
+            [matMenuTriggerFor]="menuOperacion">
+            <mat-icon> menu </mat-icon>Operacion 
+        </button>
+>>>>>>> Omar
     </mat-toolbar>
 
     <mat-menu #menuUsuario="matMenu">
             <button mat-menu-item routerLink="/usuarios">Listar Usuarios</button>
             <button mat-menu-item routerLink="/usuarios/nuevo">Registrarse</button>
     </mat-menu>
+<<<<<<< HEAD
+=======
+    <mat-menu #menuOperacion="matMenu">
+        <button mat-menu-item routerLink="operacion">Listar Operacion</button>
+        <button mat-menu-item routerLink="operacion/nuevo">Registrar operacion</button>
+    </mat-menu>
+>>>>>>> Omar
 </div>

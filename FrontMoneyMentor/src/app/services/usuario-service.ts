@@ -16,7 +16,11 @@ export class UsuarioService  implements OnInit{
     constructor(private http: HttpClient) {}
     ngOnInit(): void {}
     list(){
+<<<<<<< HEAD
          return this.http.get<Usuario[]>(`${this.url}/listar`);
+=======
+      return this.http.get<Usuario[]>(`${this.url}/listar`);
+>>>>>>> Omar
     }
     insert(a:Usuario):Observable<String>{
           console.log(" Enviando al backend:", a);
