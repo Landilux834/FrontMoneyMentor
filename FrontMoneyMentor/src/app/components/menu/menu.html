@@ -1,0 +1,22 @@
+
+<div class="container">
+    <mat-toolbar class="custom-toolbar">
+        <button mat-button aria-label="example icon-button with menu icon"
+            [matMenuTriggerFor]="menuUsuario">
+            <mat-icon> menu </mat-icon>Usuarios 
+        </button>
+        <button mat-button aria-label="example icon-button with menu icon"
+            [matMenuTriggerFor]="menuOperacion">
+            <mat-icon> menu </mat-icon>Operacion 
+        </button>
+    </mat-toolbar>
+
+    <mat-menu #menuUsuario="matMenu">
+            <button mat-menu-item routerLink="/usuarios">Listar Usuarios</button>
+            <button mat-menu-item routerLink="/usuarios/nuevo">Registrarse</button>
+    </mat-menu>
+    <mat-menu #menuOperacion="matMenu">
+        <button mat-menu-item routerLink="operacion">Listar Operacion</button>
+        <button mat-menu-item routerLink="operacion/nuevo">Registrar operacion</button>
+    </mat-menu>
+</div>
