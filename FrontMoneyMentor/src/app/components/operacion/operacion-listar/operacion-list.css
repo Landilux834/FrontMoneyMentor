@@ -24,7 +24,7 @@ table {
 
 /* Encabezados */
 th.mat-header-cell {
-  background: #1976d2;    
+  background: #1976d2;      /* Azul Material */
   color: white;
   font-weight: 600;
   font-size: 15px;
@@ -32,22 +32,36 @@ th.mat-header-cell {
   padding: 12px 10px;
 }
 
+/* Filas */
 td.mat-cell {
   text-align: center;
   padding: 12px 10px;
   font-size: 14px;
 }
 
+/* Hover de fila */
 tr.mat-row:hover {
   background: #f1f5f8;
   transition: 0.2s ease-in-out;
 }
 
+/* Bordes suaves */
 td.mat-cell, th.mat-header-cell {
   border-bottom: 1px solid #e2e2e2;
 }
 
+/* Espaciado entre columnas */
 td.mat-cell {
   padding: 10px;
 }
 
+button[mat-icon-button] {
+  background-color: rgb(242, 49, 35);
+  color: white;
+  border-radius: 6px;
+  transition: 0.25s ease;
+}
+
+button[mat-icon-button]:hover {
+  background-color: rgb(220, 40, 30);
+}

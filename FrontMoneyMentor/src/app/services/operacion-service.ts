@@ -19,15 +19,18 @@ export class OperacionService {
     return this.http.get<operacionModel[]>(`${this.url}/listar`);
   }
 
-  insert(data: operacionModel) {
-    return this.http.post(`${this.url}/register`, OperacionComponent);
+  insert(data: operacionModel): Observable<string> {
+    return this.http.post(`${this.url}/register`, data, { responseType: 'text' });
   }
 
   delete(id: number) {
     return this.http.delete(`${this.url}/delete/${id}`);
   }
 
-  // Para refrescar tabla
+  update(id: number, operacion: operacionModel): Observable<operacionModel> {
+  return this.http.put<operacionModel>(`${this.url}/${id}`, operacion);
+}
+    
   setList(lista: operacionModel[]) {
     this.listaCambio.next(lista);
   }
@@ -36,12 +39,4 @@ export class OperacionService {
     return this.listaCambio.asObservable();
   }
 
-   update(id: number, operacion: operacionModel): Observable<operacionModel> {
-    return this.http.put<operacionModel>(`${this.url}/${id}`, operacion);
-  }
-  
-   save(operacion: operacionModel): Observable<operacionModel> {
-    return this.http.post<operacionModel>(this.url, operacion);
-  }
-
-}
+  save(operacion: operacionModel): Observable<operacionModel> { return this.http.post<operacionModel>(this.url, operacion); } }

@@ -13,9 +13,9 @@ export const routes: Routes = [
         ,{path:'nuevo',component:usuarioregistrar}
         ,{path:'edits/:id', component:usuarioregistrar}]
 
-   },
+  },
 
-   {path:'operacion',
+  {path:'operacion',
     component:OperacionComponent,
     children:[{path:'',component:OperacionList},
       {path:'nuevo', component:OperacionRegistrar},
@@ -23,5 +23,24 @@ export const routes: Routes = [
 
     ],
 
-   }
+  },
+
+  {
+  path:'usuarios',
+  component:Usuario,
+  children:[
+    { path:'', component: usuariolistar },
+    { path:'nuevo', component: usuarioregistrar },
+    { path:'edits/:id', component: usuarioregistrar },
+
+    { 
+      path:'buscar',
+      loadComponent: () =>
+        import('./components/usuario/usuario-buscar/usuario-buscar')
+        .then(m => m.UsuarioBuscarComponent)
+    },
+  ]
+},
+
+
 ];

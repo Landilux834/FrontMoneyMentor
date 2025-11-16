@@ -14,7 +14,8 @@ import { operacionModel as Operacion } from "../../../models/operacionModel";
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './operacion-list.html',
   styleUrls: ['./operacion-list.css'],
@@ -24,20 +25,22 @@ export class OperacionList implements OnInit {
   dataSource: MatTableDataSource<Operacion> = new MatTableDataSource();
 
   displayedColumns: string[] = [
-    'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'
+    'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7','c8','c9'
   ];
 
   constructor(private dS: OperacionService) {}
 
   ngOnInit(): void {
-    this.dS.list().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-    });
+  this.dS.list().subscribe(data => {
+    console.log(" DATA RECIBIDA DEL BACKEND:", data);
+    this.dataSource = new MatTableDataSource(data);
+  });
 
-    this.dS.getList().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-    });
-  }
+  this.dS.getList().subscribe(data => {
+    console.log(" DATA RECIBIDA POR REFRESH:", data);
+    this.dataSource = new MatTableDataSource(data);
+  });
+}
 
   eliminar(id: number) {
     this.dS.delete(id).subscribe(() => {

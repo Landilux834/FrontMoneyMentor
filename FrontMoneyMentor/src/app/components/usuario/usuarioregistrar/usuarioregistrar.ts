@@ -82,7 +82,7 @@ export class usuarioregistrar implements OnInit {
   console.log("Edición:", this.edicion, "ID:", this.id);
 
   if (this.edicion) {
-    this.uS.ListId(this.id).subscribe(data => {
+    this.uS.listId(this.id).subscribe(data => {
       console.log("Datos recibidos del backend:", data);
 
       this.form.patchValue({

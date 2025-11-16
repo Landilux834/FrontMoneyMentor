@@ -28,7 +28,7 @@ import { UsuarioService } from "../../../services/usuario-service";
 })
 export class OperacionRegistrar implements OnInit {
 
-  form: FormGroup = new FormGroup({});
+  form!: FormGroup;
   operacion: operacionModel = new operacionModel();
   edicion: boolean = false;
   id: number = 0;
@@ -42,31 +42,37 @@ export class OperacionRegistrar implements OnInit {
     private usuarioService: UsuarioService
   ) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = this.id != null;
-      this.init();
-    });
+ ngOnInit(): void {
 
-    // Inicializar formulario
-    this.form = this.fb.group({
-      categoria: ['', Validators.required],
-      tipo: ['', Validators.required],
-      monto: [0, [Validators.required, Validators.min(0)]],
-      detalle: [''],
-      fecha: ['', Validators.required],
-      usuarioId: ['', Validators.required] // select de usuarios
-    });
+  this.form = this.fb.group({
+    categoria: ['', Validators.required],
+    tipo: ['', Validators.required],
+    monto: [0, [Validators.required, Validators.min(0)]],
+    detalle: [''],
+    fecha: ['', Validators.required],
+    usuarioId: ['', Validators.required]
+  });
 
-    // Obtener lista de usuarios
-    this.usuarioService.list().subscribe(data => {
-      this.usuarios = data;
-    });
-  }
+  this.usuarioService.list().subscribe(data => {
+    this.usuarios = data;
+  });
+
+  this.route.params.subscribe((data: Params) => {
+    this.id = data['id'];
+    this.edicion = this.id != null;
+    this.init();  
+  });
+}
+
 
   aceptar(): void {
     if (this.form.valid) {
+
+      // Asegurar que exista usuario
+      if (!this.operacion.usuario) {
+        this.operacion.usuario = new Usuario();
+      }
+
       this.operacion.categoria = this.form.value.categoria;
       this.operacion.tipo = this.form.value.tipo;
       this.operacion.monto = this.form.value.monto;
@@ -98,16 +104,20 @@ export class OperacionRegistrar implements OnInit {
     if (this.edicion) {
       this.operacionService.list().subscribe(data => {
         const op = data.find(o => o.idOperacion === this.id);
+
         if (op) {
           this.operacion = op;
+
           this.form.patchValue({
             categoria: op.categoria,
             tipo: op.tipo,
             monto: op.monto,
             detalle: op.detalle,
             fecha: op.fecha,
-            usuarioId: op.usuario.idUsuario
+            usuarioId: op.usuario?.idUsuario
           });
+
+          console.log("Formulario cargado:", this.form.value);
         }
       });
     }
