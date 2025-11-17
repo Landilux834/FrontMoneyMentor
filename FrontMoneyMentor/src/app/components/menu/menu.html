@@ -11,6 +11,10 @@
         <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuBalance">
             <mat-icon> menu </mat-icon>Balance
         </button>
+
+        <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuAhorro">
+            <mat-icon> menu </mat-icon>Ahorro
+        </button>
     </mat-toolbar>
 
     <mat-menu #menuUsuario="matMenu">
@@ -27,5 +31,9 @@
     <mat-menu #menuBalance="matMenu">
         <button mat-menu-item routerLink="/balance">Listar Balance</button>
         <button mat-menu-item routerLink="/balance/nuevo">Registrar Balance</button>
+    </mat-menu>
+    <mat-menu #menuAhorro="matMenu">
+        <button mat-menu-item routerLink="/ahorro">Listar Ahorro</button>
+        <button mat-menu-item routerLink="/ahorro/nuevo">Registrar Ahorro</button>
     </mat-menu>
 </div>
