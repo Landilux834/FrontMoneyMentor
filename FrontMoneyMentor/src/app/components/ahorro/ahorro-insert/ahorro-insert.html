@@ -1,0 +1,66 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h2>{{ edicion ? 'Editar Ahorro' : 'Registrar Ahorro' }}</h2>
+  </div>
+
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error>
+          @if (form.get('codigo')?.hasError('required')) { Ingrese id}
+        </mat-error>
+      </mat-form-field>
+
+      }
+      <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Objetivo</mat-label>
+        <input matInput formControlName="objetivo" />
+        <mat-error *ngIf="form.get('objetivo')?.hasError('required')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <br />
+<mat-form-field>
+  <mat-label>Fecha Inicio</mat-label>
+  <input matInput [matDatepicker]="pickerInicio" formControlName="fecha_inicio" />
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+  <mat-datepicker #pickerInicio></mat-datepicker>
+  <mat-error>
+    @if (form.get('fecha_inicio')?.hasError('required')) { Ingrese fecha de inicio!! }
+  </mat-error>
+</mat-form-field>
+
+<br />
+
+    <mat-form-field>
+    <mat-label>Fecha Límite</mat-label>
+    <input matInput [matDatepicker]="pickerLimite" formControlName="fecha_limite" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerLimite"></mat-datepicker-toggle>
+    <mat-datepicker #pickerLimite></mat-datepicker>
+    <mat-error>
+        @if (form.get('fecha_limite')?.hasError('required')) { Ingrese fecha de finalización!! }
+    </mat-error>
+    </mat-form-field>
+
+    <br />
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="fk">
+          @for (a of listaUsuario; track a) {
+          <mat-option [value]="a.idUsuario">{{ a.nombre }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

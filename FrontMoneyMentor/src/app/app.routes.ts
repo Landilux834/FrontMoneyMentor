@@ -9,6 +9,10 @@ import { OperacionComponent } from './components/operacion/operacion';
 import { BalanceList } from './components/balance/balance-list/balance-list';
 import { BalanceInsert } from './components/balance/balance-insert/balance-insert';
 import { Balance } from './components/balance/balance';
+import { Ahorro } from './components/ahorro/ahorro';
+import { AhorroList } from './components/ahorro/ahorro-list/ahorro-list';
+import { AhorroInsert } from './components/ahorro/ahorro-insert/ahorro-insert';
+
 
 export const routes: Routes = [
   {
@@ -37,6 +41,16 @@ export const routes: Routes = [
       { path: '', component: BalanceList }
       , { path: 'nuevo', component: BalanceInsert }
       , { path: 'edits/:id', component: BalanceInsert }
+    ]
+  },
+
+  {
+    path: 'ahorro',
+    component: Ahorro,
+    children: [
+      { path: '', component: AhorroList }, 
+      { path: 'edits/:id', component: AhorroInsert },
+      { path: 'nuevo', component: AhorroInsert }, 
     ]
   },
 
