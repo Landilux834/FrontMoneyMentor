@@ -1,0 +1,95 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h2>{{ edicion ? 'Editar Balance' : 'Registrar Balance' }}</h2>
+  </div>
+
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error>
+          @if (form.get('codigo')?.hasError('required')) { Ingrese id}
+        </mat-error>
+      </mat-form-field>
+
+      }
+      <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Mes</mat-label>
+        <mat-select formControlName="mes" required>
+          @for (m of meses; track m.value) {
+          <mat-option [value]="m.value">
+            {{ m.viewValue }}
+          </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('mes')?.hasError('required')) {
+        <mat-error>El campo mes es obligatorio.</mat-error>
+        }
+      </mat-form-field>
+      </div>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Año</mat-label>
+        <input matInput formControlName="anio" />
+        <mat-error *ngIf="form.get('anio')?.hasError('required')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Ingreso Total</mat-label>
+        <input matInput formControlName="total_ingreso" />
+        <mat-error *ngIf="form.get('total_ingreso')?.hasError('required')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gasto Total</mat-label>
+        <input matInput formControlName="total_gasto" />
+        <mat-error *ngIf="form.get('total_gasto')?.hasError('required')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Ahorro Total</mat-label>
+        <input matInput formControlName="total_ahorro" />
+        <mat-error *ngIf="form.get('total_ahorro')?.hasError('required')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Balance</mat-label>
+        <input matInput formControlName="balance" />
+        <mat-error *ngIf="form.get('balance')?.hasError('required')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="fk">
+          @for (a of listaUsuario; track a) {
+          <mat-option [value]="a.idUsuario">{{ a.nombre }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+      </div>
+
+    </form>
+  </div>
+</div>
