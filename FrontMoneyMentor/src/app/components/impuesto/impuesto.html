@@ -1,1 +1,4 @@
-<p>impuesto works!</p>
+<router-outlet></router-outlet>
+<div [hidden]="route.children.length !== 0">
+    <app-impuesto-list></app-impuesto-list>
+</div>

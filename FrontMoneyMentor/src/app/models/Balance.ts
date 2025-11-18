@@ -9,4 +9,4 @@ export class Balance{
     total_ahorro:number=0
     balance:number=0
     usuario:Usuario=new Usuario()
-}
+} 

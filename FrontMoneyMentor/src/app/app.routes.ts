@@ -15,16 +15,15 @@ import { AhorroInsert } from './components/ahorro/ahorro-insert/ahorro-insert';
 import { Recurso } from './components/recurso/recurso';
 import { Recursolistar } from './components/recurso/recursolistar/recursolistar';
 import { Recursoregistrar } from './components/recurso/recursoregistrar/recursoregistrar';
+import { ImpuestoList } from './components/impuesto/impuesto-list/impuesto-list';
+import { ImpuestoInsert } from './components/impuesto/impuesto-insert/impuesto-insert';
+import { Impuesto } from './components/impuesto/impuesto';
+import { Impuestooperacion } from './components/impuestooperacion/impuestooperacion';
+import { ImpuestooperacionList } from './components/impuestooperacion/impuestooperacion-list/impuestooperacion-list';
+import { ImpuestooperacionInsert } from './components/impuestooperacion/impuestooperacion-insert/impuestooperacion-insert';
 
 
 export const routes: Routes = [
-  {
-    path: 'usuarios', component: Usuario
-    , children: [{ path: '', component: usuariolistar }
-      , { path: 'nuevo', component: usuarioregistrar }
-      , { path: 'edits/:id', component: usuarioregistrar }]
-
-  },
 
   {
     path: 'operacion',
@@ -80,6 +79,26 @@ export const routes: Routes = [
       {path:'',component:Recursolistar},
       {path:'nuevo',component:Recursoregistrar},
       {path:'edits/:id',component:Recursoregistrar}
+    ]
+  },
+
+  {
+    path:'impuesto',
+    component:Impuesto,
+    children:[
+      {path:'',component:ImpuestoList},
+      {path:'nuevo',component:ImpuestoInsert},
+      {path:'edits/:id',component:ImpuestoInsert}
+    ]
+  },
+
+  {
+    path:'impuesto-operacion',
+    component:Impuestooperacion,
+    children:[
+      {path:'',component:ImpuestooperacionList},
+      {path:'nuevo',component:ImpuestooperacionInsert},
+      {path:'edits/:id',component:ImpuestooperacionInsert}
     ]
   }
 
