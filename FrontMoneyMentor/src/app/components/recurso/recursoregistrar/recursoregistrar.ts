@@ -8,6 +8,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { Recurso } from '../../../models/recurso';
 import { RecursoService } from '../../../services/recurso-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-recursoregistrar',
@@ -16,7 +17,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
     MatFormFieldModule,
     MatRadioModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,MatDatepickerModule
   ],
   templateUrl: './recursoregistrar.html',
   styleUrl: './recursoregistrar.css',
@@ -52,5 +53,51 @@ export class Recursoregistrar implements OnInit{
             fechasubida: ['', Validators.required]
         });
 
+    }
+    aceptar():void{
+      if(this.form.valid){
+        this.rc.idRecurso=this.form.value.idRecurso;
+        this.rc.titulo=this.form.value.titulo
+        this.rc.descripcion=this.form.value.descripcion
+        this.rc.tipo=this.form.value.tipo
+        this.rc.autor=this.form.value.autor
+        this.rc.fuente=this.form.value.fuente
+        this.rc.url=this.form.value.url
+        this.rc.fechapublicacion=this.form.value.fechapublicacion
+        this.rc.fechasubida=this.form.value.fechasubida
+
+        if (this.edicion) {
+                this.rs.update(this.rc).subscribe(() => {
+                    this.rs.list().subscribe((data) => {
+                        this.rs.setList(data);
+                    });
+                });
+            } else {
+                this.rs.insert(this.rc).subscribe(() => {
+                    this.rs.list().subscribe((data) => {
+                        this.rs.setList(data);
+                    });
+                });
+            }
+
+            this.router.navigate(['recurso']);
+      }
+    }
+    init(){
+      if(this.edicion){
+        this.rs.listId(this.id).subscribe((data)=>{
+          this.form=new FormGroup({
+            idRecurso:new FormGroup(data.idRecurso),
+            titulo:new FormGroup(data.titulo),
+            descripcion: new FormGroup(data.descripcion),
+            tipo:new FormGroup(data.tipo),
+            autor:new FormGroup(data.autor),
+            fuente:new  FormGroup(data.fuente),
+            url:new FormGroup(data.url),
+            fechapublicacion:new FormGroup(data.fechapublicacion),
+            fechasubida:new FormGroup(data.fechasubida)
+          });
+        });
+      }
     }
 }
