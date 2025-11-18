@@ -11,6 +11,7 @@ import { operacionModel } from "../../../models/operacionModel";
 import { OperacionService } from "../../../services/operacion-service";
 import { Usuario } from "../../../models/Usuario";
 import { UsuarioService } from "../../../services/usuario-service";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 @Component({
   selector: "app-operacionregistrar",
@@ -21,7 +22,7 @@ import { UsuarioService } from "../../../services/usuario-service";
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    CommonModule
+    CommonModule,MatDatepickerModule
   ],
   templateUrl: "./operacionregistrar.html",
   styleUrls: ["./operacionregistrar.css"]
