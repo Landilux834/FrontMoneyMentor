@@ -12,6 +12,9 @@ import { Balance } from './components/balance/balance';
 import { Ahorro } from './components/ahorro/ahorro';
 import { AhorroList } from './components/ahorro/ahorro-list/ahorro-list';
 import { AhorroInsert } from './components/ahorro/ahorro-insert/ahorro-insert';
+import { Recurso } from './components/recurso/recurso';
+import { Recursolistar } from './components/recurso/recursolistar/recursolistar';
+import { Recursoregistrar } from './components/recurso/recursoregistrar/recursoregistrar';
 
 
 export const routes: Routes = [
@@ -70,5 +73,14 @@ export const routes: Routes = [
       },
     ]
   },
+  {
+    path:'recurso',
+    component:Recurso,
+    children:[
+      {path:'',component:Recursolistar},
+      {path:'nuevo',component:Recursoregistrar},
+      {path:'edits/:id',component:Recursoregistrar}
+    ]
+  }
 
 ];

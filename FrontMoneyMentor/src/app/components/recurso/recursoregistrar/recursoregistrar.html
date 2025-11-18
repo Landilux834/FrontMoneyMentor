@@ -1,0 +1,50 @@
+<div>
+  <div style="text-align: center; margin: 5%">
+    <h2>Registro de recurso</h2>
+  </div>
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="idRecurso" />
+        <mat-error> @if (form.get('idRecurso')?.hasError('required')) { Ingrese id} </mat-error>
+      </mat-form-field>
+      }
+      <mat-form-field appearance="fill">
+        <mat-label>titulo</mat-label>
+        <input matInput formControlName="titulo" />
+        <mat-error *ngIf="form.get('titulo')?.hasError('required')">
+          El titulo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>descripcion</mat-label>
+        <input matInput formControlName="descripcion" />
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
+          la descripcion es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>tipo</mat-label>
+        <input matInput formControlName="tipo" />
+        <mat-error *ngIf="form.get('tipo')?.hasError('required')">
+          el tipo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>tipo</mat-label>
+        <input matInput formControlName="tipo" />
+        <mat-error *ngIf="form.get('tipo')?.hasError('required')">
+          el tipo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+
+
+    </form>
+  </div>
+</div>
