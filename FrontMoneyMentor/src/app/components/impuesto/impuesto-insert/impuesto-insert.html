@@ -1,0 +1,38 @@
+<div class="container">
+    <div style="text-align: center; margin: 5%">
+        <h2>Registro de Impuesto</h2>
+    </div>
+
+    <div style="text-align: center; margin: 5%">
+        <form [formGroup]="form" (submit)="aceptar()">
+            @if(edicion){
+            <mat-form-field>
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="codigo" />
+                <mat-error> @if (form.get('codigo')?.hasError('required')) { Ingrese id} </mat-error>
+            </mat-form-field>
+
+            }
+            <mat-form-field appearance="fill">
+                <mat-label>tipo</mat-label>
+                <input matInput formControlName="tipo" />
+                <mat-error *ngIf="form.get('tipo')?.hasError('required')">
+                    El tipo es obligatorio
+                </mat-error>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field appearance="fill">
+                <mat-label>tasa</mat-label>
+                <input matInput formControlName="tasa" />
+                <mat-error *ngIf="form.get('tasa')?.hasError('required')">
+                    Este campo es obligatorio
+                </mat-error>
+            </mat-form-field>
+
+            <div>
+                <button mat-raised-button color="primary">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

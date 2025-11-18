@@ -1,0 +1,44 @@
+<div class="container">
+    <div style="text-align: center; margin: 5%;">
+        <h2>{{ edicion ? 'Editar Impuesto Operacion' : 'Registrar Impuesto Operacion' }}</h2>
+    </div>
+
+    <div style="text-align: center; margin: 5%;">
+        <form [formGroup]="form" (submit)="aceptar()">
+            @if(edicion){
+            <mat-form-field>
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="codigo" />
+                <mat-error>
+                    @if (form.get('codigo')?.hasError('required')) { Ingrese id}
+                </mat-error>
+            </mat-form-field>
+
+            }
+            <div>
+                <mat-form-field>
+                    <mat-label>Impuesto</mat-label>
+                    <mat-select formControlName="impuesto">
+                        @for (a of listaImpuesto; track a) {
+                        <mat-option [value]="a.idImpuesto">{{ a.idImpuesto }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <br />
+
+            <mat-form-field>
+                <mat-label>Operacion</mat-label>
+                <mat-select formControlName="operacion">
+                    @for (a of listaOperacion; track a) {
+                    <mat-option [value]="a.idOperacion">{{ a.idOperacion }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+            </div>
+
+        </form>
+    </div>
+</div>
