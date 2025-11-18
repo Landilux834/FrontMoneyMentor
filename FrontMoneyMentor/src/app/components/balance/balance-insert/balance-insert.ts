@@ -11,6 +11,7 @@ import { BalanceService } from '../../../services/balance-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario-service';
 import { Usuario } from '../../../models/Usuario';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-balance-insert',
@@ -21,7 +22,7 @@ import { Usuario } from '../../../models/Usuario';
     MatDatepickerModule,
     MatButtonModule,
     MatSelectModule,
-    MatDatepickerModule],
+    MatDatepickerModule,CommonModule],
   templateUrl: './balance-insert.html',
   styleUrl: './balance-insert.css',
 })

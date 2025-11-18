@@ -15,7 +15,7 @@ export class RecursoService {
 
   ngOnInit(): void {}
 
-  list() {
+    list() {
       return this.http.get<Recurso[]>(`${this.url}/listar`);
     }
   

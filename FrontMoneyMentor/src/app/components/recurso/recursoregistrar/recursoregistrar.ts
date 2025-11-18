@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -38,17 +38,17 @@ export class Recursoregistrar implements OnInit{
     ngOnInit(): void {
       this.route.params.subscribe((data: Params) => {
             this.id = data['id'];
-            this.edicion = this.id != null;
+            this.edicion = data['id'] != null;
             this.init();
         });
       this.form = this.formBuilder.group({
-            codigo: [''],
+            idRecurso: [''],
             titulo: ['', Validators.required],
             descripcion: ['', Validators.required],
             tipo: ['', Validators.required],
             autor: ['', Validators.required],
             fuente: ['', Validators.required],
-            url: ['', Validators.required],
+            url: ['', [Validators.required,Validators.pattern(/^(https?:\/\/)?([\w\-]+\.)+[\w\-]+(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/)]],
             fechapublicacion: ['', Validators.required],
             fechasubida: ['', Validators.required]
         });
@@ -67,13 +67,13 @@ export class Recursoregistrar implements OnInit{
         this.rc.fechasubida=this.form.value.fechasubida
 
         if (this.edicion) {
-                this.rs.update(this.rc).subscribe(() => {
+                this.rs.update(this.rc).subscribe((data) => {
                     this.rs.list().subscribe((data) => {
                         this.rs.setList(data);
                     });
                 });
             } else {
-                this.rs.insert(this.rc).subscribe(() => {
+                this.rs.insert(this.rc).subscribe((data) => {
                     this.rs.list().subscribe((data) => {
                         this.rs.setList(data);
                     });
@@ -87,15 +87,15 @@ export class Recursoregistrar implements OnInit{
       if(this.edicion){
         this.rs.listId(this.id).subscribe((data)=>{
           this.form=new FormGroup({
-            idRecurso:new FormGroup(data.idRecurso),
-            titulo:new FormGroup(data.titulo),
-            descripcion: new FormGroup(data.descripcion),
-            tipo:new FormGroup(data.tipo),
-            autor:new FormGroup(data.autor),
-            fuente:new  FormGroup(data.fuente),
-            url:new FormGroup(data.url),
-            fechapublicacion:new FormGroup(data.fechapublicacion),
-            fechasubida:new FormGroup(data.fechasubida)
+            idRecurso:new FormControl(data.idRecurso),
+            titulo:new FormControl(data.titulo),
+            descripcion: new FormControl(data.descripcion),
+            tipo:new FormControl(data.tipo),
+            autor:new FormControl(data.autor),
+            fuente:new  FormControl(data.fuente),
+            url:new FormControl(data.url),
+            fechapublicacion:new FormControl(data.fechapublicacion),
+            fechasubida:new FormControl(data.fechasubida)
           });
         });
       }
