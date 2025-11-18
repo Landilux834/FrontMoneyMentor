@@ -1,8 +1,8 @@
 <div>
-  <div style="text-align: center; margin: 5%">
-    <h2>Registro de recurso</h2>
+  <div style="text-align: center; margin: 3%">
+    <h2>{{ edicion ? 'Editar recurso' : 'Registrar recurso' }}</h2>
   </div>
-  <div>
+  <div style="text-align: center; margin: 3%">
     <form [formGroup]="form" (submit)="aceptar()">
       @if(edicion){
       <mat-form-field>
@@ -11,6 +11,7 @@
         <mat-error> @if (form.get('idRecurso')?.hasError('required')) { Ingrese id} </mat-error>
       </mat-form-field>
       }
+      <br>
       <mat-form-field appearance="fill">
         <mat-label>titulo</mat-label>
         <input matInput formControlName="titulo" />
@@ -18,7 +19,7 @@
           El titulo es obligatorio
         </mat-error>
       </mat-form-field>
-
+      <br />
       <mat-form-field appearance="fill">
         <mat-label>descripcion</mat-label>
         <input matInput formControlName="descripcion" />
@@ -26,7 +27,7 @@
           la descripcion es obligatorio
         </mat-error>
       </mat-form-field>
-
+      <br />
       <mat-form-field appearance="fill">
         <mat-label>tipo</mat-label>
         <input matInput formControlName="tipo" />
@@ -34,17 +35,57 @@
           el tipo es obligatorio
         </mat-error>
       </mat-form-field>
-
+      <br />
       <mat-form-field appearance="fill">
-        <mat-label>tipo</mat-label>
-        <input matInput formControlName="tipo" />
-        <mat-error *ngIf="form.get('tipo')?.hasError('required')">
-          el tipo es obligatorio
+        <mat-label>autor</mat-label>
+        <input matInput formControlName="autor" />
+        <mat-error *ngIf="form.get('autor')?.hasError('required')">
+          el autor es obligatorio
         </mat-error>
       </mat-form-field>
-
-
-
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>fuente</mat-label>
+        <input matInput formControlName="fuente" />
+        <mat-error *ngIf="form.get('fuente')?.hasError('required')">
+          la fuente es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>url</mat-label>
+        <input matInput formControlName="url" />
+        <mat-error *ngIf="form.get('url')?.hasError('required')"> la url es obligatorio </mat-error>
+        <mat-error *ngIf="form.get('url')?.hasError('pattern')">
+          La URL no es válida. Debe comenzar con http:// o https://
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>fecha publicacion</mat-label>
+        <input matInput [matDatepicker]="pickerpublicacion" formControlName="fechapublicacion" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerpublicacion"></mat-datepicker-toggle>
+        <mat-datepicker #pickerpublicacion></mat-datepicker>
+        <mat-error>
+          @if (form.get('fechapublicacion')?.hasError('required')) { Ingrese fecha de inicio!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>fecha subida</mat-label>
+        <input matInput [matDatepicker]="pickersubido" formControlName="fechasubida" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickersubido"></mat-datepicker-toggle>
+        <mat-datepicker #pickersubido></mat-datepicker>
+        <mat-error>
+          @if (form.get('fechasubida')?.hasError('required')) { Ingrese fecha de inicio!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <div>
+        <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+      </div>
     </form>
   </div>
 </div>
