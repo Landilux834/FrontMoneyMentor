@@ -14,9 +14,9 @@ import { UsuarioService } from "../../../services/usuario-service";
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule,    
+    MatCardModule,
     RouterLink
-  ],
+],
   templateUrl: './usuariolistar.html',
   styleUrls: ['./usuariolistar.css'],
 })

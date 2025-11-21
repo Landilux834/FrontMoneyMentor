@@ -74,7 +74,7 @@ export class usuarioregistrar implements OnInit {
                 });
             }
 
-            this.router.navigate(['usuarios']);
+            this.router.navigate(['app']);
         }
     }
 

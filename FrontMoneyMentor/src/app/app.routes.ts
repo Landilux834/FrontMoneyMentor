@@ -21,10 +21,30 @@ import { Impuesto } from './components/impuesto/impuesto';
 import { Impuestooperacion } from './components/impuestooperacion/impuestooperacion';
 import { ImpuestooperacionList } from './components/impuestooperacion/impuestooperacion-list/impuestooperacion-list';
 import { ImpuestooperacionInsert } from './components/impuestooperacion/impuestooperacion-insert/impuestooperacion-insert';
+import { Landigpage } from './components/landigpage/landigpage';
+import { Menu } from './components/menu/menu';
 
 
-export const routes: Routes = [
+export const routes: Routes = [{path:'',component:Landigpage},
+  {
+    path: 'usuarios',
+    component: Usuario,
+    children: [
+      { path: 'nuevo', component: usuarioregistrar },
+      { path: 'edits/:id', component: usuarioregistrar },
 
+      {
+        path: 'buscar',
+        loadComponent: () =>
+          import('./components/usuario/usuario-buscar/usuario-buscar')
+            .then(m => m.UsuarioBuscarComponent)
+      },
+    ]
+  },
+  {path:'app',component:Menu,
+    children:[
+  { path: 'usuariolistar', component: usuariolistar },
+  
   {
     path: 'operacion',
     component: OperacionComponent,
@@ -53,23 +73,6 @@ export const routes: Routes = [
       { path: '', component: AhorroList }, 
       { path: 'edits/:id', component: AhorroInsert },
       { path: 'nuevo', component: AhorroInsert }, 
-    ]
-  },
-
-  {
-    path: 'usuarios',
-    component: Usuario,
-    children: [
-      { path: '', component: usuariolistar },
-      { path: 'nuevo', component: usuarioregistrar },
-      { path: 'edits/:id', component: usuarioregistrar },
-
-      {
-        path: 'buscar',
-        loadComponent: () =>
-          import('./components/usuario/usuario-buscar/usuario-buscar')
-            .then(m => m.UsuarioBuscarComponent)
-      },
     ]
   },
   {
@@ -102,4 +105,5 @@ export const routes: Routes = [
     ]
   }
 
+]}
 ];
