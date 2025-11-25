@@ -4,73 +4,58 @@
   </div>
 
   <div style="text-align: center; margin: 5%;">
-    <form [formGroup]="form" (submit)="aceptar()">
-      @if(edicion){
-      <mat-form-field>
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+      <mat-form-field *ngIf="edicion">
         <mat-label>ID</mat-label>
         <input matInput formControlName="codigo" />
-        <mat-error>
-          @if (form.get('codigo')?.hasError('required')) { Ingrese id}
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          Ingrese id
         </mat-error>
       </mat-form-field>
 
-      }
-      <div>
+
       <mat-form-field appearance="fill">
         <mat-label>Mes</mat-label>
-        <mat-select formControlName="mes" required>
-          @for (m of meses; track m.value) {
-          <mat-option [value]="m.value">
+        <mat-select formControlName="mes">
+          <mat-option *ngFor="let m of meses" [value]="m.value">
             {{ m.viewValue }}
           </mat-option>
-          }
         </mat-select>
-
-        
-        <mat-error>@if (form.get('mes')?.hasError('required')) {El campo mes es obligatorio.}</mat-error>
+        <mat-error *ngIf="form.get('mes')?.hasError('required')">
+          El campo mes es obligatorio.
+        </mat-error>
       </mat-form-field>
-      </div>
       <br />
+
 
       <mat-form-field appearance="fill">
         <mat-label>Año</mat-label>
         <input matInput formControlName="anio" />
-        <mat-error>
-          @if (form.get('anio')?.hasError('required')) {
+        <mat-error *ngIf="form.get('anio')?.hasError('required')">
           Este campo es obligatorio
-          }
         </mat-error>
-        <mat-error>
-          @if (form.get('anio')?.hasError('min')) {
-          Ingrese un año válido (mínimo 2025)
-          }
+        <mat-error *ngIf="form.get('anio')?.hasError('min')">
+          Ingrese un año desde 2025
         </mat-error>
-        <mat-error>
-          @if (form.get('anio')?.hasError('maxLength')) {
-          El año no puede tener más de 4 dígitos
-          }
+        <mat-error *ngIf="form.get('anio')?.hasError('maxlength')">
+          Máximo de 4 dígitos
         </mat-error>
       </mat-form-field>
-
       <br />
+
 
       <mat-form-field appearance="fill">
         <mat-label>Ingreso Total</mat-label>
         <input matInput formControlName="total_ingreso" />
-        <mat-error>
-          @if (form.get('total_ingreso')?.hasError('required')){
+        <mat-error *ngIf="form.get('total_ingreso')?.hasError('required')">
           Este campo es obligatorio
-          }
         </mat-error>
-        <mat-error>
-          @if (form.get('total_ingreso')?.hasError('min')){
+        <mat-error *ngIf="form.get('total_ingreso')?.hasError('min')">
           Ingrese un valor válido
-          }
         </mat-error>
-        <mat-error>
-          @if (form.get('total_ingreso')?.hasError('maxLength')){
-          El valor no puede tener más de 8 dígitos
-          }
+        <mat-error *ngIf="form.get('total_ingreso')?.hasError('maxlength')">
+          Máximo de 8 dígitos
         </mat-error>
       </mat-form-field>
       <br />
@@ -78,20 +63,14 @@
       <mat-form-field appearance="fill">
         <mat-label>Gasto Total</mat-label>
         <input matInput formControlName="total_gasto" />
-        <mat-error>
-        @if (form.get('total_gasto')?.hasError('required')) {
+        <mat-error *ngIf="form.get('total_gasto')?.hasError('required')">
           Este campo es obligatorio
-        }
         </mat-error>
-        <mat-error>
-        @if (form.get('total_gasto')?.hasError('min')) {
+        <mat-error *ngIf="form.get('total_gasto')?.hasError('min')">
           Ingrese un valor válido
-        }
         </mat-error>
-        <mat-error>
-        @if (form.get('total_gasto')?.hasError('maxLength')) {
-          El valor no puede tener más de 8 dígitos
-        }
+        <mat-error *ngIf="form.get('total_gasto')?.hasError('maxlength')">
+          Máximo de 8 dígitos
         </mat-error>
       </mat-form-field>
       <br />
@@ -99,54 +78,51 @@
       <mat-form-field appearance="fill">
         <mat-label>Ahorro Total</mat-label>
         <input matInput formControlName="total_ahorro" />
-        <mat-error>
-          @if (form.get('total_ahorro')?.hasError('required')) {
+        <mat-error *ngIf="form.get('total_ahorro')?.hasError('required')">
           Este campo es obligatorio
-          }
         </mat-error>
-        <mat-error>
-          @if (form.get('total_ahorro')?.hasError('min')) {
+        <mat-error *ngIf="form.get('total_ahorro')?.hasError('min')">
           Ingrese un valor válido
-          }
         </mat-error>
-        <mat-error>
-          @if (form.get('total_ahorro')?.hasError('maxLength')) {
-          El valor no puede tener más de 8 dígitos
-          }
+        <mat-error *ngIf="form.get('total_ahorro')?.hasError('maxlength')">
+          Máximo de 8 dígitos
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Balance</mat-label>
+        <input matInput formControlName="balance" />
+        <mat-error *ngIf="form.get('balance')?.hasError('required')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('balance')?.hasError('min')">
+          Ingrese un valor válido
+        </mat-error>
+        <mat-error *ngIf="form.get('balance')?.hasError('maxlength')">
+          Máximo de 8 dígitos
         </mat-error>
       </mat-form-field>
       <br />
 
       <mat-form-field appearance="fill">
-        <mat-label>Balance</mat-label>
-        <input matInput formControlName="balance" />
-        <mat-error>
-          @if (form.get('balance')?.hasError('required')) {
-          Este campo es obligatorio
-          }
-        </mat-error>
-        <mat-error>
-          @if (form.get('balance')?.hasError('min')) {
-          Ingrese un valor válido
-          }
-        </mat-error>
-        <mat-error>
-          @if (form.get('balance')?.hasError('maxLength')) {
-          El valor no puede tener más de 8 dígitos
-          }
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="fk">
+          <mat-option *ngFor="let a of listaUsuario" [value]="a.idUsuario">
+            {{ a.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('fk')?.hasError('required')">
+          Seleccione un usuario
         </mat-error>
       </mat-form-field>
       <br />
-      <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <mat-select formControlName="fk">
-          @for (a of listaUsuario; track a) {
-          <mat-option [value]="a.idUsuario">{{ a.nombre }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+
       <div>
-        <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+        <button mat-raised-button color="primary">
+          {{ edicion ? 'Actualizar' : 'Registrar' }}
+        </button>
       </div>
 
     </form>
