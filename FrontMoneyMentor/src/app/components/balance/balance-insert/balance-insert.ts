@@ -69,11 +69,11 @@ export class BalanceInsert implements OnInit {
     this.form = this.formBuilder.group({
       codigo: [''],
       mes: ['', Validators.required],
-      anio: ['', Validators.required],
-      total_gasto: ['', Validators.required],
-      total_ingreso: ['', Validators.required],
-      total_ahorro: ['', Validators.required],
-      balance: ['', Validators.required],
+      anio: ['', Validators.required, Validators.min(2025), Validators.maxLength(4)],
+      total_gasto: ['', Validators.required, Validators.min(0), Validators.maxLength(8)],
+      total_ingreso: ['', Validators.required, Validators.min(0), Validators.maxLength(8)],
+      total_ahorro: ['', Validators.required, Validators.min(0), Validators.maxLength(8)],
+      balance: ['', Validators.required, Validators.min(0), Validators.maxLength(8)],
       fk: ['', Validators.required]
     });
   }
