@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { Ahorro } from '../../../models/Ahorro';
 import { AhorroService } from '../../../services/ahorro-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -24,13 +32,12 @@ import { MatSelectModule } from '@angular/material/select';
     MatRadioModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   templateUrl: './ahorro-insert.html',
   styleUrl: './ahorro-insert.css',
 })
 export class AhorroInsert {
-
   form: FormGroup = new FormGroup({});
   ah: Ahorro = new Ahorro();
   edicion: boolean = false;
@@ -42,8 +49,22 @@ export class AhorroInsert {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private uS: UsuarioService,
+    private uS: UsuarioService
   ) {}
+
+  validarFechas(control: AbstractControl): ValidationErrors | null {
+  const form = control as FormGroup;
+
+  const inicio = form.get('fecha_inicio')?.value;
+  const fin = form.get('fecha_limite')?.value;
+
+  if (!inicio || !fin) return null;
+
+  const fechaInicio = new Date(inicio);
+  const fechaFin = new Date(fin);
+
+  return fechaFin < fechaInicio ? { fechaInvalida: true } : null;
+}
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -56,13 +77,19 @@ export class AhorroInsert {
       this.listaUsuario = data;
     });
 
-    this.form = this.formBuilder.group({
-      codigo: [''],
-      objetivo: ['', Validators.required],
-      fecha_inicio: ['', Validators.required],
-      fecha_limite: ['', Validators.required],
-      fk: ['', Validators.required]
-    });
+    this.form = this.formBuilder.nonNullable.group(
+  {
+    codigo: [''],
+    objetivo: ['', Validators.required],
+    fecha_inicio: ['', [Validators.required, this.validarFechas]],
+    fecha_limite: ['', [Validators.required, this.validarFechas]],
+    fk: ['', Validators.required]
+  },
+  {
+    validators: [this.validarFechas.bind(this)]
+  }
+);
+
 
     this.init();
   }
@@ -79,11 +106,11 @@ export class AhorroInsert {
 
       if (this.edicion) {
         this.aS.update(this.ah).subscribe(() => {
-          this.aS.list().subscribe(data => this.aS.setList(data));
+          this.aS.list().subscribe((data) => this.aS.setList(data));
         });
       } else {
         this.aS.insert(this.ah).subscribe(() => {
-          this.aS.list().subscribe(data => this.aS.setList(data));
+          this.aS.list().subscribe((data) => this.aS.setList(data));
         });
       }
 
@@ -99,7 +126,7 @@ export class AhorroInsert {
           objetivo: new FormControl(data.objetivo),
           fecha_inicio: new FormControl(data.fecha_inicio),
           fecha_limite: new FormControl(data.fecha_limite),
-          fk: new FormControl(data.usuario.idUsuario)
+          fk: new FormControl(data.usuario.idUsuario),
         });
       });
     }
