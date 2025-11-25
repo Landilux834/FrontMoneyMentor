@@ -20,6 +20,10 @@
             <mat-icon> menu </mat-icon>recurso
         </button>
 
+        <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menurecursousuario">
+            <mat-icon> menu </mat-icon>recurso-usuario
+        </button>
+
         <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuesto">
             <mat-icon> menu </mat-icon>impuesto
         </button>
@@ -31,34 +35,39 @@
     </mat-toolbar>
 
     <mat-menu #menuUsuario="matMenu">
-        <button mat-menu-item routerLink="/usuarios">Listar Usuarios</button>
+        <button mat-menu-item routerLink="/app/usuariolistar">Listar Usuarios</button>
         <button mat-menu-item routerLink="/usuarios/nuevo">Registrarse</button>
-        <button mat-menu-item routerLink="/usuarios/buscar">Buscar Usuario</button>
+        <button mat-menu-item routerLink="/app/buscar">Buscar Usuario</button>
     </mat-menu>
 
     <mat-menu #menuOperacion="matMenu">
-        <button mat-menu-item routerLink="/operacion">Listar Operación</button>
-        <button mat-menu-item routerLink="/operacion/nuevo">Registrar Operación</button>
+        <button mat-menu-item routerLink="/app/operacion">Listar Operación</button>
+        <button mat-menu-item routerLink="/app/operacion/nuevo">Registrar Operación</button>
     </mat-menu>
 
     <mat-menu #menuBalance="matMenu">
-        <button mat-menu-item routerLink="/balance">Listar Balance</button>
-        <button mat-menu-item routerLink="/balance/nuevo">Registrar Balance</button>
+        <button mat-menu-item routerLink="/app/balance">Listar Balance</button>
+        <button mat-menu-item routerLink="/app/balance/nuevo">Registrar Balance</button>
     </mat-menu>
     <mat-menu #menuAhorro="matMenu">
-        <button mat-menu-item routerLink="/ahorro">Listar Ahorro</button>
-        <button mat-menu-item routerLink="/ahorro/nuevo">Registrar Ahorro</button>
+        <button mat-menu-item routerLink="/app/ahorro">Listar Ahorro</button>
+        <button mat-menu-item routerLink="/app/ahorro/nuevo">Registrar Ahorro</button>
     </mat-menu>
     <mat-menu #menuRecurso="matMenu">
-        <button mat-menu-item routerLink="/recurso">Listar recursos</button>
-        <button mat-menu-item routerLink="/recurso/nuevo">Registrar recurso</button>
+        <button mat-menu-item routerLink="/app/recurso">Listar recursos</button>
+        <button mat-menu-item routerLink="/app/recurso/nuevo">Registrar recurso</button>
     </mat-menu>
     <mat-menu #menuImpuesto="matMenu">
-        <button mat-menu-item routerLink="/impuesto">Listar impuestos</button>
-        <button mat-menu-item routerLink="/impuesto/nuevo">Registrar impuestos</button>
+        <button mat-menu-item routerLink="/app/impuesto">Listar impuestos</button>
+        <button mat-menu-item routerLink="/app/impuesto/nuevo">Registrar impuestos</button>
     </mat-menu>
     <mat-menu #menuImpuestooperacion="matMenu">
-        <button mat-menu-item routerLink="/impuesto-operacion">Listar impuestos-operacion</button>
-        <button mat-menu-item routerLink="/impuesto-operacion/nuevo">Registrar impuestos-operacion</button>
+        <button mat-menu-item routerLink="/app/impuesto-operacion">Listar impuestos-operacion</button>
+        <button mat-menu-item routerLink="/app/impuesto-operacion/nuevo">Registrar impuestos-operacion</button>
+    </mat-menu>
+    <mat-menu #menurecursousuario="matMenu">
+        <button mat-menu-item routerLink="/app/recurso-usuario">Listar recurso-usuario</button>
+        <button mat-menu-item routerLink="/app/recurso-usuario/nuevo">Registrar recurso-usuario</button>
     </mat-menu>
 </div>
+<router-outlet></router-outlet>

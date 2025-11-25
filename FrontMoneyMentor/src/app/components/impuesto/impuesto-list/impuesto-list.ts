@@ -12,7 +12,7 @@ import { Impuesto } from "../../../models/Impuesto";
 @Component({
     selector:'app-impuesto-list',
     standalone:true,
-    imports: [MatTableModule,MatButtonModule,MatIconModule,RouterLink,CommonModule,MatCardModule],
+    imports: [MatTableModule,MatButtonModule,MatIconModule,CommonModule,MatCardModule],
     templateUrl: './impuesto-list.html',
     styleUrl: './impuesto-list.css',
 })

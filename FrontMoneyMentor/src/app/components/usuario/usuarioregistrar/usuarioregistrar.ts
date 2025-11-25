@@ -36,7 +36,7 @@ export class usuarioregistrar implements OnInit {
         private router: Router,
         private formBuilder: FormBuilder,
         private route: ActivatedRoute
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.route.params.subscribe((data: Params) => {
@@ -74,26 +74,20 @@ export class usuarioregistrar implements OnInit {
                 });
             }
 
-            this.router.navigate(['usuarios']);
+            this.router.navigate(['app/usuariolistar']);
         }
     }
 
     init() {
-  console.log("Edición:", this.edicion, "ID:", this.id);
+    if (this.edicion) {
+      this.uS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          codigo: new FormControl(data.idUsuario),
+          nombre: new FormControl(data.nombre),
+          correo: new FormControl(data.correo),
+        });
 
-  if (this.edicion) {
-    this.uS.listId(this.id).subscribe(data => {
-      console.log("Datos recibidos del backend:", data);
-
-      this.form.patchValue({
-        codigo: data.idUsuario,
-        nombre: data.nombre,
-        correo: data.correo
       });
-
-      this.form.get('contrasenia')?.clearValidators();
-      this.form.get('contrasenia')?.updateValueAndValidity();
-            });
-        }
     }
+  }
 }

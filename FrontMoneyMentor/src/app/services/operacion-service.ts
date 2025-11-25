@@ -13,7 +13,7 @@ export class OperacionService {
   private url = `${environment.base}/operacion`;
   private listaCambio = new Subject<operacionModel[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   list(): Observable<operacionModel[]> {
     return this.http.get<operacionModel[]>(`${this.url}/listar`);
@@ -27,10 +27,10 @@ export class OperacionService {
     return this.http.delete(`${this.url}/delete/${id}`);
   }
 
-  update(id: number, operacion: operacionModel): Observable<operacionModel> {
-  return this.http.put<operacionModel>(`${this.url}/${id}`, operacion);
-}
-    
+  update(data: operacionModel): Observable<string> {
+    return this.http.put(`${this.url}/update`, data, { responseType: 'text' });
+  }
+
   setList(lista: operacionModel[]) {
     this.listaCambio.next(lista);
   }
@@ -39,4 +39,9 @@ export class OperacionService {
     return this.listaCambio.asObservable();
   }
 
-  save(operacion: operacionModel): Observable<operacionModel> { return this.http.post<operacionModel>(this.url, operacion); } }
+  ListId(id:number){
+    return this.http.get<operacionModel>(`${this.url}/listar/${id}`);
+  }
+
+
+}

@@ -31,20 +31,18 @@ export class OperacionList implements OnInit {
   constructor(private dS: OperacionService) {}
 
   ngOnInit(): void {
-  this.dS.list().subscribe(data => {
-    console.log(" DATA RECIBIDA DEL BACKEND:", data);
+  this.dS.list().subscribe((data) => {
     this.dataSource = new MatTableDataSource(data);
   });
 
-  this.dS.getList().subscribe(data => {
-    console.log(" DATA RECIBIDA POR REFRESH:", data);
+  this.dS.getList().subscribe((data) => {
     this.dataSource = new MatTableDataSource(data);
   });
 }
 
   eliminar(id: number) {
-    this.dS.delete(id).subscribe(() => {
-      this.dS.list().subscribe(data => {
+    this.dS.delete(id).subscribe((data) => {
+      this.dS.list().subscribe((data) => {
         this.dS.setList(data);
       });
     });

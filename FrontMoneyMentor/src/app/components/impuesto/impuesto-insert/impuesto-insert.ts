@@ -73,7 +73,7 @@ export class ImpuestoInsert implements OnInit{
                     });
                 });
         }
-        this.router.navigate(['impuesto']);
+        this.router.navigate(['app/impuesto']);
     }
 }
     init(){

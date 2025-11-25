@@ -87,7 +87,7 @@ export class AhorroInsert {
         });
       }
 
-      this.router.navigate(['ahorro']);
+      this.router.navigate(['app/ahorro']);
     }
   }
 

@@ -80,6 +80,7 @@ export class BalanceInsert implements OnInit {
 
   aceptar(): void {
     if (this.form.valid) {
+      console.log(this.form.value);
       this.bal.idBalance = this.form.value.codigo;
       this.bal.mes = this.form.value.mes;
       this.bal.anio = this.form.value.anio;
@@ -103,7 +104,7 @@ export class BalanceInsert implements OnInit {
         });
       }
 
-      this.router.navigate(['balance']);
+      this.router.navigate(['app/balance']);
     }
 
   }

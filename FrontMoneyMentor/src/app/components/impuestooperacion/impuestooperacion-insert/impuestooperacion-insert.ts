@@ -80,7 +80,7 @@ export class ImpuestooperacionInsert implements OnInit{
                     });
                 });
         }   
-        this.router.navigate(['impuesto-operacion']);
+        this.router.navigate(['app/impuesto-operacion']);
     }
 }
 
