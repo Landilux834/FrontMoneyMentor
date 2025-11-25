@@ -27,6 +27,7 @@ import { Recursousuario } from './components/recursousuario/recursousuario';
 import { RecursousuarioListar } from './components/recursousuario/recursousuario-listar/recursousuario-listar';
 import { RecursousuarioRegistrar } from './components/recursousuario/recursousuario-registrar/recursousuario-registrar';
 import { UsuarioBuscarComponent } from './components/usuario/usuario-buscar/usuario-buscar';
+import { ReportebalanceSum } from './components/reportebalance-sum/reportebalance-sum';
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
@@ -116,6 +117,10 @@ export const routes: Routes = [{ path: '', component: Landigpage },
         { path: 'nuevo', component: RecursousuarioRegistrar },
         { path: 'edits/:id', component: RecursousuarioRegistrar }
       ]
+    },
+    {
+      path: 'sumaingresos',
+      component: ReportebalanceSum
     }
 
   ]
