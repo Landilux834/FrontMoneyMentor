@@ -26,9 +26,8 @@
           }
         </mat-select>
 
-        @if (form.get('mes')?.hasError('required')) {
-        <mat-error>El campo mes es obligatorio.</mat-error>
-        }
+        
+        <mat-error>@if (form.get('mes')?.hasError('required')) {El campo mes es obligatorio.}</mat-error>
       </mat-form-field>
       </div>
       <br />
@@ -36,8 +35,20 @@
       <mat-form-field appearance="fill">
         <mat-label>Año</mat-label>
         <input matInput formControlName="anio" />
-        <mat-error *ngIf="form.get('anio')?.hasError('required')">
+        <mat-error>
+          @if (form.get('anio')?.hasError('required')) {
           Este campo es obligatorio
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('anio')?.hasError('min')) {
+          Ingrese un año válido (mínimo 2025)
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('anio')?.hasError('maxLength')) {
+          El año no puede tener más de 4 dígitos
+          }
         </mat-error>
       </mat-form-field>
 
@@ -46,8 +57,20 @@
       <mat-form-field appearance="fill">
         <mat-label>Ingreso Total</mat-label>
         <input matInput formControlName="total_ingreso" />
-        <mat-error *ngIf="form.get('total_ingreso')?.hasError('required')">
+        <mat-error>
+          @if (form.get('total_ingreso')?.hasError('required')){
           Este campo es obligatorio
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('total_ingreso')?.hasError('min')){
+          Ingrese un valor válido
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('total_ingreso')?.hasError('maxLength')){
+          El valor no puede tener más de 8 dígitos
+          }
         </mat-error>
       </mat-form-field>
       <br />
@@ -55,8 +78,20 @@
       <mat-form-field appearance="fill">
         <mat-label>Gasto Total</mat-label>
         <input matInput formControlName="total_gasto" />
-        <mat-error *ngIf="form.get('total_gasto')?.hasError('required')">
+        <mat-error>
+        @if (form.get('total_gasto')?.hasError('required')) {
           Este campo es obligatorio
+        }
+        </mat-error>
+        <mat-error>
+        @if (form.get('total_gasto')?.hasError('min')) {
+          Ingrese un valor válido
+        }
+        </mat-error>
+        <mat-error>
+        @if (form.get('total_gasto')?.hasError('maxLength')) {
+          El valor no puede tener más de 8 dígitos
+        }
         </mat-error>
       </mat-form-field>
       <br />
@@ -64,8 +99,20 @@
       <mat-form-field appearance="fill">
         <mat-label>Ahorro Total</mat-label>
         <input matInput formControlName="total_ahorro" />
-        <mat-error *ngIf="form.get('total_ahorro')?.hasError('required')">
+        <mat-error>
+          @if (form.get('total_ahorro')?.hasError('required')) {
           Este campo es obligatorio
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('total_ahorro')?.hasError('min')) {
+          Ingrese un valor válido
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('total_ahorro')?.hasError('maxLength')) {
+          El valor no puede tener más de 8 dígitos
+          }
         </mat-error>
       </mat-form-field>
       <br />
@@ -73,8 +120,20 @@
       <mat-form-field appearance="fill">
         <mat-label>Balance</mat-label>
         <input matInput formControlName="balance" />
-        <mat-error *ngIf="form.get('balance')?.hasError('required')">
+        <mat-error>
+          @if (form.get('balance')?.hasError('required')) {
           Este campo es obligatorio
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('balance')?.hasError('min')) {
+          Ingrese un valor válido
+          }
+        </mat-error>
+        <mat-error>
+          @if (form.get('balance')?.hasError('maxLength')) {
+          El valor no puede tener más de 8 dígitos
+          }
         </mat-error>
       </mat-form-field>
       <br />
