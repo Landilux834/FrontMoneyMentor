@@ -35,7 +35,7 @@ export class UsuarioService implements OnInit {
   }
 
   listId(id: number) {
-  return this.http.get<any>(`${this.url}/listar/${id}`);
+  return this.http.get<Usuario>(`${this.url}/listar/${id}`);
 }
 
   update(u: Usuario) {

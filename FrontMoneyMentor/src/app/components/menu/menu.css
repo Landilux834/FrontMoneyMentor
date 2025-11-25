@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 0;      
-  height: auto;          
+  padding: 12px 0;
+  height: auto;
   background: linear-gradient(135deg, #1976d2, #42a5f5);
 }
 
@@ -19,8 +19,11 @@
   max-width: 900px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px; /* Espacio entre todos los botones */
+  flex-wrap: nowrap; /* Evita que bajen de línea */
+  overflow-x: auto; /* Por si son muchos botones */
 }
+
 
 /* Logo dentro de la barra */
 .imagen {
@@ -47,17 +50,17 @@
   color: #1976d2;
   display: flex;
   align-items: center;
+  gap: 6px; /* Espacio entre icono y texto */
   transition: all 0.3s ease;
 }
 
 .custom-toolbar button[mat-button]:hover {
   background-color: rgba(25, 118, 210, 0.1);
-  border-radius: 8px;
+  border-radius: 0%;
 }
 
 /* Ícono del menú */
 mat-icon {
-  margin-right: 8px;
   font-size: 22px;
 }
 

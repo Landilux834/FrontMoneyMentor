@@ -18,7 +18,7 @@ export class ImpuestoopService implements OnInit{
         return this.http.get<impuestoop[]>(`${this.url}/listar`);
     }
     insert(io:impuestoop):Observable<string>{
-        return this.http.post(`${this.url}/insert`,io,{responseType:'text'});
+        return this.http.post(`${this.url}/register`,io,{responseType:'text'});
     }
     setList(listaNueva:impuestoop[]){
         this.listaCambio.next(listaNueva);

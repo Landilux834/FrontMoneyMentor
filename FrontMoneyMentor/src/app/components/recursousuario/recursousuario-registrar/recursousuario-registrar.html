@@ -1,0 +1,44 @@
+<div class="container">
+    <div style="text-align: center; margin: 5%;">
+        <h2>{{ edicion ? 'Editar recurso usuario' : 'Registrar recurso usuario' }}</h2>
+    </div>
+
+    <div style="text-align: center; margin: 5%;">
+        <form [formGroup]="form" (submit)="aceptar()">
+            @if(edicion){
+            <mat-form-field>
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="idRecursoUsuario" />
+                <mat-error>
+                    @if (form.get('idRecursoUsuario')?.hasError('required')) { Ingrese id}
+                </mat-error>
+            </mat-form-field>
+
+            }
+            <div>
+                <mat-form-field>
+                    <mat-label>usuario</mat-label>
+                    <mat-select formControlName="usuario">
+                        @for (a of listausuario; track a) {
+                        <mat-option [value]="a.idUsuario">{{ a.idUsuario }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <br />
+
+            <mat-form-field>
+                <mat-label>recurso</mat-label>
+                <mat-select formControlName="recurso">
+                    @for (a of listarecurso; track a) {
+                    <mat-option [value]="a.idRecurso">{{ a.idRecurso }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+            </div>
+
+        </form>
+    </div>
+</div>

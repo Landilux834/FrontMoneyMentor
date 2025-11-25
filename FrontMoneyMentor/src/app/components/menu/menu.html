@@ -20,6 +20,10 @@
             <mat-icon> menu </mat-icon>recurso
         </button>
 
+        <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menurecursousuario">
+            <mat-icon> menu </mat-icon>recurso-usuario
+        </button>
+
         <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuesto">
             <mat-icon> menu </mat-icon>impuesto
         </button>
@@ -33,7 +37,7 @@
     <mat-menu #menuUsuario="matMenu">
         <button mat-menu-item routerLink="/app/usuariolistar">Listar Usuarios</button>
         <button mat-menu-item routerLink="/usuarios/nuevo">Registrarse</button>
-        <button mat-menu-item routerLink="/usuarios/buscar">Buscar Usuario</button>
+        <button mat-menu-item routerLink="/app/buscar">Buscar Usuario</button>
     </mat-menu>
 
     <mat-menu #menuOperacion="matMenu">
@@ -60,6 +64,10 @@
     <mat-menu #menuImpuestooperacion="matMenu">
         <button mat-menu-item routerLink="/app/impuesto-operacion">Listar impuestos-operacion</button>
         <button mat-menu-item routerLink="/app/impuesto-operacion/nuevo">Registrar impuestos-operacion</button>
+    </mat-menu>
+    <mat-menu #menurecursousuario="matMenu">
+        <button mat-menu-item routerLink="/app/recurso-usuario">Listar recurso-usuario</button>
+        <button mat-menu-item routerLink="/app/recurso-usuario/nuevo">Registrar recurso-usuario</button>
     </mat-menu>
 </div>
 <router-outlet></router-outlet>

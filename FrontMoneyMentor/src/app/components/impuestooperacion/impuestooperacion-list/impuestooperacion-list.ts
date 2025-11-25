@@ -9,7 +9,7 @@ import { ImpuestoopService } from "../../../services/impuestoop-service";
 
 @Component({
     selector: 'app-impuestooperacion-list',
-    imports: [MatTableModule,MatButtonModule,RouterLink,CommonModule],
+    imports: [MatTableModule,MatButtonModule,CommonModule],
     templateUrl: './impuestooperacion.html',
     styleUrl: './impuestooperacion.css',
 })

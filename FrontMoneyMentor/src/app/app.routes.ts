@@ -23,87 +23,101 @@ import { ImpuestooperacionList } from './components/impuestooperacion/impuestoop
 import { ImpuestooperacionInsert } from './components/impuestooperacion/impuestooperacion-insert/impuestooperacion-insert';
 import { Landigpage } from './components/landigpage/landigpage';
 import { Menu } from './components/menu/menu';
+import { Recursousuario } from './components/recursousuario/recursousuario';
+import { RecursousuarioListar } from './components/recursousuario/recursousuario-listar/recursousuario-listar';
+import { RecursousuarioRegistrar } from './components/recursousuario/recursousuario-registrar/recursousuario-registrar';
+import { UsuarioBuscarComponent } from './components/usuario/usuario-buscar/usuario-buscar';
 
 
-export const routes: Routes = [{path:'',component:Landigpage},
-  {
-    path: 'usuarios',
-    component: Usuario,
-    children: [
-      { path: 'nuevo', component: usuarioregistrar },
-      { path: 'edits/:id', component: usuarioregistrar },
+export const routes: Routes = [{ path: '', component: Landigpage },
+{
+  path: 'usuarios',
+  component: Usuario,
+  children: [
+    { path: 'nuevo', component: usuarioregistrar }
+  ]
+},
+{
+  path: 'app', component: Menu,
+  children: [
+    { path: 'usuariolistar', component: usuariolistar },
+    { path: 'edits/:id', component: usuarioregistrar },
 
-      {
-        path: 'buscar',
-        loadComponent: () =>
-          import('./components/usuario/usuario-buscar/usuario-buscar')
-            .then(m => m.UsuarioBuscarComponent)
-      },
-    ]
-  },
-  {path:'app',component:Menu,
-    children:[
-  { path: 'usuariolistar', component: usuariolistar },
+    {
+      path: 'buscar',
+      component:UsuarioBuscarComponent
+    },
   
   {
-    path: 'operacion',
-    component: OperacionComponent,
-    children: [{ path: '', component: OperacionList },
-    { path: 'nuevo', component: OperacionRegistrar },
-    { path: 'edits/:id', component: OperacionRegistrar },
+      path: 'operacion',
+      component: OperacionComponent,
+      children: [{ path: '', component: OperacionList },
+      { path: 'nuevo', component: OperacionRegistrar },
+      { path: 'edits/:id', component: OperacionRegistrar },
 
-    ],
+      ],
 
-  },
+    },
 
-  {
-    path: 'balance',
-    component: Balance,
-    children: [
-      { path: '', component: BalanceList }
-      , { path: 'nuevo', component: BalanceInsert }
-      , { path: 'edits/:id', component: BalanceInsert }
-    ]
-  },
+    {
+      path: 'balance',
+      component: Balance,
+      children: [
+        { path: '', component: BalanceList }
+        , { path: 'nuevo', component: BalanceInsert }
+        , { path: 'edits/:id', component: BalanceInsert }
+      ]
+    },
 
-  {
-    path: 'ahorro',
-    component: Ahorro,
-    children: [
-      { path: '', component: AhorroList }, 
-      { path: 'edits/:id', component: AhorroInsert },
-      { path: 'nuevo', component: AhorroInsert }, 
-    ]
-  },
-  {
-    path:'recurso',
-    component:Recurso,
-    children:[
-      {path:'',component:Recursolistar},
-      {path:'nuevo',component:Recursoregistrar},
-      {path:'edits/:id',component:Recursoregistrar}
-    ]
-  },
+    {
+      path: 'ahorro',
+      component: Ahorro,
+      children: [
+        { path: '', component: AhorroList },
+        { path: 'edits/:id', component: AhorroInsert },
+        { path: 'nuevo', component: AhorroInsert },
+      ]
+    },
+    {
+      path: 'recurso',
+      component: Recurso,
+      children: [
+        { path: '', component: Recursolistar },
+        { path: 'nuevo', component: Recursoregistrar },
+        { path: 'edits/:id', component: Recursoregistrar }
+      ]
+    },
 
-  {
-    path:'impuesto',
-    component:Impuesto,
-    children:[
-      {path:'',component:ImpuestoList},
-      {path:'nuevo',component:ImpuestoInsert},
-      {path:'edits/:id',component:ImpuestoInsert}
-    ]
-  },
+    {
+      path: 'impuesto',
+      component: Impuesto,
+      children: [
+        { path: '', component: ImpuestoList },
+        { path: 'nuevo', component: ImpuestoInsert },
+        { path: 'edits/:id', component: ImpuestoInsert }
+      ]
+    },
 
-  {
-    path:'impuesto-operacion',
-    component:Impuestooperacion,
-    children:[
-      {path:'',component:ImpuestooperacionList},
-      {path:'nuevo',component:ImpuestooperacionInsert},
-      {path:'edits/:id',component:ImpuestooperacionInsert}
-    ]
-  }
+    {
+      path: 'impuesto-operacion',
+      component: Impuestooperacion,
+      children: [
+        { path: '', component: ImpuestooperacionList },
+        { path: 'nuevo', component: ImpuestooperacionInsert },
+        { path: 'edits/:id', component: ImpuestooperacionInsert }
+      ]
+    },
 
-]}
+    {
+      path: 'recurso-usuario',
+      component: Recursousuario,
+      children: [
+        { path: '', component: RecursousuarioListar },
+        { path: 'nuevo', component: RecursousuarioRegistrar },
+        { path: 'edits/:id', component: RecursousuarioRegistrar }
+      ]
+    }
+
+  ]
+}
 ];
