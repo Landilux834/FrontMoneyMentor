@@ -39,12 +39,16 @@
       <mat-form-field>
         <mat-label>Fecha Límite</mat-label>
         <input matInput [matDatepicker]="pickerLimite" formControlName="fecha_limite" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="pickerLimite"></mat-datepicker-toggle>
         <mat-datepicker #pickerLimite></mat-datepicker>
-        <mat-error>
-          @if (form.get('fecha_limite')?.hasError('required')) { Ingrese fecha de finalización!! }
+
+        <mat-error *ngIf="form.get('fecha_limite')?.hasError('required')">
+          Ingrese fecha de finalización!!
         </mat-error>
+
+        @if (form.errors?.['fechaInvalida']) {
+        <mat-error> La fecha límite no puede ser menor que la fecha de inicio. </mat-error>
+        }
       </mat-form-field>
 
       <br />
