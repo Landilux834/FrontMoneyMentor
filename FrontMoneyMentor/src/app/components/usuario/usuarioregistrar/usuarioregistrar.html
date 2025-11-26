@@ -1,26 +1,23 @@
 <div class="container">
   <div style="text-align: center; margin: 5%">
-    <h2>{{tituloPagina}}</h2>
+    <h2>Registro de Usuario</h2>
   </div>
 
   <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error> @if (form.get('codigo')?.hasError('required')) { Ingrese id} </mat-error>
+      </mat-form-field>
 
-      <ng-container *ngIf="edicion">
-        <mat-form-field>
-          <mat-label>ID</mat-label>
-          <input matInput formControlName="codigo" />
-        </mat-form-field>
-      </ng-container>
-
+      }
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" (input)="limitarLongitud('nombre', 20)">
+        <input matInput formControlName="nombre" />
         <mat-error *ngIf="form.get('nombre')?.hasError('required')">
           El nombre es obligatorio
-        </mat-error>
-        <mat-error *ngIf="form.get('nombre')?.hasError('maxlength')">
-          Máximo 20 caracteres
         </mat-error>
       </mat-form-field>
 
@@ -28,12 +25,12 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Correo</mat-label>
-        <input matInput formControlName="correo">
+        <input matInput formControlName="correo" />
         <mat-error *ngIf="form.get('correo')?.hasError('required')">
           El correo es obligatorio
         </mat-error>
         <mat-error *ngIf="form.get('correo')?.hasError('email')">
-          Formato de correo inválido
+          Debe ingresar un correo válido (debe incluir "@")
         </mat-error>
       </mat-form-field>
 
@@ -53,10 +50,7 @@
       <br />
 
       <div>
-        <button mat-raised-button color="primary">
-          {{ edicion ? 'Actualizar' : 'Registrar' }}
-        </button>
-
+        <button mat-raised-button color="primary">Registrar</button>
       </div>
     </form>
   </div>
