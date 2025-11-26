@@ -49,4 +49,9 @@ export class BalanceService implements OnInit {
   getSumBalance(): Observable<SumaIngresosDTO[]> {
     return this.http.get<SumaIngresosDTO[]>(`${this.url}/sumadores`);
   }
+
+  getBalancePorMes(mes: string): Observable<Balance[]> {
+  return this.http.get<Balance[]>(`${this.url}/listarpormes?mes=${mes}`);
+}
+
 }
