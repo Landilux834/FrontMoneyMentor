@@ -1,5 +1,17 @@
 <div class="container">
+    @if(verificar()){
     <mat-toolbar class="custom-toolbar">
+        <button mat-button [routerLink]="['usuariolistar']" class="btn-rojo">
+            <mat-icon>home</mat-icon>Home
+        </button>
+
+        @if(isAdmin()){
+        <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menurecursousuario">
+            <mat-icon> menu </mat-icon>recurso-usuario
+        </button>
+        }
+
+        @if(isTester()){
         <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuUsuario">
             <mat-icon> menu </mat-icon>Usuarios
         </button>
@@ -20,10 +32,6 @@
             <mat-icon> menu </mat-icon>recurso
         </button>
 
-        <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menurecursousuario">
-            <mat-icon> menu </mat-icon>recurso-usuario
-        </button>
-
         <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuesto">
             <mat-icon> menu </mat-icon>impuesto
         </button>
@@ -35,9 +43,12 @@
         <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuReportesBalance">
             <mat-icon> menu </mat-icon>Reportes Balance
         </button>
-        
+        }
+        <button mat-button [matMenuTriggerFor]="menuSalir">
+            <mat-icon>person</mat-icon>Usuario
+        </button>
     </mat-toolbar>
-
+    }
     <mat-menu #menuUsuario="matMenu">
         <button mat-menu-item routerLink="/app/usuariolistar">Listar Usuarios</button>
         <button mat-menu-item routerLink="/usuarios/nuevo">Registrarse</button>
@@ -75,6 +86,16 @@
     </mat-menu>
     <mat-menu #menuReportesBalance="matMenu">
         <button mat-menu-item routerLink="/app/sumaingresos">Reporte 1</button>
+    </mat-menu>
+    <mat-menu #menuSalir="matMenu">
+        <button mat-menu-item routerLink="/login" (click)="cerrar()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar sesión</span>
+        </button>
+        <button mat-menu-item>
+            Rol:
+            <span>{{ role }}</span>
+        </button>
     </mat-menu>
 </div>
 <router-outlet></router-outlet>

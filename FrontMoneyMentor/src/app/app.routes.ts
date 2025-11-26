@@ -28,9 +28,22 @@ import { RecursousuarioListar } from './components/recursousuario/recursousuario
 import { RecursousuarioRegistrar } from './components/recursousuario/recursousuario-registrar/recursousuario-registrar';
 import { UsuarioBuscarComponent } from './components/usuario/usuario-buscar/usuario-buscar';
 import { ReportebalanceSum } from './components/reportebalance-sum/reportebalance-sum';
+import { Autenticador } from './components/autenticador/autenticador';
+import { Home } from './components/home/home';
+import { seguridadGuardGuard } from './seguridad/seguridad-guard';
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  }
+  ,
+  {
+    path: 'login',
+    component: Autenticador,
+  },
 {
   path: 'usuarios',
   component: Usuario,
@@ -40,6 +53,7 @@ export const routes: Routes = [{ path: '', component: Landigpage },
 },
 {
   path: 'app', component: Menu,
+  canActivate: [seguridadGuardGuard],
   children: [
     { path: 'usuariolistar', component: usuariolistar },
     { path: 'edits/:id', component: usuarioregistrar },
@@ -124,5 +138,11 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     }
 
   ]
+},
+{
+  path: 'homes',
+  component: Home,
+      canActivate: [seguridadGuardGuard],
+
 }
 ];
