@@ -52,10 +52,13 @@
           Este campo es obligatorio
         </mat-error>
         <mat-error *ngIf="form.get('total_ingreso')?.hasError('min')">
-          Ingrese un valor válido
+          Ingrese un valor mayor o igual a 0
         </mat-error>
         <mat-error *ngIf="form.get('total_ingreso')?.hasError('maxlength')">
           Máximo de 8 dígitos
+        </mat-error>
+        <mat-error *ngIf="form.get('total_ingreso')?.hasError('pattern')">
+          Debe ser un número positivo(entero o decimal)
         </mat-error>
       </mat-form-field>
       <br />
@@ -67,10 +70,13 @@
           Este campo es obligatorio
         </mat-error>
         <mat-error *ngIf="form.get('total_gasto')?.hasError('min')">
-          Ingrese un valor válido
+          Ingrese un valor mayor o igual a 0
         </mat-error>
         <mat-error *ngIf="form.get('total_gasto')?.hasError('maxlength')">
           Máximo de 8 dígitos
+        </mat-error>
+        <mat-error *ngIf="form.get('total_gasto')?.hasError('pattern')">
+          Debe ser un número positivo(entero o decimal)
         </mat-error>
       </mat-form-field>
       <br />
@@ -82,10 +88,13 @@
           Este campo es obligatorio
         </mat-error>
         <mat-error *ngIf="form.get('total_ahorro')?.hasError('min')">
-          Ingrese un valor válido
+          Ingrese un valor mayor o igual a 0
         </mat-error>
         <mat-error *ngIf="form.get('total_ahorro')?.hasError('maxlength')">
           Máximo de 8 dígitos
+        </mat-error>
+        <mat-error *ngIf="form.get('total_ahorro')?.hasError('pattern')">
+          Debe ser un número positivo (entero o decimal)
         </mat-error>
       </mat-form-field>
       <br />
@@ -98,10 +107,13 @@
           Este campo es obligatorio
         </mat-error>
         <mat-error *ngIf="form.get('balance')?.hasError('min')">
-          Ingrese un valor válido
+          Ingrese un valor mayor o igual a 0
         </mat-error>
         <mat-error *ngIf="form.get('balance')?.hasError('maxlength')">
           Máximo de 8 dígitos
+        </mat-error>
+        <mat-error *ngIf="form.get('balance')?.hasError('pattern')">
+          Debe ser un número positivo (entero o decimal)
         </mat-error>
       </mat-form-field>
       <br />

@@ -44,6 +44,8 @@ export class AhorroInsert {
   id: number = 0;
   listaUsuario: Usuario[] = [];
 
+  hoy:Date=new Date();
+
   constructor(
     private aS: AhorroService,
     private router: Router,
@@ -62,8 +64,16 @@ export class AhorroInsert {
 
   const fechaInicio = new Date(inicio);
   const fechaFin = new Date(fin);
+  const hoy=new Date();
+  hoy.setHours(0,0,0,0);
 
-  return fechaFin < fechaInicio ? { fechaInvalida: true } : null;
+  if(fechaFin<hoy){
+    return{fechaLimiteMenorHoy:true};
+  }
+  if(fechaFin<fechaInicio){
+    return {fechaInvalida:true};
+  }
+  return null;
 }
 
   ngOnInit(): void {
@@ -81,8 +91,8 @@ export class AhorroInsert {
   {
     codigo: [''],
     objetivo: ['', Validators.required],
-    fecha_inicio: ['', [Validators.required, this.validarFechas]],
-    fecha_limite: ['', [Validators.required, this.validarFechas]],
+    fecha_inicio: [new Date().toISOString().substring(0,10),Validators.required],
+    fecha_limite: ['', Validators.required],
     fk: ['', Validators.required]
   },
   {
@@ -121,12 +131,12 @@ export class AhorroInsert {
   init() {
     if (this.edicion) {
       this.aS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idAhorro),
-          objetivo: new FormControl(data.objetivo),
-          fecha_inicio: new FormControl(data.fecha_inicio),
-          fecha_limite: new FormControl(data.fecha_limite),
-          fk: new FormControl(data.usuario.idUsuario),
+        this.form.patchValue({
+          codigo: data.idAhorro,
+          objetivo:  (data.objetivo),
+          fecha_inicio: (data.fecha_inicio),
+          fecha_limite: (data.fecha_limite),
+          fk: (data.usuario.idUsuario),
         });
       });
     }
