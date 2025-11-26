@@ -12,6 +12,7 @@ import { OperacionService } from "../../../services/operacion-service";
 import { Usuario } from "../../../models/Usuario";
 import { UsuarioService } from "../../../services/usuario-service";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @Component({
   selector: "app-operacionregistrar",
@@ -22,7 +23,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    CommonModule, MatDatepickerModule
+    CommonModule, MatDatepickerModule,MatNativeDateModule
   ],
   templateUrl: "./operacionregistrar.html",
   styleUrls: ["./operacionregistrar.css"]
@@ -46,12 +47,12 @@ export class OperacionRegistrar implements OnInit {
   ngOnInit(): void {
 
     this.form = this.fb.group({
-      idoperacion:['',Validators.required],
+      idoperacion:[''],
       categoria: ['', Validators.required],
       tipo: ['', Validators.required],
-      monto: [0, [Validators.required, Validators.min(0)]],
+      monto: ['', [Validators.required, Validators.min(0)]],
       detalle: [''],
-      fecha: ['', Validators.required],
+      fecha: [new Date(), Validators.required],
       usuarioId: ['', Validators.required]
     });
 
@@ -65,7 +66,32 @@ export class OperacionRegistrar implements OnInit {
       this.init();
     });
   }
+  
+categorias: string[] = [
+  "Alimentación",
+  "Transporte",
+  "Viaje",
+  "Compra en general",
+  "Pago servicios",
+  "Pago arbitrios",
+  "Pago predial",
+  "Pago patrimonio vehicular",
+  "Pago alquiler",
+  "Transferencias",
+  "Pago de salario",
+  "Honorarios profesionales",
+  "Salud",
+  "Educación",
+  "Sueldo",
+  "Bonificaciones",
+  "Alquiler de propiedades",
+  "Intereses",
+  "Dividendos"
+];
 
+tipos: string[] = ["Ingreso", "Gasto", "Ahorro"];
+
+minFecha = new Date();
 
   aceptar(): void {
     if (this.form.valid) {
@@ -105,14 +131,15 @@ export class OperacionRegistrar implements OnInit {
   init() {
   if (this.edicion) {
     this.operacionService.ListId(this.id).subscribe((data) => {
-      this.form = new FormGroup({
-        idoperacion: new FormControl(data.idOperacion),
-        categoria: new FormControl(data.categoria),
-        tipo: new FormControl(data.tipo),
-        monto: new FormControl(data.monto),
-        detalle: new FormControl(data.detalle),
-        fecha: new FormControl(data.fecha),
-        usuarioId: new FormControl(data.usuario?.idUsuario)
+      this.operacion = data;
+      this.form.patchValue({
+        idoperacion:(data.idOperacion),
+        categoria:(data.categoria),
+        tipo:(data.tipo),
+        monto:(data.monto),
+        detalle:(data.detalle),
+        fecha: new Date(data.fecha),
+        usuarioId: (data.usuario?.idUsuario)
       });
 
       console.log("Formulario cargado:", this.form.value);

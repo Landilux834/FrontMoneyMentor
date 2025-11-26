@@ -70,10 +70,10 @@ export class BalanceInsert implements OnInit {
       codigo: [''],
       mes: ['', Validators.required],
       anio: ['', [Validators.required, Validators.min(2025), Validators.maxLength(4)]],
-      total_gasto: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
-      total_ingreso: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
-      total_ahorro: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
-      balance: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
+      total_gasto: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
+      total_ingreso: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
+      total_ahorro: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
+      balance: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
       fk: ['', Validators.required]
     });
   }
@@ -113,15 +113,15 @@ export class BalanceInsert implements OnInit {
   init() {
     if (this.edicion) {
       this.bS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idBalance),
-          mes: new FormControl(data.mes),
-          anio: new FormControl(data.anio),
-          total_gasto: new FormControl(data.total_gasto),
-          total_ingreso: new FormControl(data.total_ingreso),
-          total_ahorro: new FormControl(data.total_ahorro),
-          balance: new FormControl(data.balance),
-          fk: new FormControl(data.usuario.idUsuario)
+        this.form.patchValue({
+          codigo:(data.idBalance),
+          mes: (data.mes),
+          anio: (data.anio),
+          total_gasto: (data.total_gasto),
+          total_ingreso: (data.total_ingreso),
+          total_ahorro: (data.total_ahorro),
+          balance: (data.balance),
+          fk:(data.usuario.idUsuario)
         });
 
       });

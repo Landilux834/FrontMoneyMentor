@@ -25,12 +25,16 @@
       <br />
       <mat-form-field>
         <mat-label>Fecha Inicio</mat-label>
-        <input matInput [matDatepicker]="pickerInicio" formControlName="fecha_inicio" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <input matInput 
+        [matDatepicker]="pickerInicio" 
+        formControlName="fecha_inicio" 
+        [min]="hoy"
+        />
         <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
         <mat-datepicker #pickerInicio></mat-datepicker>
-        <mat-error>
-          @if (form.get('fecha_inicio')?.hasError('required')) { Ingrese fecha de inicio!! }
+
+        <mat-error *ngIf="form.get('fecha_inicio')?.hasError('required')">
+          Ingrese fecha de inicio!
         </mat-error>
       </mat-form-field>
 
@@ -38,7 +42,10 @@
 
       <mat-form-field>
         <mat-label>Fecha Límite</mat-label>
-        <input matInput [matDatepicker]="pickerLimite" formControlName="fecha_limite" />
+        <input matInput [matDatepicker]="pickerLimite" 
+        formControlName="fecha_limite"
+        [min]="hoy" 
+        />
         <mat-datepicker-toggle matIconSuffix [for]="pickerLimite"></mat-datepicker-toggle>
         <mat-datepicker #pickerLimite></mat-datepicker>
 
@@ -49,6 +56,11 @@
         @if (form.errors?.['fechaInvalida']) {
         <mat-error> La fecha límite no puede ser menor que la fecha de inicio. </mat-error>
         }
+
+        @if (form.errors?.['fechaLimiteMenorHoy']) {
+        <mat-error> La fecha límite no puede ser menor a hoy. </mat-error>
+        }
+
       </mat-form-field>
 
       <br />

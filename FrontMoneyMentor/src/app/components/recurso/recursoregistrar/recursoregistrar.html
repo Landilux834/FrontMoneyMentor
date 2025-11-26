@@ -14,43 +14,51 @@
       <br>
       <mat-form-field appearance="fill">
         <mat-label>titulo</mat-label>
-        <input matInput formControlName="titulo" />
+        <input matInput formControlName="titulo" maxlength="15" />
         <mat-error *ngIf="form.get('titulo')?.hasError('required')">
           El titulo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('titulo')?.hasError('maxlength')">
+          Máximo 15 caracteres
         </mat-error>
       </mat-form-field>
       <br />
       <mat-form-field appearance="fill">
         <mat-label>descripcion</mat-label>
-        <input matInput formControlName="descripcion" />
+        <input matInput formControlName="descripcion" maxlength="50" />
         <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
-          la descripcion es obligatorio
+          La descripción es obligatoria
+        </mat-error>
+        <mat-error *ngIf="form.get('descripcion')?.hasError('maxlength')">
+          Máximo 50 caracteres
         </mat-error>
       </mat-form-field>
+
       <br />
       <mat-form-field appearance="fill">
         <mat-label>tipo</mat-label>
-        <input matInput formControlName="tipo" />
-        <mat-error *ngIf="form.get('tipo')?.hasError('required')">
-          el tipo es obligatorio
-        </mat-error>
+        <mat-select formControlName="tipo">
+          <mat-option *ngFor="let t of tipos" [value]="t">{{ t }}</mat-option>
+        </mat-select>
       </mat-form-field>
       <br />
       <mat-form-field appearance="fill">
         <mat-label>autor</mat-label>
-        <input matInput formControlName="autor" />
+        <input matInput formControlName="autor" maxlength="15" />
         <mat-error *ngIf="form.get('autor')?.hasError('required')">
-          el autor es obligatorio
+          El autor es obligatorio
         </mat-error>
       </mat-form-field>
+
       <br />
       <mat-form-field appearance="fill">
         <mat-label>fuente</mat-label>
-        <input matInput formControlName="fuente" />
+        <input matInput formControlName="fuente" maxlength="15" />
         <mat-error *ngIf="form.get('fuente')?.hasError('required')">
-          la fuente es obligatorio
+          La fuente es obligatoria
         </mat-error>
       </mat-form-field>
+
       <br />
       <mat-form-field appearance="fill">
         <mat-label>url</mat-label>
@@ -63,24 +71,18 @@
       <br />
       <mat-form-field>
         <mat-label>fecha publicacion</mat-label>
-        <input matInput [matDatepicker]="pickerpublicacion" formControlName="fechapublicacion" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="pickerpublicacion"></mat-datepicker-toggle>
-        <mat-datepicker #pickerpublicacion></mat-datepicker>
-        <mat-error>
-          @if (form.get('fechapublicacion')?.hasError('required')) { Ingrese fecha de inicio!! }
+        <input matInput [matDatepicker]="pickerPub" formControlName="fechapublicacion">
+        <mat-datepicker-toggle matSuffix [for]="pickerPub"></mat-datepicker-toggle>
+        <mat-datepicker #pickerPub></mat-datepicker>
+        <mat-error *ngIf="form.get('fechapublicacion')?.hasError('fechaInvalida')">
+          Debe ser anterior a hoy
         </mat-error>
+
       </mat-form-field>
       <br />
       <mat-form-field>
         <mat-label>fecha subida</mat-label>
-        <input matInput [matDatepicker]="pickersubido" formControlName="fechasubida" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="pickersubido"></mat-datepicker-toggle>
-        <mat-datepicker #pickersubido></mat-datepicker>
-        <mat-error>
-          @if (form.get('fechasubida')?.hasError('required')) { Ingrese fecha de inicio!! }
-        </mat-error>
+        <input matInput formControlName="fechasubida" [disabled]="true">
       </mat-form-field>
       <br />
       <div>
