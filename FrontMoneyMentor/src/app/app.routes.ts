@@ -31,6 +31,7 @@ import { ReportebalanceSum } from './components/reportebalance-sum/reportebalanc
 import { Autenticador } from './components/autenticador/autenticador';
 import { Home } from './components/home/home';
 import { seguridadGuardGuard } from './seguridad/seguridad-guard';
+import { ReporteBalanceMes } from './components/reporte-balance-mes/reporte-balance-mes';
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
@@ -135,6 +136,10 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     {
       path: 'sumaingresos',
       component: ReportebalanceSum
+    },
+    {
+      path: 'listarmes',
+      component: ReporteBalanceMes
     }
 
   ]

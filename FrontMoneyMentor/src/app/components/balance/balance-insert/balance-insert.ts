@@ -33,19 +33,19 @@ export class BalanceInsert implements OnInit {
   id: number = 0;
   listaUsuario: Usuario[] = [];
 
-  meses: { value: number; viewValue: string }[] = [
-    { value: 1, viewValue: 'Enero' },
-    { value: 2, viewValue: 'Febrero' },
-    { value: 3, viewValue: 'Marzo' },
-    { value: 4, viewValue: 'Abril' },
-    { value: 5, viewValue: 'Mayo' },
-    { value: 6, viewValue: 'Junio' },
-    { value: 7, viewValue: 'Julio' },
-    { value: 8, viewValue: 'Agosto' },
-    { value: 9, viewValue: 'Septiembre' },
-    { value: 10, viewValue: 'Octubre' },
-    { value: 11, viewValue: 'Noviembre' },
-    { value: 12, viewValue: 'Diciembre' }
+  meses: { value: string; viewValue: string }[] = [
+    { value: 'Enero', viewValue: 'Enero' },
+    { value: 'Febrero', viewValue: 'Febrero' },
+    { value: 'Marzo', viewValue: 'Marzo' },
+    { value: 'Abril', viewValue: 'Abril' },
+    { value: 'Mayo', viewValue: 'Mayo' },
+    { value: 'Junio', viewValue: 'Junio' },
+    { value: 'Julio', viewValue: 'Julio' },
+    { value: 'Agosto', viewValue: 'Agosto' },
+    { value: 'Septiembre', viewValue: 'Septiembre' },
+    { value: 'Octubre', viewValue: 'Octubre' },
+    { value: 'Noviembre', viewValue: 'Noviembre' },
+    { value: 'Diciembre', viewValue: 'Diciembre' }
   ];
   constructor(
     private bS: BalanceService,

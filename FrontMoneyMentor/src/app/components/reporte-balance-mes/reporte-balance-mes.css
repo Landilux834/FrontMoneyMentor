@@ -1,0 +1,15 @@
+.card-container {
+max-width: 600px;
+margin: 20px auto;
+padding: 16px;
+}
+
+.full-width {
+width: 100%;
+}
+
+.btn-group {
+display: flex;
+gap: 10px;
+margin-bottom: 15px;
+}
