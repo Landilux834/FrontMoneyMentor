@@ -176,6 +176,7 @@ header .fa-bars {
   font-size: 3rem;
   color: #0A2B59;
   margin-bottom: 1rem;
+  text-align: center;
 }
 .services p {
   font-size: 1.7rem;
@@ -223,9 +224,10 @@ header .fa-bars {
 /* ========================= */
 /* FAQ */
 /* ========================= */
-.faq {
+.faq{
   width: 90%;
   margin: 6rem auto;
+  text-align: center;
 }
 .faq-box {
   background: #fff;
