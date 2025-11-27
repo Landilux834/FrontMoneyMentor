@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -6,7 +6,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { MatButtonModule } from "@angular/material/button";
 import { Usuario } from "../../../models/Usuario";
 import { UsuarioService } from "../../../services/usuario-service";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActivatedRoute, Params, Router, RouterOutlet, RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from "@angular/material/card";
 
@@ -14,15 +14,17 @@ import { MatCardModule } from "@angular/material/card";
     selector: "app-usuarioregistrar",
     standalone: true,
     imports: [
-        ReactiveFormsModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatRadioModule,
-        MatButtonModule,
-        CommonModule,MatCardModule
-    ],
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatButtonModule,
+    CommonModule, MatCardModule, 
+    RouterLink
+],
     templateUrl: "./usuarioregistrar.html",
     styleUrls: ["./usuarioregistrar.css"]
+    
 })
 export class usuarioregistrar implements OnInit {
 

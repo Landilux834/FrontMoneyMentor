@@ -24,13 +24,67 @@ width: 20%;
   
 }
 
-.example-full-width {
-  width: 100%;
-}
 
 .button-group{
   display: flex;
   justify-content: center; 
   gap: 15px; /* Espacio entre botones */
   margin-top: 20px;
+}
+
+.page-background {
+  background: url('/assets/img/fondo_landing.jpg') center/cover no-repeat fixed;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 90px; /* 👈 DESPEGA EL CONTENIDO DEL HEADER */
+
+}
+
+.custom-field{
+  width: 100%;
+}
+
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
+header {
+  width: 100%;
+  height: 70px;
+  background: #2B3D49;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 0 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .logo img {
+  width: 55px;
+}
+header .navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+header .navbar ul li a {
+  color: #fff;
+  font-size: 1.4rem;
+  transition: .23s;
+  padding: 20 2rem;
+  margin-right: 20px;
+}
+header .navbar ul li a:hover {
+  color: #FF8343;
+}
+header .fa-bars {
+  font-size: 3rem;
+  color: #FF8343;
+  display: none;
 }
