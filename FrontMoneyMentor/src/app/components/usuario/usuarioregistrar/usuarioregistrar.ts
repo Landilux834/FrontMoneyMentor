@@ -8,6 +8,7 @@ import { Usuario } from "../../../models/Usuario";
 import { UsuarioService } from "../../../services/usuario-service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
     selector: "app-usuarioregistrar",
@@ -18,7 +19,7 @@ import { CommonModule } from '@angular/common';
         MatFormFieldModule,
         MatRadioModule,
         MatButtonModule,
-        CommonModule
+        CommonModule,MatCardModule
     ],
     templateUrl: "./usuarioregistrar.html",
     styleUrls: ["./usuarioregistrar.css"]
@@ -89,5 +90,8 @@ export class usuarioregistrar implements OnInit {
 
       });
     }
+  }
+  cerrar(){
+    this.router.navigate(['']);
   }
 }
