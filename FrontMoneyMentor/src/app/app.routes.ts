@@ -41,6 +41,7 @@ import { Recursobuscarfecha } from './components/recurso/recursofecha/recursofec
 import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1';
 import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
 import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
+import { ReporteImpuestosoperacion } from './components/reporte-impuestosoperacion/reporte-impuestosoperacion';
 
 
 
@@ -80,8 +81,8 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       children: [{ path: '', component: OperacionList },
       { path: 'nuevo', component: OperacionRegistrar },
       { path: 'edits/:id', component: OperacionRegistrar },
-      {path:'filtro1',component:OpeBusqueda1},
-      {path:'filtro2',component:OpeBusqueda2}
+      { path: 'filtro1', component: OpeBusqueda1 },
+      { path: 'filtro2', component: OpeBusqueda2 }
 
       ],
 
@@ -107,28 +108,28 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       ]
     },
     {
-  path: 'recurso',
-  component: Recurso,
-  children: [
-    { path: '', component: Recursolistar },
-    { path: 'nuevo', component: Recursoregistrar },
-    { path: 'edits/:id', component: Recursoregistrar },
+      path: 'recurso',
+      component: Recurso,
+      children: [
+        { path: '', component: Recursolistar },
+        { path: 'nuevo', component: Recursoregistrar },
+        { path: 'edits/:id', component: Recursoregistrar },
 
-  
-    {
-      path: 'filtrar-fecha',
-      loadComponent: () =>
-        import('./components/recurso/recursofecha/recursofecha')
-          .then(m => m.Recursobuscarfecha)
+
+        {
+          path: 'filtrar-fecha',
+          loadComponent: () =>
+            import('./components/recurso/recursofecha/recursofecha')
+              .then(m => m.Recursobuscarfecha)
+        },
+        {
+          path: 'filtrar-autor',
+          loadComponent: () =>
+            import('./components/recurso/recursoautor/recursoautor')
+              .then(m => m.Recursobuscarautor)
+        },
+      ]
     },
-    {
-      path: 'filtrar-autor',
-      loadComponent: () =>
-        import('./components/recurso/recursoautor/recursoautor')
-          .then(m => m.Recursobuscarautor)
-    },
-  ]
-},
 
 
 
@@ -171,9 +172,14 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       path: 'listarmes',
       component: ReporteBalanceMes
     },
-    
-    {path:'sumaxusuario',
-      component:ReporteOperacion
+
+    {
+      path: 'sumaxusuario',
+      component: ReporteOperacion
+    },
+    {
+      path: 'impuestomonto',
+      component: ReporteImpuestosoperacion
     },
 
     {
