@@ -5,6 +5,7 @@ import { environment } from '../../enviroments/enviroment';
 import { operacionModel } from '../models/operacionModel';
 import { operate } from 'rxjs/internal/util/lift';
 import { OperacionComponent } from '../components/operacion/operacion';
+import { sumaxUsuarioDTO } from '../models/sumaporusuario';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,11 @@ export class OperacionService {
       params: { f: fecha }
     });
   }
+
+  getSumaOperacionesPorUsuario() {
+  return this.http.get<[sumaxUsuarioDTO]>(`${this.url}/suma-por-usuario`);
+}
+
 
 
 }
