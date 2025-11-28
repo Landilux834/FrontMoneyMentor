@@ -43,5 +43,18 @@ export class OperacionService {
     return this.http.get<operacionModel>(`${this.url}/listar/${id}`);
   }
 
+  findOperacionByCategoria(categoria: string): Observable<operacionModel[]> {
+    return this.http.get<operacionModel[]>(`${this.url}/listarporcategoria`, {
+      params: { categoria }
+    });
+  }
+
+  // 🔹 Filtrar por fecha
+  buscarPorFecha(fecha: string): Observable<operacionModel[]> {
+    return this.http.get<operacionModel[]>(`${this.url}/busquedafecha`, {
+      params: { f: fecha }
+    });
+  }
+
 
 }

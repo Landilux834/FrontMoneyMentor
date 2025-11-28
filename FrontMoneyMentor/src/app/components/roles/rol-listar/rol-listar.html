@@ -7,34 +7,33 @@
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
-    <!-- Categoria -->
+    <!-- Rol -->
     <ng-container matColumnDef="c2">
-      <th mat-header-cell *matHeaderCellDef>rol</th>
+      <th mat-header-cell *matHeaderCellDef>Rol</th>
       <td mat-cell *matCellDef="let element">{{ element.rol }}</td>
     </ng-container>
 
     <!-- Usuario ID -->
     <ng-container matColumnDef="c3">
       <th mat-header-cell *matHeaderCellDef>Usuario ID</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.usuario?.usuarioId }}
-      </td>
-
-      <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" [routerLink]="['edits', element.idOperacion]">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+      <td mat-cell *matCellDef="let element">{{ element.usuario?.idUsuario }}</td>
     </ng-container>
 
+    <!-- Actualizar -->
+    <ng-container matColumnDef="c4">
+      <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" [routerLink]="['edits', element.id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Eliminar -->
     <ng-container matColumnDef="c5">
       <th mat-header-cell *matHeaderCellDef>Eliminar</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" 
-        (click)="eliminar(element.idrol)">
+        <button mat-icon-button color="warn" (click)="eliminar(element.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

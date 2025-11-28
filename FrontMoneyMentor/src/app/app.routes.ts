@@ -36,6 +36,8 @@ import { Roles } from './components/roles/roles';
 import { RolListar } from './components/roles/rol-listar/rol-listar';
 import { RolServices } from './services/rol-services';
 import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
+import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1';
+import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
@@ -74,6 +76,8 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       children: [{ path: '', component: OperacionList },
       { path: 'nuevo', component: OperacionRegistrar },
       { path: 'edits/:id', component: OperacionRegistrar },
+      {path:'filtro1',component:OpeBusqueda1},
+      {path:'filtro2',component:OpeBusqueda2}
 
       ],
 
