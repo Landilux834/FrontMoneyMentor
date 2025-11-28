@@ -6,9 +6,13 @@ import { MatRadioModule } from "@angular/material/radio";
 import { MatButtonModule } from "@angular/material/button";
 import { Usuario } from "../../../models/Usuario";
 import { UsuarioService } from "../../../services/usuario-service";
-import { ActivatedRoute, Params, Router, RouterOutlet, RouterLink } from "@angular/router";
+import { ActivatedRoute, Params, Router, RouterOutlet, RouterLink, RouterModule } from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from "@angular/material/card";
+import { ROLmodel } from "../../../models/Rol";
+import { RolServices } from "../../../services/rol-services";
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
 
 @Component({
     selector: "app-usuarioregistrar",
@@ -20,7 +24,7 @@ import { MatCardModule } from "@angular/material/card";
     MatRadioModule,
     MatButtonModule,
     CommonModule, MatCardModule, 
-    RouterLink
+    RouterLink,MatSelectModule
 ],
     templateUrl: "./usuarioregistrar.html",
     styleUrls: ["./usuarioregistrar.css"]
@@ -34,11 +38,14 @@ export class usuarioregistrar implements OnInit {
     edicion: boolean = false;
     id: number = 0;
 
+
+
     constructor(
         private uS: UsuarioService,
         private router: Router,
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+
     ) { }
 
     ngOnInit(): void {
@@ -62,7 +69,6 @@ export class usuarioregistrar implements OnInit {
             this.ur.nombre = this.form.value.nombre;
             this.ur.correo = this.form.value.correo;
             this.ur.contrasenia = this.form.value.contrasenia;
-
             if (this.edicion) {
                 this.uS.update(this.ur).subscribe(() => {
                     this.uS.list().subscribe((data) => {

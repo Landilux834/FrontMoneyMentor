@@ -35,10 +35,10 @@ export class Menu {
     return this.loginService.verificar();
   }
   isAdmin() {
-    return this.role?.includes('ROLE_ADMIN');
+    return this.role?.includes('ADMIN');
   }
 
   isTester() {
-    return this.role?.includes('ROLE_TESTER') || this.role?.includes('ROLE_USER');
+    return this.role?.includes('CLIENT') ;
   }
 }

@@ -1,17 +1,17 @@
 <header>
-    <a routerLink="/" class="logo">
-        <img src="/assets/img/logocortado.png" alt="Nombre del Logo">
-    </a>
+  <a routerLink="/" class="logo">
+    <img src="/assets/img/logocortado.png" alt="Nombre del Logo" />
+  </a>
 
-    <nav class="navbar">
-        <ul>
-            <li><a  routerLink="/" routerLinkActive="active">Inicio</a></li>
-            <li><a  routerLink="/login" routerLinkActive="active">Inicio sesión</a></li>
-            <span></span>
-            <li><a  routerLink="/usuarios/nuevo" routerLinkActive="active">Registro</a></li>
-        </ul>
-    </nav>
-    <div class="fas fa-bars"></div>
+  <nav class="navbar">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active">Inicio</a></li>
+      <li><a routerLink="/login" routerLinkActive="active">Inicio sesión</a></li>
+      <span></span>
+      <li><a routerLink="/usuarios/nuevo" routerLinkActive="active">Registro</a></li>
+    </ul>
+  </nav>
+  <div class="fas fa-bars"></div>
 </header>
 <div class="page-background">
   <mat-card class="login-card">
@@ -27,14 +27,14 @@
         <div style="text-align: center; margin: 5%">
           <form [formGroup]="form" (submit)="aceptar()">
             @if(edicion){
-            <mat-form-field  appearance="outline" class="custom-field">
+            <mat-form-field appearance="outline" class="custom-field">
               <mat-label>ID</mat-label>
               <input matInput formControlName="codigo" />
               <mat-error> @if (form.get('codigo')?.hasError('required')) { Ingrese id} </mat-error>
             </mat-form-field>
 
             }
-            <mat-form-field  appearance="outline" class="custom-field">
+            <mat-form-field appearance="outline" class="custom-field">
               <mat-label>Nombre</mat-label>
               <input matInput formControlName="nombre" placeholder="nombre" />
               <mat-error *ngIf="form.get('nombre')?.hasError('required')">
@@ -46,7 +46,7 @@
 
             <mat-form-field appearance="outline" class="custom-field">
               <mat-label>Correo</mat-label>
-              <input matInput formControlName="correo" placeholder="correo"  />
+              <input matInput formControlName="correo" placeholder="correo" />
               <mat-error *ngIf="form.get('correo')?.hasError('required')">
                 El correo es obligatorio
               </mat-error>
@@ -57,9 +57,14 @@
 
             <br />
             <ng-container *ngIf="!edicion">
-              <mat-form-field  appearance="outline" class="custom-field">
+              <mat-form-field appearance="outline" class="custom-field">
                 <mat-label>Contraseña</mat-label>
-                <input matInput formControlName="contrasenia" type="password"  placeholder="contrasenia"/>
+                <input
+                  matInput
+                  formControlName="contrasenia"
+                  type="password"
+                  placeholder="contrasenia"
+                />
                 <mat-error *ngIf="form.get('contrasenia')?.hasError('required')">
                   La contraseña es obligatoria
                 </mat-error>
