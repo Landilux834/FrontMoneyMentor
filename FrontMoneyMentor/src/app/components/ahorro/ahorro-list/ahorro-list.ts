@@ -6,10 +6,11 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { AhorroService } from '../../../services/ahorro-service';
 import { Ahorro } from '../../../models/Ahorro';
+import { MatCard } from "@angular/material/card";
 
 @Component({
   selector: 'app-ahorro-list',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterLink,CommonModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterLink, CommonModule, MatCard],
   templateUrl: './ahorro-list.html',
   styleUrl: './ahorro-list.css',
 })

@@ -38,6 +38,7 @@ import { RolServices } from './services/rol-services';
 import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
 import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1';
 import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
+import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
@@ -148,6 +149,10 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     {
       path: 'listarmes',
       component: ReporteBalanceMes
+    },
+    
+    {path:'sumaxusuario',
+      component:ReporteOperacion
     },
 
     {
