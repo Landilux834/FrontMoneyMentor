@@ -70,10 +70,6 @@ export class BalanceInsert implements OnInit {
       codigo: [''],
       mes: ['', Validators.required],
       anio: ['', [Validators.required, Validators.min(2025), Validators.maxLength(4)]],
-      total_gasto: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
-      total_ingreso: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
-      total_ahorro: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
-      balance: ['', [Validators.required, Validators.min(0), Validators.maxLength(8),Validators.pattern(/^\d+(\.\d+)?$/)]],
       fk: ['', Validators.required]
     });
   }
@@ -84,10 +80,6 @@ export class BalanceInsert implements OnInit {
       this.bal.idBalance = this.form.value.codigo;
       this.bal.mes = this.form.value.mes;
       this.bal.anio = this.form.value.anio;
-      this.bal.total_gasto = this.form.value.total_gasto;
-      this.bal.total_ingreso = this.form.value.total_ingreso;
-      this.bal.total_ahorro = this.form.value.total_ahorro;
-      this.bal.balance = this.form.value.balance;
       this.bal.usuario.idUsuario = this.form.value.fk;
 
       if (this.edicion) {
@@ -117,10 +109,6 @@ export class BalanceInsert implements OnInit {
           codigo:(data.idBalance),
           mes: (data.mes),
           anio: (data.anio),
-          total_gasto: (data.total_gasto),
-          total_ingreso: (data.total_ingreso),
-          total_ahorro: (data.total_ahorro),
-          balance: (data.balance),
           fk:(data.usuario.idUsuario)
         });
 

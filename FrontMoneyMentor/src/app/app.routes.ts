@@ -38,7 +38,9 @@ import { RolServices } from './services/rol-services';
 import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
 import { Recursobuscarautor } from './components/recurso/recursoautor/recursoautor';
 import { Recursobuscarfecha } from './components/recurso/recursofecha/recursofecha';
-
+import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1';
+import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
+import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
 
 
 
@@ -78,6 +80,8 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       children: [{ path: '', component: OperacionList },
       { path: 'nuevo', component: OperacionRegistrar },
       { path: 'edits/:id', component: OperacionRegistrar },
+      {path:'filtro1',component:OpeBusqueda1},
+      {path:'filtro2',component:OpeBusqueda2}
 
       ],
 
@@ -110,7 +114,7 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     { path: 'nuevo', component: Recursoregistrar },
     { path: 'edits/:id', component: Recursoregistrar },
 
-    // 🔥 AQUI AGREGA LOS FILTROS
+  
     {
       path: 'filtrar-fecha',
       loadComponent: () =>
@@ -166,6 +170,10 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     {
       path: 'listarmes',
       component: ReporteBalanceMes
+    },
+    
+    {path:'sumaxusuario',
+      component:ReporteOperacion
     },
 
     {

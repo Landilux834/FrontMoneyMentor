@@ -1,11 +1,7 @@
 <div class="container">
   <mat-card class="card-container">
-    <mat-card-header style="display: flex; justify-content: center; width: 100%;">
-  <mat-card-title>Lista de Usuarios</mat-card-title>
-</mat-card-header>
+  <mat-card-title style="text-align: center; margin: 5%"><h2>Lista de Usuarios</h2></mat-card-title>
 
-
-    <mat-card-content>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
 
         <ng-container matColumnDef="c1">
@@ -47,7 +43,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       </table>
-    </mat-card-content>
 
   </mat-card>
 </div>
