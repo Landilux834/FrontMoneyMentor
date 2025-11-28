@@ -39,6 +39,6 @@ export class Menu {
   }
 
   isTester() {
-    return this.role?.includes('TESTER') || this.role?.includes('USER') || this.role?.includes('CLIENT');
+    return this.role?.includes('TESTER') || this.role?.includes('CLIENT');
   }
 }

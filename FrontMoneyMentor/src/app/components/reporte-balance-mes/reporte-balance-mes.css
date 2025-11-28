@@ -1,15 +1,28 @@
 .card-container {
-max-width: 600px;
-margin: 20px auto;
-padding: 16px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 16px;
 }
 
 .full-width {
-width: 100%;
+    width: 100%;
 }
 
 .btn-group {
-display: flex;
-gap: 10px;
-margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.chart-container {
+    width: 500px;
+    /* Ajusta el ancho del gráfico */
+    margin: 0 auto;
+}
+
+.chart-container canvas {
+    max-width: 100% !important;
+    max-height: 330px !important;
+    /* Reduce la altura */
+    /* Escala más pequeño */
 }
