@@ -14,9 +14,19 @@
             <mat-icon> menu </mat-icon>impuesto-operacion
         </button>
 
-        <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuRecurso">
-            <mat-icon> menu </mat-icon>recurso
-        </button>
+        <button mat-button [matMenuTriggerFor]="menuRecursos">Recursos</button>
+
+        <mat-menu #menuRecursos="matMenu">
+            <button mat-menu-item routerLink="/app/recurso">Listar Recursos</button>
+            <button mat-menu-item routerLink="/app/recurso/nuevo">Registrar Recurso</button>
+
+            <mat-divider></mat-divider>
+
+            <!-- NUEVOS FILTROS -->
+            <button mat-menu-item routerLink="/app/recurso/filtrar-fecha">Filtrar por Fecha</button>
+            <button mat-menu-item routerLink="/app/recurso/filtrar-autor">Filtrar por Autor</button>
+        </mat-menu>
+
 
         <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuroles">
             <mat-icon> menu </mat-icon>roles
