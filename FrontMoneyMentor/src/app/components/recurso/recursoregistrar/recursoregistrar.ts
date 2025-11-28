@@ -11,6 +11,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-recursoregistrar',
@@ -19,7 +20,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatFormFieldModule,
     MatRadioModule,
     MatButtonModule,
-    CommonModule, MatDatepickerModule, MatSelectModule
+    CommonModule, MatDatepickerModule, MatSelectModule,
+    MatCardModule
   ],
   templateUrl: './recursoregistrar.html',
   providers:[provideNativeDateAdapter()],

@@ -6,10 +6,11 @@ import { RouterLink } from "@angular/router";
 import { impuestoop } from "../../../models/Impuestoop";
 import { ImpuestoService } from "../../../services/impuesto-service";
 import { ImpuestoopService } from "../../../services/impuestoop-service";
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
     selector: 'app-impuestooperacion-list',
-    imports: [MatTableModule,MatButtonModule,CommonModule],
+    imports: [MatTableModule,MatButtonModule,CommonModule,MatCardModule],
     templateUrl: './impuestooperacion.html',
     styleUrl: './impuestooperacion.css',
 })

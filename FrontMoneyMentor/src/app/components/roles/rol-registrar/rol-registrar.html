@@ -2,9 +2,9 @@
   <mat-card class="login-card">
     <mat-card-content>
       <div class="container">
-        <div style="text-align: center; margin: 5%">
-          <h2 style="color: #4158a6">Registro de Roles</h2>
-        </div>
+        <mat-card-title style="text-align: center; margin: 5%">
+          <h2>Registro de Roles</h2>
+        </mat-card-title>
 
         <div style="text-align: center; margin: 5%">
           <form [formGroup]="form" (submit)="aceptar()">
@@ -30,7 +30,7 @@
 
             <br />
 
-            <mat-form-field appearance="fill" class="full-width">
+            <mat-form-field appearance="outline" class="custom-field">
               <mat-label>Usuario</mat-label>
               <mat-select formControlName="usuarioId">
                 <mat-option *ngFor="let u of usuarios" [value]="u.idUsuario">
@@ -40,11 +40,9 @@
             </mat-form-field>
 
             <br />
-            <div class="button-group">
-              <button mat-raised-button color="primary" class="custom-button" (click)="aceptar()">
+            <button mat-raised-button color="primary" class="custom-button" (click)="aceptar()">
                 Ingresar
               </button>
-            </div>
           </form>
         </div>
       </div>

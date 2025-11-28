@@ -5,8 +5,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';      // <-- agregado
-import { MatButtonModule } from '@angular/material/button';  // <-- agregado
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { RecursoService } from '../../../services/recurso-service';
 import { Recurso } from '../../../models/recurso';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -21,10 +21,10 @@ import { provideNativeDateAdapter } from '@angular/material/core';
         MatFormFieldModule,
         MatInputModule,
         MatTableModule,
-        MatCardModule,      // <-- en imports
-        MatButtonModule     // <-- en imports
+        MatCardModule,
+        MatButtonModule
     ],
-    providers: [provideNativeDateAdapter()],
+    providers: [],
     templateUrl: './recursofecha.html',
     styleUrls: ['./recursofecha.css']
 })
@@ -57,7 +57,12 @@ export class Recursobuscarfecha {
             return;
         }
 
-        this.rS.buscarPorFecha(fecha).subscribe({
+        console.log("Fecha original:", fecha);
+
+        const fechaISO = new Date(fecha).toISOString().split("T")[0];
+        console.log("Fecha enviada al backend:", fechaISO);
+
+        this.rS.buscarPorFecha(fechaISO).subscribe({
             next: data => {
                 this.dataSource.data = data;
                 this.mensaje = data.length === 0

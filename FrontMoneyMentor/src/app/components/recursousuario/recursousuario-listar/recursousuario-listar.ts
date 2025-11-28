@@ -4,10 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { recursousuario } from '../../../models/recurso-usuario';
 import { RecursousService } from '../../../services/recursous-service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-recursousuario-listar',
-  imports: [MatTableModule, MatButtonModule, CommonModule
+  imports: [MatTableModule, MatButtonModule, CommonModule,MatCardModule
   ],
   templateUrl: './recursousuario-listar.html',
   styleUrl: './recursousuario-listar.css',
