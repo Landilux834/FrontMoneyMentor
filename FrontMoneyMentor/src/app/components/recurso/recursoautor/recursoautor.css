@@ -1,25 +1,46 @@
-.form-container {
-    display: flex;
-    gap: 15px;
+.container {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.card-container {
+    padding: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 14px;
+}
+
+.title-center {
+    text-align: center;
     margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
     align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.custom-field {
+    width: 260px; 
 }
 
 .btn-buscar {
-    background-color: #ff7f32;
-    border: none;
-    padding: 10px 18px;
-    color: white;
+    background-color: #ff7f32 !important;
+    color: white !important;
+    padding: 10px 9px !important;  
+    border-radius: 6px !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
     cursor: pointer;
-    border-radius: 6px;
     transition: 0.3s;
+    font-weight: bold
 }
 
-.btn-buscar:hover {
-    background-color: #e86e29;
-}
 
 .mensaje {
     color: #d9534f;
-    margin-bottom: 15px;
+    margin-top: 10px;
 }

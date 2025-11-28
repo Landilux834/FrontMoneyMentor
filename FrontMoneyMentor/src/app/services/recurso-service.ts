@@ -49,16 +49,8 @@ export class RecursoService {
     });
   }
 
-  buscarPorFecha(fecha: Date) {
-    // Transformar fecha a formato LocalDate: yyyy-MM-dd
-    const fechaISO = fecha.toISOString().split("T")[0];
-
-    return this.http.get<Recurso[]>(`${this.url}/recursoporfecha`, {
-      params: { fecha: fechaISO }
-    });
-  }
-
-
-
+  buscarPorFecha(fecha: string) {
+    return this.http.get<Recurso[]>(`${this.url}/recursoporfecha?fecha=` + fecha);
+}
 
 }
