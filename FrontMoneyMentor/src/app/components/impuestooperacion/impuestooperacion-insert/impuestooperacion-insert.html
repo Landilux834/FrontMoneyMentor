@@ -16,6 +16,25 @@
                         </mat-error>
                     </mat-form-field>
 
+            }
+            <div>
+                <mat-form-field>
+                    <mat-label>Impuesto</mat-label>
+                    <mat-select formControlName="impuesto">
+                        @for (a of listaImpuesto; track a) {
+                        <mat-option [value]="a.idImpuesto">{{ a.tipo }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <br />
+
+            <mat-form-field>
+                <mat-label>Operacion</mat-label>
+                <mat-select formControlName="operacion">
+                    @for (a of listaOperacion; track a) {
+                    <mat-option [value]="a.idOperacion">{{ a.categoria }}</mat-option>
+
                     }
                     <div>
                         <mat-form-field appearance="outline" class="custom-field">
