@@ -10,6 +10,7 @@ import { RecursoService } from '../../../services/recurso-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-recursoregistrar',
@@ -21,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
     CommonModule, MatDatepickerModule, MatSelectModule
   ],
   templateUrl: './recursoregistrar.html',
+  providers:[provideNativeDateAdapter()],
   styleUrl: './recursoregistrar.css',
 })
 export class Recursoregistrar implements OnInit {

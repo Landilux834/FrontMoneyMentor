@@ -32,6 +32,10 @@ import { Autenticador } from './components/autenticador/autenticador';
 import { Home } from './components/home/home';
 import { seguridadGuardGuard } from './seguridad/seguridad-guard';
 import { ReporteBalanceMes } from './components/reporte-balance-mes/reporte-balance-mes';
+import { Roles } from './components/roles/roles';
+import { RolListar } from './components/roles/rol-listar/rol-listar';
+import { RolServices } from './services/rol-services';
+import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
@@ -140,6 +144,16 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     {
       path: 'listarmes',
       component: ReporteBalanceMes
+    },
+
+    {
+      path: 'roles',
+      component: Roles,
+      children: [
+        { path: '', component: RolListar },
+        { path: 'nuevo', component: RolRegistrar },
+        { path: 'edits/:id', component: RolRegistrar }
+      ]
     }
 
   ]

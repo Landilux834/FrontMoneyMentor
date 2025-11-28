@@ -24,7 +24,12 @@ width: 20%;
   
 }
 
-
+.navbar ul li a {
+    text-decoration: none !important;
+}
+header a, header li, header nav {
+  pointer-events: auto !important;
+}
 .button-group{
   display: flex;
   justify-content: center; 
@@ -40,8 +45,10 @@ width: 20%;
   justify-content: center;
   align-items: center;
 
-  padding-top: 90px; /* 👈 DESPEGA EL CONTENIDO DEL HEADER */
-
+  padding-top: 90px; /* 👈 separa contenido del header */
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .example-full-width{
@@ -59,11 +66,13 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 9999;
   padding: 0 0rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  pointer-events: auto; /* Asegura clics */
+
 }
 header .logo img {
   width: 55px;
