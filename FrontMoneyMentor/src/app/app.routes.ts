@@ -36,22 +36,25 @@ import { Roles } from './components/roles/roles';
 import { RolListar } from './components/roles/rol-listar/rol-listar';
 import { RolServices } from './services/rol-services';
 import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
+import { Recursobuscarautor } from './components/recurso/recursoautor/recursoautor';
+import { Recursobuscarfecha } from './components/recurso/recursofecha/recursofecha';
 import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1';
 import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
 import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
 
 
+
 export const routes: Routes = [{ path: '', component: Landigpage },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  }
+{
+  path: '',
+  redirectTo: 'login',
+  pathMatch: 'full',
+}
   ,
-  {
-    path: 'login',
-    component: Autenticador,
-  },
+{
+  path: 'login',
+  component: Autenticador,
+},
 {
   path: 'usuarios',
   component: Usuario,
@@ -68,10 +71,10 @@ export const routes: Routes = [{ path: '', component: Landigpage },
 
     {
       path: 'buscar',
-      component:UsuarioBuscarComponent
+      component: UsuarioBuscarComponent
     },
-  
-  {
+
+    {
       path: 'operacion',
       component: OperacionComponent,
       children: [{ path: '', component: OperacionList },
@@ -104,14 +107,32 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       ]
     },
     {
-      path: 'recurso',
-      component: Recurso,
-      children: [
-        { path: '', component: Recursolistar },
-        { path: 'nuevo', component: Recursoregistrar },
-        { path: 'edits/:id', component: Recursoregistrar }
-      ]
+  path: 'recurso',
+  component: Recurso,
+  children: [
+    { path: '', component: Recursolistar },
+    { path: 'nuevo', component: Recursoregistrar },
+    { path: 'edits/:id', component: Recursoregistrar },
+
+  
+    {
+      path: 'filtrar-fecha',
+      loadComponent: () =>
+        import('./components/recurso/recursofecha/recursofecha')
+          .then(m => m.Recursobuscarfecha)
     },
+    {
+      path: 'filtrar-autor',
+      loadComponent: () =>
+        import('./components/recurso/recursoautor/recursoautor')
+          .then(m => m.Recursobuscarautor)
+    },
+  ]
+},
+
+
+
+
 
     {
       path: 'impuesto',
@@ -170,7 +191,7 @@ export const routes: Routes = [{ path: '', component: Landigpage },
 {
   path: 'homes',
   component: Home,
-      canActivate: [seguridadGuardGuard],
+  canActivate: [seguridadGuardGuard],
 
 }
 ];

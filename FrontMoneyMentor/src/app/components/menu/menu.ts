@@ -5,10 +5,11 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { LoginService } from "../../services/login-service";
+import { MatDividerModule } from '@angular/material/divider'; 
 
 @Component({
   selector: 'app-menu',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, RouterLink, RouterOutlet],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, RouterLink, RouterOutlet,MatDividerModule],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
@@ -26,7 +27,6 @@ export class Menu {
   cerrar() {
     sessionStorage.clear();
   }
-
 
   verificar() {
     this.role = this.loginService.showRole();
