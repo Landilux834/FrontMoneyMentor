@@ -43,11 +43,13 @@ header .navbar ul {
   list-style: none;
   display: flex;
   gap: 2.5rem;
+  
 }
 header .navbar ul li a {
   color: #fff;
   font-size: 1.4rem;
   transition: .23s;
+  
 }
 header .navbar ul li a:hover {
   color: #FF8343;
@@ -56,6 +58,10 @@ header .fa-bars {
   font-size: 3rem;
   color: #FF8343;
   display: none;
+}
+
+.navbar ul li a {
+    text-decoration: none !important;
 }
 
 /* ========================= */

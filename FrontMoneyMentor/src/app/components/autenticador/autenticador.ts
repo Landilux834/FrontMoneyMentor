@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login-service';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JwtRequestDTO } from '../../models/JwtRequestDTO';
 import { MatFormFieldModule } from '@angular/material/form-field';

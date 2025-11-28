@@ -8,13 +8,13 @@ button[matButton] {
   text-transform: none;
   transition: all 0.25s ease;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-  background-color: rgb(242, 49, 35);
-  border: 1px solid rgb(242, 94, 35);
+  background-color: #FF8343;
+  border: 1px solid #FF8343;
 }
 
 /* --- Botones icono (mat-icon-button) --- */
 button[mat-icon-button] {
-  background-color: rgb(242, 49, 35);
+  background-color: #FF8343;
   color: white;
   border-radius: 6px;
   transition: 0.25s ease;
