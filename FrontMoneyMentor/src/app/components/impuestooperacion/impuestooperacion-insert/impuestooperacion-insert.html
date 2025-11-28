@@ -20,7 +20,7 @@
                     <mat-label>Impuesto</mat-label>
                     <mat-select formControlName="impuesto">
                         @for (a of listaImpuesto; track a) {
-                        <mat-option [value]="a.idImpuesto">{{ a.idImpuesto }}</mat-option>
+                        <mat-option [value]="a.idImpuesto">{{ a.tipo }}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
@@ -31,7 +31,7 @@
                 <mat-label>Operacion</mat-label>
                 <mat-select formControlName="operacion">
                     @for (a of listaOperacion; track a) {
-                    <mat-option [value]="a.idOperacion">{{ a.idOperacion }}</mat-option>
+                    <mat-option [value]="a.idOperacion">{{ a.categoria }}</mat-option>
                     }
                 </mat-select>
             </mat-form-field>

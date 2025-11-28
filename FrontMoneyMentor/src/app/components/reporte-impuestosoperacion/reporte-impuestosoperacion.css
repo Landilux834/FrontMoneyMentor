@@ -1,0 +1,15 @@
+.card-container {
+  padding: 20px;
+  margin: 20px;
+}
+
+.filter-field {
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}

@@ -14,12 +14,12 @@
       <mat-icon> menu </mat-icon>recurso-usuario
     </button>
 
-    <button
+     <button
       mat-button
       aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuImpuestooperacion"
+      [matMenuTriggerFor]="menuImpuesto"
     >
-      <mat-icon> menu </mat-icon>impuesto-operacion
+      <mat-icon> menu </mat-icon>impuesto
     </button>
 
     <button 
@@ -70,9 +70,9 @@
     <button
       mat-button
       aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuImpuesto"
+      [matMenuTriggerFor]="menuImpuestooperacion"
     >
-      <mat-icon> menu </mat-icon>impuesto
+      <mat-icon> menu </mat-icon>impuesto-operacion
     </button>
 
     <button
@@ -131,6 +131,8 @@
     <button mat-menu-item routerLink="/app/sumaingresos">Reporte 1</button>
     <button mat-menu-item routerLink="/app/listarmes">Reporte 2</button>
     <button mat-menu-item routerLink="/app/sumaxusuario">Reporte 3</button>
+    <button mat-menu-item routerLink="/app/impuestomonto">Reporte 4</button>
+
   </mat-menu>
   <mat-menu #menuroles="matMenu">
     <button mat-menu-item routerLink="/app/roles">lista roles</button>
