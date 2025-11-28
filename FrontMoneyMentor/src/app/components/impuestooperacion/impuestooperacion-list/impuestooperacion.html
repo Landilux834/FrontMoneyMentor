@@ -9,11 +9,11 @@
         </ng-container>
         <ng-container matColumnDef="c2">
             <th mat-header-cell *matHeaderCellDef> impuesto</th>
-            <td mat-cell *matCellDef="let element"> {{element.impuesto.idImpuesto}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.impuesto.tipo}} </td>
         </ng-container>
         <ng-container matColumnDef="c3">
             <th mat-header-cell *matHeaderCellDef> operacion</th>
-            <td mat-cell *matCellDef="let element"> {{element.operacion.idOperacion}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.operacion.categoria}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
