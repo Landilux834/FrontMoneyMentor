@@ -2,12 +2,29 @@
   @if(verificar()){
   <mat-toolbar class="custom-toolbar">
     @if(isAdmin()){
-    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menurecursousuario">
-      <mat-icon> menu </mat-icon>Recurso-Usuario
+
+      <button
+      mat-button
+      aria-label="example icon-button with menu icon"
+      [matMenuTriggerFor]="menuUsuario"
+    >
+      <mat-icon> menu </mat-icon>Usuarios
+    </button>
+    
+    <button
+      mat-button
+      aria-label="example icon-button with menu icon"
+      [matMenuTriggerFor]="menurecursousuario"
+    >
+      <mat-icon> menu </mat-icon>recurso-usuario
     </button>
 
-    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuestooperacion">
-      <mat-icon> menu </mat-icon>Impuesto-Operacion
+    <button
+      mat-button
+      aria-label="example icon-button with menu icon"
+      [matMenuTriggerFor]="menuImpuestooperacion"
+    >
+      <mat-icon> menu </mat-icon>impuesto-operacion
     </button>
 
     <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuesto">

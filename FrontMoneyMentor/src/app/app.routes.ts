@@ -70,8 +70,9 @@ export const routes: Routes = [{ path: '', component: Landigpage },
   children: [
     { path: '', component: Consejos },
     { path: 'consejos', component: Consejos }, 
-    //{ path: 'usuariolistar', component: usuariolistar },
-    //{ path: 'edits/:id', component: usuarioregistrar },
+    
+    { path: 'usuariolistar', component: usuariolistar },
+    { path: 'edits/:id', component: usuarioregistrar },
 
     {
       path: 'buscar',
