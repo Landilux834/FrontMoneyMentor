@@ -36,6 +36,7 @@ import { Roles } from './components/roles/roles';
 import { RolListar } from './components/roles/rol-listar/rol-listar';
 import { RolServices } from './services/rol-services';
 import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
+import { Consejos } from './components/consejos/consejos';
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
@@ -60,13 +61,15 @@ export const routes: Routes = [{ path: '', component: Landigpage },
   path: 'app', component: Menu,
   canActivate: [seguridadGuardGuard],
   children: [
-    { path: 'usuariolistar', component: usuariolistar },
-    { path: 'edits/:id', component: usuarioregistrar },
+    { path: '', component: Consejos },
+    { path: 'consejos', component: Consejos }, 
+    //{ path: 'usuariolistar', component: usuariolistar },
+    //{ path: 'edits/:id', component: usuarioregistrar },
 
-    {
-      path: 'buscar',
-      component:UsuarioBuscarComponent
-    },
+    //{
+      //path: 'buscar',
+     //component:UsuarioBuscarComponent
+    //},
   
   {
       path: 'operacion',
@@ -162,6 +165,5 @@ export const routes: Routes = [{ path: '', component: Landigpage },
   path: 'homes',
   component: Home,
       canActivate: [seguridadGuardGuard],
-
-}
+},
 ];
