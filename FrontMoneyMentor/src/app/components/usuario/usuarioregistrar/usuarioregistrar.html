@@ -59,12 +59,7 @@
             <ng-container *ngIf="!edicion">
               <mat-form-field appearance="outline" class="custom-field">
                 <mat-label>Contraseña</mat-label>
-                <input
-                  matInput
-                  formControlName="contrasenia"
-                  type="password"
-                  placeholder="contrasenia"
-                />
+                <input matInput formControlName="contrasenia" type="password" placeholder="contrasenia" />
                 <mat-error *ngIf="form.get('contrasenia')?.hasError('required')">
                   La contraseña es obligatoria
                 </mat-error>
@@ -80,7 +75,7 @@
               </button>
 
               <button mat-raised-button color="primary" class="custom-button" (click)="aceptar()">
-                 {{ edicion ? 'Actualizar' : 'Registrar' }}
+                {{ edicion ? 'Actualizar' : 'Registrar' }}
               </button>
             </div>
           </form>

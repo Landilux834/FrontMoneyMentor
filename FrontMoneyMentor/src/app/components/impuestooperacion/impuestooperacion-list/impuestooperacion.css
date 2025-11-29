@@ -19,7 +19,6 @@ button[mat-icon-button]:hover {
     background-color: #ff8343;
 }
 
-/* --- Responsivo (botones más compactos en pantallas pequeñas) --- */
 
 @media (max-width: 768px) {
 

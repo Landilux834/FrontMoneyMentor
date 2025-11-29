@@ -2,110 +2,55 @@
   @if(verificar()){
   <mat-toolbar class="custom-toolbar">
     @if(isAdmin()){
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menurecursousuario"
-    >
-      <mat-icon> menu </mat-icon>recurso-usuario
-    </button>
-
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuImpuestooperacion"
-    >
-      <mat-icon> menu </mat-icon>impuesto-operacion
-    </button>
-
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuRecurso"
-    >
-      <mat-icon> menu </mat-icon>recurso
-    </button>
-
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menurecursousuario">
       <mat-icon> menu </mat-icon>Recurso-Usuario
     </button>
 
-     <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuImpuesto"
-    >
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuestooperacion">
+      <mat-icon> menu </mat-icon>Impuesto-Operacion
+    </button>
 
-      <mat-icon> menu </mat-icon>impuesto
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuesto">
+
+      <mat-icon> menu </mat-icon>Impuesto
 
     </button>
 
-    <button 
-    mat-button aria-label="example icon-button with menu icon" 
-    [matMenuTriggerFor]="menuRecursos">
-    <mat-icon> menu </mat-icon>Recursos</button>
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuRecursos">
+      <mat-icon> menu </mat-icon>Recursos</button>
 
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuroles"
-    >
-      <mat-icon> menu </mat-icon>roles
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuroles">
+      <mat-icon> menu </mat-icon>Roles
     </button>
     } @if(isTester()){
     <button mat-button [routerLink]="['consejos']" class="btn-rojo">
       <mat-icon>home</mat-icon>Home
     </button>
 
-      <mat-icon> menu </mat-icon>Roles
-    </button>
     } @if(isTester()){
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuUsuario"
-    >
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuUsuario">
       <mat-icon> menu </mat-icon>Usuarios
     </button>
 
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuOperacion"
-    >
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuOperacion">
       <mat-icon> menu </mat-icon>Operacion
     </button>
 
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuBalance"
-    >
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuBalance">
       <mat-icon> menu </mat-icon>Balance
     </button>
 
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuAhorro"
-    >
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuAhorro">
       <mat-icon> menu </mat-icon>Ahorro
     </button>
 
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuImpuestooperacion"
-    >
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuImpuestooperacion">
 
-      <mat-icon> menu </mat-icon>impuesto-operacion
+      <mat-icon> menu </mat-icon>Impuesto-Operacion
 
     </button>
 
-    <button
-      mat-button
-      aria-label="example icon-button with menu icon"
-      [matMenuTriggerFor]="menuReportesBalance"
-    >
+    <button mat-button aria-label="example icon-button with menu icon" [matMenuTriggerFor]="menuReportesBalance">
       <mat-icon> menu </mat-icon>Reportes Balance
     </button>
     }
@@ -137,7 +82,7 @@
     <button mat-menu-item routerLink="/app/recurso">Listar Recursos</button>
     <button mat-menu-item routerLink="/app/recurso/nuevo">Registrar recurso</button>
     <button mat-menu-item routerLink="/app/recurso/filtrar-fecha">Filtrar por fecha</button>
-      <button mat-menu-item routerLink="/app/recurso/filtrar-autor">Filtrar por autor</button>
+    <button mat-menu-item routerLink="/app/recurso/filtrar-autor">Filtrar por autor</button>
   </mat-menu>
   <mat-menu #menuImpuesto="matMenu">
     <button mat-menu-item routerLink="/app/impuesto">Listar Impuestos</button>

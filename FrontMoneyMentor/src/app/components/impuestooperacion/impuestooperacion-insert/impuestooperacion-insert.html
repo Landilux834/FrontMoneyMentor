@@ -6,16 +6,14 @@
       </mat-card-title>
 
       <div style="text-align: center; margin: 5%;">
-        <form [formGroup]="form" (ngSubmit)="aceptar()">
+        <form [formGroup]="form" (ngSubmit)="aceptar()" class="form-column">
 
-          <!-- ID solo si es edición -->
           <mat-form-field *ngIf="edicion" appearance="outline" class="custom-field">
             <mat-label>ID</mat-label>
             <input matInput formControlName="codigo" />
             <mat-error *ngIf="form.get('codigo')?.hasError('required')">Ingrese id</mat-error>
           </mat-form-field>
 
-          <!-- Impuesto -->
           <mat-form-field appearance="outline" class="custom-field">
             <mat-label>Impuesto</mat-label>
             <mat-select formControlName="impuesto">
@@ -23,7 +21,6 @@
             </mat-select>
           </mat-form-field>
 
-          <!-- Operacion -->
           <mat-form-field appearance="outline" class="custom-field">
             <mat-label>Operacion</mat-label>
             <mat-select formControlName="operacion">
