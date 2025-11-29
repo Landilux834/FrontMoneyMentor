@@ -13,6 +13,7 @@ import { UsuarioService } from "../../../services/usuario-service";
 import { ImpuestoService } from "../../../services/impuesto-service";
 import { Impuesto } from "../../../models/Impuesto";
 import { Usuario } from "../../../models/Usuario";
+import { MatCard, MatCardModule } from "@angular/material/card";
 
 
 @Component({
@@ -24,7 +25,7 @@ import { Usuario } from "../../../models/Usuario";
     MatFormFieldModule,
     MatRadioModule,
     MatButtonModule,
-    CommonModule, MatSelect,MatSelectModule],
+    CommonModule, MatSelect,MatSelectModule,MatCard,MatCardModule],
     templateUrl: './impuesto-insert.html',
     styleUrl: './impuesto-insert.css',
 })

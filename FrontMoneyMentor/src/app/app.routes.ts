@@ -133,10 +133,6 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       ]
     },
 
-
-
-
-
     {
       path: 'impuesto',
       component: Impuesto,

@@ -7,16 +7,18 @@ import { impuestoop } from "../../../models/Impuestoop";
 import { ImpuestoService } from "../../../services/impuesto-service";
 import { ImpuestoopService } from "../../../services/impuestoop-service";
 import { MatCardModule } from "@angular/material/card";
+import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
     selector: 'app-impuestooperacion-list',
-    imports: [MatTableModule,MatButtonModule,CommonModule,MatCardModule],
+    imports: [MatTableModule,MatButtonModule,CommonModule,MatCardModule,MatPaginator,MatPaginatorModule,RouterLink,MatIcon],
     templateUrl: './impuestooperacion.html',
     styleUrl: './impuestooperacion.css',
 })
 export class ImpuestooperacionList implements OnInit{
     dataSource:MatTableDataSource<impuestoop>=new MatTableDataSource();
-    displayedColumns: string[] = ['c1', 'c2', 'c3'];
+    displayedColumns: string[] = ['c1', 'c2', 'c3','c4','c5'];
 
     constructor(private ioS:ImpuestoopService) {}
     ngOnInit(): void {
