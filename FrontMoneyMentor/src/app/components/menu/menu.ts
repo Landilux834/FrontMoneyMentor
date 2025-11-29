@@ -6,10 +6,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { LoginService } from "../../services/login-service";
 import { ConsejosService } from "../../services/consejos-service";
+import { MatDividerModule } from '@angular/material/divider'; 
 
 @Component({
   selector: 'app-menu',
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, RouterLink, RouterOutlet],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, RouterLink, RouterOutlet,MatDividerModule],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
@@ -32,7 +33,6 @@ export class Menu {
     sessionStorage.clear();
   }
 
-
   verificar() {
     this.role = this.loginService.showRole();
     console.log("ROL ACTUAL:", this.role);
@@ -44,6 +44,6 @@ export class Menu {
   }
 
   isTester() {
-    return this.role?.includes('CLIENT') ;
+    return this.role?.includes('TESTER') || this.role?.includes('USER') || this.role?.includes('CLIENT');
   }
 }

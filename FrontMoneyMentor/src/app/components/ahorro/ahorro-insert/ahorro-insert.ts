@@ -20,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-ahorro-insert',
@@ -36,6 +37,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   templateUrl: './ahorro-insert.html',
   styleUrl: './ahorro-insert.css',
+  providers:[provideNativeDateAdapter()]
 })
 export class AhorroInsert {
   form: FormGroup = new FormGroup({});

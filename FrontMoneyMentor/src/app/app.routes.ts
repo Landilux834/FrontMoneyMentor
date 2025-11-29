@@ -37,19 +37,26 @@ import { RolListar } from './components/roles/rol-listar/rol-listar';
 import { RolServices } from './services/rol-services';
 import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
 import { Consejos } from './components/consejos/consejos';
+import { Recursobuscarautor } from './components/recurso/recursoautor/recursoautor';
+import { Recursobuscarfecha } from './components/recurso/recursofecha/recursofecha';
+import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1';
+import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
+import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
+import { ReporteImpuestosoperacion } from './components/reporte-impuestosoperacion/reporte-impuestosoperacion';
+
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  }
+{
+  path: '',
+  redirectTo: 'login',
+  pathMatch: 'full',
+}
   ,
-  {
-    path: 'login',
-    component: Autenticador,
-  },
+{
+  path: 'login',
+  component: Autenticador,
+},
 {
   path: 'usuarios',
   component: Usuario,
@@ -66,17 +73,19 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     //{ path: 'usuariolistar', component: usuariolistar },
     //{ path: 'edits/:id', component: usuarioregistrar },
 
-    //{
-      //path: 'buscar',
-     //component:UsuarioBuscarComponent
-    //},
-  
-  {
+    {
+      path: 'buscar',
+      component: UsuarioBuscarComponent
+    },
+
+    {
       path: 'operacion',
       component: OperacionComponent,
       children: [{ path: '', component: OperacionList },
       { path: 'nuevo', component: OperacionRegistrar },
       { path: 'edits/:id', component: OperacionRegistrar },
+      { path: 'filtro1', component: OpeBusqueda1 },
+      { path: 'filtro2', component: OpeBusqueda2 }
 
       ],
 
@@ -107,9 +116,27 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       children: [
         { path: '', component: Recursolistar },
         { path: 'nuevo', component: Recursoregistrar },
-        { path: 'edits/:id', component: Recursoregistrar }
+        { path: 'edits/:id', component: Recursoregistrar },
+
+
+        {
+          path: 'filtrar-fecha',
+          loadComponent: () =>
+            import('./components/recurso/recursofecha/recursofecha')
+              .then(m => m.Recursobuscarfecha)
+        },
+        {
+          path: 'filtrar-autor',
+          loadComponent: () =>
+            import('./components/recurso/recursoautor/recursoautor')
+              .then(m => m.Recursobuscarautor)
+        },
       ]
     },
+
+
+
+
 
     {
       path: 'impuesto',
@@ -147,6 +174,15 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     {
       path: 'listarmes',
       component: ReporteBalanceMes
+    },
+
+    {
+      path: 'sumaxusuario',
+      component: ReporteOperacion
+    },
+    {
+      path: 'impuestomonto',
+      component: ReporteImpuestosoperacion
     },
 
     {

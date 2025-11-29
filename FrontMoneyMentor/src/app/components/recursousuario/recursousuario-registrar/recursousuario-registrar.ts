@@ -14,6 +14,7 @@ import { UsuarioService } from '../../../services/usuario-service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ImpuestoopService } from '../../../services/impuestoop-service';
 import { RecursousService } from '../../../services/recursous-service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-recursousuario-registrar',
@@ -23,7 +24,8 @@ import { RecursousService } from '../../../services/recursous-service';
     MatRadioModule,
     MatButtonModule,
     MatSelectModule,
-    CommonModule],
+    CommonModule,
+    MatCardModule],
   templateUrl: './recursousuario-registrar.html',
   styleUrl: './recursousuario-registrar.css',
 })

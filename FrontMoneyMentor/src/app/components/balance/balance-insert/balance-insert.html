@@ -6,13 +6,15 @@
   <div style="text-align: center; margin: 5%;">
     <form [formGroup]="form" (ngSubmit)="aceptar()">
 
-      <mat-form-field *ngIf="edicion">
+      @if(edicion){
+      <mat-form-field>
         <mat-label>ID</mat-label>
         <input matInput formControlName="codigo" />
         <mat-error *ngIf="form.get('codigo')?.hasError('required')">
           Ingrese id
         </mat-error>
       </mat-form-field>
+    }
 
 
       <mat-form-field appearance="fill">
@@ -31,7 +33,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Año</mat-label>
-        <input matInput formControlName="anio" />
+        <input matInput type="number" formControlName="anio" />
         <mat-error *ngIf="form.get('anio')?.hasError('required')">
           Este campo es obligatorio
         </mat-error>
@@ -40,80 +42,6 @@
         </mat-error>
         <mat-error *ngIf="form.get('anio')?.hasError('maxlength')">
           Máximo de 4 dígitos
-        </mat-error>
-      </mat-form-field>
-      <br />
-
-
-      <mat-form-field appearance="fill">
-        <mat-label>Ingreso Total</mat-label>
-        <input matInput formControlName="total_ingreso" />
-        <mat-error *ngIf="form.get('total_ingreso')?.hasError('required')">
-          Este campo es obligatorio
-        </mat-error>
-        <mat-error *ngIf="form.get('total_ingreso')?.hasError('min')">
-          Ingrese un valor mayor o igual a 0
-        </mat-error>
-        <mat-error *ngIf="form.get('total_ingreso')?.hasError('maxlength')">
-          Máximo de 8 dígitos
-        </mat-error>
-        <mat-error *ngIf="form.get('total_ingreso')?.hasError('pattern')">
-          Debe ser un número positivo(entero o decimal)
-        </mat-error>
-      </mat-form-field>
-      <br />
-
-      <mat-form-field appearance="fill">
-        <mat-label>Gasto Total</mat-label>
-        <input matInput formControlName="total_gasto" />
-        <mat-error *ngIf="form.get('total_gasto')?.hasError('required')">
-          Este campo es obligatorio
-        </mat-error>
-        <mat-error *ngIf="form.get('total_gasto')?.hasError('min')">
-          Ingrese un valor mayor o igual a 0
-        </mat-error>
-        <mat-error *ngIf="form.get('total_gasto')?.hasError('maxlength')">
-          Máximo de 8 dígitos
-        </mat-error>
-        <mat-error *ngIf="form.get('total_gasto')?.hasError('pattern')">
-          Debe ser un número positivo(entero o decimal)
-        </mat-error>
-      </mat-form-field>
-      <br />
-
-      <mat-form-field appearance="fill">
-        <mat-label>Ahorro Total</mat-label>
-        <input matInput formControlName="total_ahorro" />
-        <mat-error *ngIf="form.get('total_ahorro')?.hasError('required')">
-          Este campo es obligatorio
-        </mat-error>
-        <mat-error *ngIf="form.get('total_ahorro')?.hasError('min')">
-          Ingrese un valor mayor o igual a 0
-        </mat-error>
-        <mat-error *ngIf="form.get('total_ahorro')?.hasError('maxlength')">
-          Máximo de 8 dígitos
-        </mat-error>
-        <mat-error *ngIf="form.get('total_ahorro')?.hasError('pattern')">
-          Debe ser un número positivo (entero o decimal)
-        </mat-error>
-      </mat-form-field>
-      <br />
-
-
-      <mat-form-field appearance="fill">
-        <mat-label>Balance</mat-label>
-        <input matInput formControlName="balance" />
-        <mat-error *ngIf="form.get('balance')?.hasError('required')">
-          Este campo es obligatorio
-        </mat-error>
-        <mat-error *ngIf="form.get('balance')?.hasError('min')">
-          Ingrese un valor mayor o igual a 0
-        </mat-error>
-        <mat-error *ngIf="form.get('balance')?.hasError('maxlength')">
-          Máximo de 8 dígitos
-        </mat-error>
-        <mat-error *ngIf="form.get('balance')?.hasError('pattern')">
-          Debe ser un número positivo (entero o decimal)
         </mat-error>
       </mat-form-field>
       <br />

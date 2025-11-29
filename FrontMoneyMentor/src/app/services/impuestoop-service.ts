@@ -3,6 +3,7 @@ import { environment } from "../../enviroments/enviroment";
 import { Observable, Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { impuestoop } from "../models/Impuestoop";
+import { sumaimpuestosmodel } from "../models/sumimpuestoingresos";
 
 const base_url= environment.base;
 
@@ -35,5 +36,9 @@ export class ImpuestoopService implements OnInit{
     delete(id:number){
         return this.http.delete(`${this.url}/delete/${id}`,{responseType:'text'})
     }
+
+    obtenerImpuestosIngresos(): Observable<sumaimpuestosmodel[]> {
+    return this.http.get<sumaimpuestosmodel[]>(`${this.url}/obtenerimpuestos`);
+  }
     
 }
