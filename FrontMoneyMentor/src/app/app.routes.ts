@@ -44,162 +44,164 @@ import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2
 import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
 import { ReporteImpuestosoperacion } from './components/reporte-impuestosoperacion/reporte-impuestosoperacion';
 import { ReporteAhorroSum } from './components/reporte-ahorro-sum/reporte-ahorro-sum';
+import { ReporteAhorroPeriodo } from './components/reporte-ahorro-periodo/reporte-ahorro-periodo';
 
+export const routes: Routes = [
+  { path: '', component: Landigpage },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: Autenticador,
+  },
+  {
+    path: 'usuarios',
+    component: Usuario,
+    children: [{ path: 'nuevo', component: usuarioregistrar }],
+  },
+  {
+    path: 'app',
+    component: Menu,
+    canActivate: [seguridadGuardGuard],
+    children: [
+      { path: '', component: Consejos },
+      { path: 'consejos', component: Consejos },
 
+      { path: 'usuariolistar', component: usuariolistar },
+      { path: 'edits/:id', component: usuarioregistrar },
 
-export const routes: Routes = [{ path: '', component: Landigpage },
-{
-  path: '',
-  redirectTo: 'login',
-  pathMatch: 'full',
-}
-  ,
-{
-  path: 'login',
-  component: Autenticador,
-},
-{
-  path: 'usuarios',
-  component: Usuario,
-  children: [
-    { path: 'nuevo', component: usuarioregistrar }
-  ]
-},
-{
-  path: 'app', component: Menu,
-  canActivate: [seguridadGuardGuard],
-  children: [
-    { path: '', component: Consejos },
-    { path: 'consejos', component: Consejos }, 
-    
-    { path: 'usuariolistar', component: usuariolistar },
-    { path: 'edits/:id', component: usuarioregistrar },
+      {
+        path: 'buscar',
+        component: UsuarioBuscarComponent,
+      },
 
-    {
-      path: 'buscar',
-      component: UsuarioBuscarComponent
-    },
+      {
+        path: 'operacion',
+        component: OperacionComponent,
+        children: [
+          { path: '', component: OperacionList },
+          { path: 'nuevo', component: OperacionRegistrar },
+          { path: 'edits/:id', component: OperacionRegistrar },
+          { path: 'filtro1', component: OpeBusqueda1 },
+          { path: 'filtro2', component: OpeBusqueda2 },
+        ],
+      },
 
-    {
-      path: 'operacion',
-      component: OperacionComponent,
-      children: [{ path: '', component: OperacionList },
-      { path: 'nuevo', component: OperacionRegistrar },
-      { path: 'edits/:id', component: OperacionRegistrar },
-      { path: 'filtro1', component: OpeBusqueda1 },
-      { path: 'filtro2', component: OpeBusqueda2 }
+      {
+        path: 'balance',
+        component: Balance,
+        children: [
+          { path: '', component: BalanceList },
+          { path: 'nuevo', component: BalanceInsert },
+          { path: 'edits/:id', component: BalanceInsert },
+        ],
+      },
 
-      ],
+      {
+        path: 'ahorro',
+        component: Ahorro,
+        children: [
+          { path: '', component: AhorroList },
+          { path: 'edits/:id', component: AhorroInsert },
+          { path: 'nuevo', component: AhorroInsert },
+        ],
+      },
+      {
+        path: 'recurso',
+        component: Recurso,
+        children: [
+          { path: '', component: Recursolistar },
+          { path: 'nuevo', component: Recursoregistrar },
+          { path: 'edits/:id', component: Recursoregistrar },
+          {
+            path: 'filtrar-fecha',
+            loadComponent: () =>
+              import('./components/recurso/recursofecha/recursofecha').then(
+                (m) => m.Recursobuscarfecha
+              ),
+          },
+          {
+            path: 'filtrar-autor',
+            loadComponent: () =>
+              import('./components/recurso/recursoautor/recursoautor').then(
+                (m) => m.Recursobuscarautor
+              ),
+          },
+        ],
+      },
 
-    },
+      {
+        path: 'impuesto',
+        component: Impuesto,
+        children: [
+          { path: '', component: ImpuestoList },
+          { path: 'nuevo', component: ImpuestoInsert },
+          { path: 'edits/:id', component: ImpuestoInsert },
+        ],
+      },
 
-    {
-      path: 'balance',
-      component: Balance,
-      children: [
-        { path: '', component: BalanceList }
-        , { path: 'nuevo', component: BalanceInsert }
-        , { path: 'edits/:id', component: BalanceInsert }
-      ]
-    },
+      {
+        path: 'impuesto-operacion',
+        component: Impuestooperacion,
+        children: [
+          { path: '', component: ImpuestooperacionList },
+          { path: 'nuevo', component: ImpuestooperacionInsert },
+          { path: 'edits/:id', component: ImpuestooperacionInsert },
+        ],
+      },
 
-    {
-      path: 'ahorro',
-      component: Ahorro,
-      children: [
-        { path: '', component: AhorroList },
-        { path: 'edits/:id', component: AhorroInsert },
-        { path: 'nuevo', component: AhorroInsert },
-      ]
-    },
-    {
-      path: 'recurso',
-      component: Recurso,
-      children: [
-        { path: '', component: Recursolistar },
-        { path: 'nuevo', component: Recursoregistrar },
-        { path: 'edits/:id', component: Recursoregistrar },
-        {
-          path: 'filtrar-fecha',
-          loadComponent: () =>
-            import('./components/recurso/recursofecha/recursofecha')
-              .then(m => m.Recursobuscarfecha)
-        },
-        {
-          path: 'filtrar-autor',
-          loadComponent: () =>
-            import('./components/recurso/recursoautor/recursoautor')
-              .then(m => m.Recursobuscarautor)
-        },
-      ]
-    },
+      {
+        path: 'recurso-usuario',
+        component: Recursousuario,
+        children: [
+          { path: '', component: RecursousuarioListar },
+          { path: 'nuevo', component: RecursousuarioRegistrar },
+          { path: 'edits/:id', component: RecursousuarioRegistrar },
+        ],
+      },
+      {
+        path: 'sumaingresos',
+        component: ReportebalanceSum,
+      },
+      {
+        path: 'listarmes',
+        component: ReporteBalanceMes,
+      },
 
-    {
-      path: 'impuesto',
-      component: Impuesto,
-      children: [
-        { path: '', component: ImpuestoList },
-        { path: 'nuevo', component: ImpuestoInsert },
-        { path: 'edits/:id', component: ImpuestoInsert }
-      ]
-    },
+      {
+        path: 'sumaxusuario',
+        component: ReporteOperacion,
+      },
+      {
+        path: 'impuestomonto',
+        component: ReporteImpuestosoperacion,
+      },
+      {
+        path: 'sumaahorros',
+        component: ReporteAhorroSum,
+      },
+      {
+        path: 'ahorro-periodo',
+        component: ReporteAhorroPeriodo,
+      },
 
-    {
-      path: 'impuesto-operacion',
-      component: Impuestooperacion,
-      children: [
-        { path: '', component: ImpuestooperacionList },
-        { path: 'nuevo', component: ImpuestooperacionInsert },
-        { path: 'edits/:id', component: ImpuestooperacionInsert }
-      ]
-    },
-
-    {
-      path: 'recurso-usuario',
-      component: Recursousuario,
-      children: [
-        { path: '', component: RecursousuarioListar },
-        { path: 'nuevo', component: RecursousuarioRegistrar },
-        { path: 'edits/:id', component: RecursousuarioRegistrar }
-      ]
-    },
-    {
-      path: 'sumaingresos',
-      component: ReportebalanceSum
-    },
-    {
-      path: 'listarmes',
-      component: ReporteBalanceMes
-    },
-
-    {
-      path: 'sumaxusuario',
-      component: ReporteOperacion
-    },
-    {
-      path: 'impuestomonto',
-      component: ReporteImpuestosoperacion
-    },
-    {
-      path: 'sumaahorros',
-      component: ReporteAhorroSum
-    },
-
-    {
-      path: 'roles',
-      component: Roles,
-      children: [
-        { path: '', component: RolListar },
-        { path: 'nuevo', component: RolRegistrar },
-        { path: 'edits/:id', component: RolRegistrar }
-      ]
-    }
-
-  ]
-},
-{
-  path: 'homes',
-  component: Home,
-      canActivate: [seguridadGuardGuard],
-},
+      {
+        path: 'roles',
+        component: Roles,
+        children: [
+          { path: '', component: RolListar },
+          { path: 'nuevo', component: RolRegistrar },
+          { path: 'edits/:id', component: RolRegistrar },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'homes',
+    component: Home,
+    canActivate: [seguridadGuardGuard],
+  },
 ];
