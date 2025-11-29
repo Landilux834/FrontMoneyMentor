@@ -5,6 +5,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { LoginService } from "../../services/login-service";
+import { ConsejosService } from "../../services/consejos-service";
 import { MatDividerModule } from '@angular/material/divider'; 
 
 @Component({
@@ -14,10 +15,14 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrl: './menu.css',
 })
 export class Menu {
-  role: string[] = [];  // <-- AHORA ES ARRAY
+  role: string[] = [];
   usuario: string = '';
+  recomendaciones: any;
 
-  constructor(private loginService: LoginService) { }
+  constructor(
+  private loginService: LoginService,
+  private consejosService: ConsejosService
+) {}
 
   ngOnInit() {
     this.role = this.loginService.showRole();

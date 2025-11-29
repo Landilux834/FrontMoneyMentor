@@ -1,16 +1,31 @@
 <div class="container">
   @if(verificar()){
   <mat-toolbar class="custom-toolbar">
-    <button mat-button [routerLink]="['usuariolistar']" class="btn-rojo">
-      <mat-icon>home</mat-icon>Home
-    </button>
-
     @if(isAdmin()){
     <button
       mat-button
       aria-label="example icon-button with menu icon"
       [matMenuTriggerFor]="menurecursousuario"
     >
+      <mat-icon> menu </mat-icon>recurso-usuario
+    </button>
+
+    <button
+      mat-button
+      aria-label="example icon-button with menu icon"
+      [matMenuTriggerFor]="menuImpuestooperacion"
+    >
+      <mat-icon> menu </mat-icon>impuesto-operacion
+    </button>
+
+    <button
+      mat-button
+      aria-label="example icon-button with menu icon"
+      [matMenuTriggerFor]="menuRecurso"
+    >
+      <mat-icon> menu </mat-icon>recurso
+    </button>
+
       <mat-icon> menu </mat-icon>Recurso-Usuario
     </button>
 
@@ -34,6 +49,13 @@
       aria-label="example icon-button with menu icon"
       [matMenuTriggerFor]="menuroles"
     >
+      <mat-icon> menu </mat-icon>roles
+    </button>
+    } @if(isTester()){
+    <button mat-button [routerLink]="['consejos']" class="btn-rojo">
+      <mat-icon>home</mat-icon>Home
+    </button>
+
       <mat-icon> menu </mat-icon>Roles
     </button>
     } @if(isTester()){
