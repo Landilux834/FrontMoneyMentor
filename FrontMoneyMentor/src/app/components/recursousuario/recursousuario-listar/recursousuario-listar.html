@@ -13,7 +13,7 @@
 
             <ng-container matColumnDef="c2">
                 <th mat-header-cell *matHeaderCellDef> usuario</th>
-                <td mat-cell *matCellDef="let element"> {{element.usuario.idUsuario}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.usuario?.nombre}} </td>
             </ng-container>
 
             <ng-container matColumnDef="c3">

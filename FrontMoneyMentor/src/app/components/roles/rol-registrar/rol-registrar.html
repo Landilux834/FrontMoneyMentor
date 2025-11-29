@@ -34,7 +34,7 @@
               <mat-label>Usuario</mat-label>
               <mat-select formControlName="usuarioId">
                 <mat-option *ngFor="let u of usuarios" [value]="u.idUsuario">
-                  {{ u.nombre }}
+                  {{ u.idUsuario  }}
                 </mat-option>
               </mat-select>
             </mat-form-field>

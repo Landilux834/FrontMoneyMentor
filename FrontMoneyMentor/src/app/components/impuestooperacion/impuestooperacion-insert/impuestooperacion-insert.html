@@ -1,66 +1,44 @@
 <div class="container">
-    <mat-card class="insert-card">
-        <mat-card-content>
-            <mat-card-title style="text-align: center; margin: 5%;">
-                <h2>{{ edicion ? 'Editar Impuesto Operacion' : 'Registrar Impuesto Operacion' }}</h2>
-            </mat-card-title>
+  <mat-card class="insert-card">
+    <mat-card-content>
+      <mat-card-title style="text-align: center; margin: 5%;">
+        <h2>{{ edicion ? 'Editar Impuesto Operacion' : 'Registrar Impuesto Operacion' }}</h2>
+      </mat-card-title>
 
-            <div style="text-align: center; margin: 5%;">
-                <form [formGroup]="form" (submit)="aceptar()">
-                    @if(edicion){
-                    <mat-form-field appearance="outline" class="custom-field">
-                        <mat-label>ID</mat-label>
-                        <input matInput formControlName="codigo" />
-                        <mat-error>
-                            @if (form.get('codigo')?.hasError('required')) { Ingrese id}
-                        </mat-error>
-                    </mat-form-field>
+      <div style="text-align: center; margin: 5%;">
+        <form [formGroup]="form" (ngSubmit)="aceptar()">
 
-            }
-            <div>
-                <mat-form-field>
-                    <mat-label>Impuesto</mat-label>
-                    <mat-select formControlName="impuesto">
-                        @for (a of listaImpuesto; track a) {
-                        <mat-option [value]="a.idImpuesto">{{ a.tipo }}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <br />
+          <!-- ID solo si es edición -->
+          <mat-form-field *ngIf="edicion" appearance="outline" class="custom-field">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="codigo" />
+            <mat-error *ngIf="form.get('codigo')?.hasError('required')">Ingrese id</mat-error>
+          </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>Operacion</mat-label>
-                <mat-select formControlName="operacion">
-                    @for (a of listaOperacion; track a) {
-                    <mat-option [value]="a.idOperacion">{{ a.categoria }}</mat-option>
+          <!-- Impuesto -->
+          <mat-form-field appearance="outline" class="custom-field">
+            <mat-label>Impuesto</mat-label>
+            <mat-select formControlName="impuesto">
+              <mat-option *ngFor="let a of listaImpuesto" [value]="a.idImpuesto">{{ a.tipo }}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-                    }
-                    <div>
-                        <mat-form-field appearance="outline" class="custom-field">
-                            <mat-label>Impuesto</mat-label>
-                            <mat-select formControlName="impuesto">
-                                @for (a of listaImpuesto; track a) {
-                                <mat-option [value]="a.idImpuesto">{{ a.idImpuesto }}</mat-option>
-                                }
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <br />
+          <!-- Operacion -->
+          <mat-form-field appearance="outline" class="custom-field">
+            <mat-label>Operacion</mat-label>
+            <mat-select formControlName="operacion">
+              <mat-option *ngFor="let a of listaOperacion" [value]="a.idOperacion">{{ a.categoria }}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-                    <mat-form-field appearance="outline" class="custom-field">
-                        <mat-label>Operacion</mat-label>
-                        <mat-select formControlName="operacion">
-                            @for (a of listaOperacion; track a) {
-                            <mat-option [value]="a.idOperacion">{{ a.idOperacion }}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
-                    <div>
-                        <button mat-raised-button color="primary" class="custom-button" (click)="aceptar()">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
-                    </div>
-                </form>
-            </div>
-        </mat-card-content>
-    </mat-card>
+          <div>
+            <button mat-raised-button color="primary" class="custom-button">
+              {{ edicion ? 'Actualizar' : 'Registrar' }}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
