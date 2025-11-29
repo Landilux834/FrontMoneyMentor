@@ -49,4 +49,8 @@ export class AhorroService implements OnInit {
   getAhorroTotal(idUsuario: number): Observable<AhorroTotal[]> {
     return this.http.get<AhorroTotal[]>(`${this.url}/ahorrototal/${idUsuario}`);
   }
+
+  getAhorrosPorPeriodo(start: string, end: string): Observable<Ahorro[]> {
+    return this.http.get<Ahorro[]>(`${this.url}/periodo?start=${start}&end=${end}`);
+  }
 }
