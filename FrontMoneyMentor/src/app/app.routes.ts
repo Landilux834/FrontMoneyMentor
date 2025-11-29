@@ -43,6 +43,7 @@ import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1
 import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
 import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
 import { ReporteImpuestosoperacion } from './components/reporte-impuestosoperacion/reporte-impuestosoperacion';
+import { ReporteAhorroSum } from './components/reporte-ahorro-sum/reporte-ahorro-sum';
 
 
 
@@ -178,6 +179,10 @@ export const routes: Routes = [{ path: '', component: Landigpage },
     {
       path: 'impuestomonto',
       component: ReporteImpuestosoperacion
+    },
+    {
+      path: 'sumaahorros',
+      component: ReporteAhorroSum
     },
 
     {

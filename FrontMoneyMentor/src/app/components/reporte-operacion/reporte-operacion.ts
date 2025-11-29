@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
   imports: [BaseChartDirective, MatIconModule,MatCardModule],
   templateUrl: './reporte-operacion.html',
   styleUrl: './reporte-operacion.css',
-  providers: [provideCharts(withDefaultRegisterables())],   // 👈 IGUAL QUE EN TU OTRO CHART
+  providers: [provideCharts(withDefaultRegisterables())],   
 })
 export class ReporteOperacion {
   hasData = false;

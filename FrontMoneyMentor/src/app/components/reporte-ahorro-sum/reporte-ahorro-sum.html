@@ -1,0 +1,31 @@
+<div class="container">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Selecciona un usuario</mat-label>
+
+    <mat-select [(value)]="usuarioSeleccionado">
+      <mat-option *ngFor="let u of usuarios" [value]="u.idUsuario">
+        {{ u.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="cargarAhorro()">
+    Consultar
+  </button>
+
+  <div *ngIf="hasData">
+    <canvas
+      baseChart
+      [data]="{ labels: barChartLabels, datasets: barChartData }"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [type]="barChartType">
+    </canvas>
+  </div>
+
+  <div *ngIf="!hasData">
+    <!-- Solo para debug visual -->
+    <p *ngIf="usuarios.length === 0">No se cargaron usuarios.</p>
+  </div>
+</div>

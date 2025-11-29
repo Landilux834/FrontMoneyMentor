@@ -16,7 +16,7 @@ import { MatCard } from "@angular/material/card";
 })
 export class AhorroList implements OnInit {
   dataSource:MatTableDataSource<Ahorro> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'cF', 'c5', 'c6'];
+  displayedColumns: string[] = ['c1', 'c2', 'c7', 'c3', 'c4', 'cF', 'c5', 'c6'];
 
   constructor(private aS: AhorroService) {}
   ngOnInit(): void {
