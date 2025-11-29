@@ -3,6 +3,7 @@ import { environment } from '../../enviroments/enviroment';
 import { Balance } from '../models/Balance';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { SumaIngresosDTO } from '../models/SumaIngresosDTO';
 
 const base_url = environment.base;
 
@@ -44,4 +45,13 @@ export class BalanceService implements OnInit {
   delete(id: number) {
     return this.http.delete(`${this.url}/delete/${id}`,{ responseType: 'text' })
   }
+
+  getSumBalance(): Observable<SumaIngresosDTO[]> {
+    return this.http.get<SumaIngresosDTO[]>(`${this.url}/sumadores`);
+  }
+
+  getBalancePorMes(mes: string): Observable<Balance[]> {
+  return this.http.get<Balance[]>(`${this.url}/listarpormes?mes=${mes}`);
+}
+
 }

@@ -27,9 +27,37 @@ import { Recursousuario } from './components/recursousuario/recursousuario';
 import { RecursousuarioListar } from './components/recursousuario/recursousuario-listar/recursousuario-listar';
 import { RecursousuarioRegistrar } from './components/recursousuario/recursousuario-registrar/recursousuario-registrar';
 import { UsuarioBuscarComponent } from './components/usuario/usuario-buscar/usuario-buscar';
+import { ReportebalanceSum } from './components/reportebalance-sum/reportebalance-sum';
+import { Autenticador } from './components/autenticador/autenticador';
+import { Home } from './components/home/home';
+import { seguridadGuardGuard } from './seguridad/seguridad-guard';
+import { ReporteBalanceMes } from './components/reporte-balance-mes/reporte-balance-mes';
+import { Roles } from './components/roles/roles';
+import { RolListar } from './components/roles/rol-listar/rol-listar';
+import { RolServices } from './services/rol-services';
+import { RolRegistrar } from './components/roles/rol-registrar/rol-registrar';
+import { Consejos } from './components/consejos/consejos';
+import { Recursobuscarautor } from './components/recurso/recursoautor/recursoautor';
+import { Recursobuscarfecha } from './components/recurso/recursofecha/recursofecha';
+import { OpeBusqueda1 } from './components/operacion/ope-busqueda1/ope-busqueda1';
+import { OpeBusqueda2 } from './components/operacion/ope-busqueda2/ope-busqueda2';
+import { ReporteOperacion } from './components/reporte-operacion/reporte-operacion';
+import { ReporteImpuestosoperacion } from './components/reporte-impuestosoperacion/reporte-impuestosoperacion';
+import { ReporteAhorroSum } from './components/reporte-ahorro-sum/reporte-ahorro-sum';
+
 
 
 export const routes: Routes = [{ path: '', component: Landigpage },
+{
+  path: '',
+  redirectTo: 'login',
+  pathMatch: 'full',
+}
+  ,
+{
+  path: 'login',
+  component: Autenticador,
+},
 {
   path: 'usuarios',
   component: Usuario,
@@ -39,21 +67,27 @@ export const routes: Routes = [{ path: '', component: Landigpage },
 },
 {
   path: 'app', component: Menu,
+  canActivate: [seguridadGuardGuard],
   children: [
+    { path: '', component: Consejos },
+    { path: 'consejos', component: Consejos }, 
+    
     { path: 'usuariolistar', component: usuariolistar },
     { path: 'edits/:id', component: usuarioregistrar },
 
     {
       path: 'buscar',
-      component:UsuarioBuscarComponent
+      component: UsuarioBuscarComponent
     },
-  
-  {
+
+    {
       path: 'operacion',
       component: OperacionComponent,
       children: [{ path: '', component: OperacionList },
       { path: 'nuevo', component: OperacionRegistrar },
       { path: 'edits/:id', component: OperacionRegistrar },
+      { path: 'filtro1', component: OpeBusqueda1 },
+      { path: 'filtro2', component: OpeBusqueda2 }
 
       ],
 
@@ -84,7 +118,19 @@ export const routes: Routes = [{ path: '', component: Landigpage },
       children: [
         { path: '', component: Recursolistar },
         { path: 'nuevo', component: Recursoregistrar },
-        { path: 'edits/:id', component: Recursoregistrar }
+        { path: 'edits/:id', component: Recursoregistrar },
+        {
+          path: 'filtrar-fecha',
+          loadComponent: () =>
+            import('./components/recurso/recursofecha/recursofecha')
+              .then(m => m.Recursobuscarfecha)
+        },
+        {
+          path: 'filtrar-autor',
+          loadComponent: () =>
+            import('./components/recurso/recursoautor/recursoautor')
+              .then(m => m.Recursobuscarautor)
+        },
       ]
     },
 
@@ -116,8 +162,44 @@ export const routes: Routes = [{ path: '', component: Landigpage },
         { path: 'nuevo', component: RecursousuarioRegistrar },
         { path: 'edits/:id', component: RecursousuarioRegistrar }
       ]
+    },
+    {
+      path: 'sumaingresos',
+      component: ReportebalanceSum
+    },
+    {
+      path: 'listarmes',
+      component: ReporteBalanceMes
+    },
+
+    {
+      path: 'sumaxusuario',
+      component: ReporteOperacion
+    },
+    {
+      path: 'impuestomonto',
+      component: ReporteImpuestosoperacion
+    },
+    {
+      path: 'sumaahorros',
+      component: ReporteAhorroSum
+    },
+
+    {
+      path: 'roles',
+      component: Roles,
+      children: [
+        { path: '', component: RolListar },
+        { path: 'nuevo', component: RolRegistrar },
+        { path: 'edits/:id', component: RolRegistrar }
+      ]
     }
 
   ]
-}
+},
+{
+  path: 'homes',
+  component: Home,
+      canActivate: [seguridadGuardGuard],
+},
 ];

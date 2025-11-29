@@ -1,82 +1,76 @@
-/* Contenedor principal */
+/* ===== CONTENEDOR GENERAL ===== */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 12px 0;
-  height: auto;
-  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  background: #F1DEC6; /* beige */
 }
 
-/* Barra superior personalizada */
+/* ===== TOOLBAR ===== */
 .custom-toolbar {
-  background-color: #fff;
-  color: #1976d2;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 0 24px;
-  width: 80%;
-  max-width: 900px;
+  background-color: #4158A6; /* azul */
+  color: white;
+  border-radius: 18px;
+  padding: 0 30px;
+  width: 95%;
+  max-width: 1400px;
   display: flex;
   align-items: center;
-  gap: 20px; /* Espacio entre todos los botones */
-  flex-wrap: nowrap; /* Evita que bajen de línea */
-  overflow-x: auto; /* Por si son muchos botones */
+  gap: 28px;
+  overflow-x: auto;
+  height: 55px;
 }
 
-
-/* Logo dentro de la barra */
-.imagen {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  height: 40px;
-  width: auto;
-  border-radius: 8px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-/* Botón del menú */
+/* ===== BOTONES DEL TOOLBAR ===== */
 .custom-toolbar button[mat-button] {
-  font-weight: 600;
-  font-size: 16px;
-  color: #1976d2;
-  display: flex;
-  align-items: center;
-  gap: 6px; /* Espacio entre icono y texto */
-  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 15px;
+  color: white;
+  text-transform: none;
+  transition: 0.25s ease;
+  border-radius: 10px;
+  padding: 6px 14px;
 }
 
 .custom-toolbar button[mat-button]:hover {
-  background-color: rgba(25, 118, 210, 0.1);
-  border-radius: 0%;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Ícono del menú */
+/* ===== ÍCONOS ===== */
 mat-icon {
-  font-size: 22px;
+  font-size: 20px;
 }
 
-/* Menú desplegable */
+/* ===== ITEM ACTIVO (cuando el menú está abierto) ===== */
+.custom-toolbar .mat-menu-trigger.mat-button.cdk-focused,
+.custom-toolbar .mat-menu-trigger.mat-button.cdk-program-focused,
+.custom-toolbar .mat-menu-trigger.mat-button[aria-expanded="true"] {
+  color: #FF8343 !important; /* anaranjado */
+  font-weight: 600;
+}
+
+/* ===== MENÚ DESPLEGABLE ===== */
 .mat-menu-panel {
-  border-radius: 10px !important;
-  background-color: #fefefe;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 16px !important;
+  background-color: white !important;
+  padding: 6px 0 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* Opciones del menú */
+/* ===== ITEMS DEL MENÚ ===== */
 .mat-menu-item {
-  color: #1976d2 !important;
+  color: #4158A6 !important; /* azul */
   font-weight: 500;
+  height: 40px;
 }
 
 .mat-menu-item:hover {
-  background-color: rgba(25, 118, 210, 0.1) !important;
+  background-color: rgba(23, 155, 174, 0.15) !important; /* turquesa suave */
+}
+
+/* ===== SELECCIÓN DEL MENÚ ACTUAL ===== */
+.mat-menu-item.cdk-focused,
+.mat-menu-item.cdk-program-focused {
+  background-color: rgba(255, 131, 67, 0.18) !important; /* anaranjado suave */
 }

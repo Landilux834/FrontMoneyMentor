@@ -3,13 +3,15 @@ import { Observable, Subject } from 'rxjs';
 import { Ahorro } from '../models/Ahorro';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../enviroments/enviroment';
+import { Usuario } from '../models/Usuario';
+import { AhorroTotal } from '../models/AhorroTotal';
 
 const base_url = environment.base;
 
 @Injectable({
   providedIn: 'root',
 })
-export class AhorroService implements OnInit{
+export class AhorroService implements OnInit {
   private url = `${base_url}/ahorro`;
 
   private listaCambio = new Subject<Ahorro[]>();
@@ -21,10 +23,9 @@ export class AhorroService implements OnInit{
     return this.http.get<Ahorro[]>(`${this.url}/listar`);
   }
 
-
   insert(a: Ahorro): Observable<string> {
-      return this.http.post(`${this.url}/register`, a, { responseType: 'text' });
-    }
+    return this.http.post(`${this.url}/register`, a, { responseType: 'text' });
+  }
 
   setList(listaNueva: Ahorro[]) {
     this.listaCambio.next(listaNueva);
@@ -42,7 +43,10 @@ export class AhorroService implements OnInit{
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/delete/${id}`,{ responseType: 'text' })
+    return this.http.delete(`${this.url}/delete/${id}`, { responseType: 'text' });
   }
 
+  getAhorroTotal(idUsuario: number): Observable<AhorroTotal[]> {
+    return this.http.get<AhorroTotal[]>(`${this.url}/ahorrototal/${idUsuario}`);
+  }
 }

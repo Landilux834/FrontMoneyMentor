@@ -5,6 +5,7 @@ import { environment } from '../../enviroments/enviroment';
 import { operacionModel } from '../models/operacionModel';
 import { operate } from 'rxjs/internal/util/lift';
 import { OperacionComponent } from '../components/operacion/operacion';
+import { sumaxUsuarioDTO } from '../models/sumaporusuario';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,24 @@ export class OperacionService {
   ListId(id:number){
     return this.http.get<operacionModel>(`${this.url}/listar/${id}`);
   }
+
+  findOperacionByCategoria(categoria: string): Observable<operacionModel[]> {
+    return this.http.get<operacionModel[]>(`${this.url}/listarporcategoria`, {
+      params: { categoria }
+    });
+  }
+
+  // 🔹 Filtrar por fecha
+  buscarPorFecha(fecha: string): Observable<operacionModel[]> {
+    return this.http.get<operacionModel[]>(`${this.url}/busquedafecha`, {
+      params: { f: fecha }
+    });
+  }
+
+  getSumaOperacionesPorUsuario() {
+  return this.http.get<[sumaxUsuarioDTO]>(`${this.url}/suma-por-usuario`);
+}
+
 
 
 }

@@ -33,19 +33,19 @@ export class BalanceInsert implements OnInit {
   id: number = 0;
   listaUsuario: Usuario[] = [];
 
-  meses: { value: number; viewValue: string }[] = [
-    { value: 1, viewValue: 'Enero' },
-    { value: 2, viewValue: 'Febrero' },
-    { value: 3, viewValue: 'Marzo' },
-    { value: 4, viewValue: 'Abril' },
-    { value: 5, viewValue: 'Mayo' },
-    { value: 6, viewValue: 'Junio' },
-    { value: 7, viewValue: 'Julio' },
-    { value: 8, viewValue: 'Agosto' },
-    { value: 9, viewValue: 'Septiembre' },
-    { value: 10, viewValue: 'Octubre' },
-    { value: 11, viewValue: 'Noviembre' },
-    { value: 12, viewValue: 'Diciembre' }
+  meses: { value: string; viewValue: string }[] = [
+    { value: 'Enero', viewValue: 'Enero' },
+    { value: 'Febrero', viewValue: 'Febrero' },
+    { value: 'Marzo', viewValue: 'Marzo' },
+    { value: 'Abril', viewValue: 'Abril' },
+    { value: 'Mayo', viewValue: 'Mayo' },
+    { value: 'Junio', viewValue: 'Junio' },
+    { value: 'Julio', viewValue: 'Julio' },
+    { value: 'Agosto', viewValue: 'Agosto' },
+    { value: 'Septiembre', viewValue: 'Septiembre' },
+    { value: 'Octubre', viewValue: 'Octubre' },
+    { value: 'Noviembre', viewValue: 'Noviembre' },
+    { value: 'Diciembre', viewValue: 'Diciembre' }
   ];
   constructor(
     private bS: BalanceService,
@@ -70,10 +70,6 @@ export class BalanceInsert implements OnInit {
       codigo: [''],
       mes: ['', Validators.required],
       anio: ['', [Validators.required, Validators.min(2025), Validators.maxLength(4)]],
-      total_gasto: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
-      total_ingreso: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
-      total_ahorro: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
-      balance: ['', [Validators.required, Validators.min(0), Validators.maxLength(8)]],
       fk: ['', Validators.required]
     });
   }
@@ -84,10 +80,6 @@ export class BalanceInsert implements OnInit {
       this.bal.idBalance = this.form.value.codigo;
       this.bal.mes = this.form.value.mes;
       this.bal.anio = this.form.value.anio;
-      this.bal.total_gasto = this.form.value.total_gasto;
-      this.bal.total_ingreso = this.form.value.total_ingreso;
-      this.bal.total_ahorro = this.form.value.total_ahorro;
-      this.bal.balance = this.form.value.balance;
       this.bal.usuario.idUsuario = this.form.value.fk;
 
       if (this.edicion) {
@@ -113,15 +105,11 @@ export class BalanceInsert implements OnInit {
   init() {
     if (this.edicion) {
       this.bS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idBalance),
-          mes: new FormControl(data.mes),
-          anio: new FormControl(data.anio),
-          total_gasto: new FormControl(data.total_gasto),
-          total_ingreso: new FormControl(data.total_ingreso),
-          total_ahorro: new FormControl(data.total_ahorro),
-          balance: new FormControl(data.balance),
-          fk: new FormControl(data.usuario.idUsuario)
+        this.form.patchValue({
+          codigo:(data.idBalance),
+          mes: (data.mes),
+          anio: (data.anio),
+          fk:(data.usuario.idUsuario)
         });
 
       });

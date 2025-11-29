@@ -20,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-ahorro-insert',
@@ -36,6 +37,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   templateUrl: './ahorro-insert.html',
   styleUrl: './ahorro-insert.css',
+  providers:[provideNativeDateAdapter()]
 })
 export class AhorroInsert {
   form: FormGroup = new FormGroup({});
@@ -43,6 +45,8 @@ export class AhorroInsert {
   edicion: boolean = false;
   id: number = 0;
   listaUsuario: Usuario[] = [];
+
+  hoy:Date=new Date();
 
   constructor(
     private aS: AhorroService,
@@ -62,8 +66,16 @@ export class AhorroInsert {
 
   const fechaInicio = new Date(inicio);
   const fechaFin = new Date(fin);
+  const hoy=new Date();
+  hoy.setHours(0,0,0,0);
 
-  return fechaFin < fechaInicio ? { fechaInvalida: true } : null;
+  if(fechaFin<hoy){
+    return{fechaLimiteMenorHoy:true};
+  }
+  if(fechaFin<fechaInicio){
+    return {fechaInvalida:true};
+  }
+  return null;
 }
 
   ngOnInit(): void {
@@ -81,8 +93,9 @@ export class AhorroInsert {
   {
     codigo: [''],
     objetivo: ['', Validators.required],
-    fecha_inicio: ['', [Validators.required, this.validarFechas]],
-    fecha_limite: ['', [Validators.required, this.validarFechas]],
+    monto_actual: ['', [Validators.required, Validators.min(0)]],
+    fecha_inicio: [new Date().toISOString().substring(0,10),Validators.required],
+    fecha_limite: ['', Validators.required],
     fk: ['', Validators.required]
   },
   {
@@ -98,9 +111,9 @@ export class AhorroInsert {
     if (this.form.valid) {
       this.ah.idAhorro = this.form.value.codigo;
       this.ah.objetivo = this.form.value.objetivo;
+      this.ah.monto_actual=this.form.value.monto_actual;
       this.ah.usuario = new Usuario();
       this.ah.usuario.idUsuario = this.form.value.fk;
-
       this.ah.fecha_inicio = this.form.value.fecha_inicio;
       this.ah.fecha_limite = this.form.value.fecha_limite;
 
@@ -121,12 +134,13 @@ export class AhorroInsert {
   init() {
     if (this.edicion) {
       this.aS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idAhorro),
-          objetivo: new FormControl(data.objetivo),
-          fecha_inicio: new FormControl(data.fecha_inicio),
-          fecha_limite: new FormControl(data.fecha_limite),
-          fk: new FormControl(data.usuario.idUsuario),
+        this.form.patchValue({
+          codigo: data.idAhorro,
+          objetivo:  (data.objetivo),
+          monto_actual:(data.monto_actual),
+          fecha_inicio: (data.fecha_inicio),
+          fecha_limite: (data.fecha_limite),
+          fk: (data.usuario.idUsuario),
         });
       });
     }

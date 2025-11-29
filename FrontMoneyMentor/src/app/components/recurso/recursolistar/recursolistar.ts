@@ -7,10 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconHarness } from '@angular/material/icon/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-recursolistar',
-  imports: [MatTableModule,MatButtonModule,MatIconModule,RouterLink],
+  imports: [MatTableModule,MatButtonModule,MatIconModule,RouterLink,MatCardModule,MatPaginator,MatPaginatorModule],
   templateUrl: './recursolistar.html',
   styleUrl: './recursolistar.css',
 })

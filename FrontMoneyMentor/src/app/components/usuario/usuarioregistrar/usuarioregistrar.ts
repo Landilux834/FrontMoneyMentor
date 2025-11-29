@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -6,22 +6,29 @@ import { MatRadioModule } from "@angular/material/radio";
 import { MatButtonModule } from "@angular/material/button";
 import { Usuario } from "../../../models/Usuario";
 import { UsuarioService } from "../../../services/usuario-service";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActivatedRoute, Params, Router, RouterOutlet, RouterLink, RouterModule } from "@angular/router";
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from "@angular/material/card";
+import { ROLmodel } from "../../../models/Rol";
+import { RolServices } from "../../../services/rol-services";
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
 
 @Component({
     selector: "app-usuarioregistrar",
     standalone: true,
     imports: [
-        ReactiveFormsModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatRadioModule,
-        MatButtonModule,
-        CommonModule
-    ],
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatButtonModule,
+    CommonModule, MatCardModule, 
+    RouterLink,MatSelectModule
+],
     templateUrl: "./usuarioregistrar.html",
     styleUrls: ["./usuarioregistrar.css"]
+    
 })
 export class usuarioregistrar implements OnInit {
 
@@ -31,11 +38,14 @@ export class usuarioregistrar implements OnInit {
     edicion: boolean = false;
     id: number = 0;
 
+
+
     constructor(
         private uS: UsuarioService,
         private router: Router,
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+
     ) { }
 
     ngOnInit(): void {
@@ -59,22 +69,24 @@ export class usuarioregistrar implements OnInit {
             this.ur.nombre = this.form.value.nombre;
             this.ur.correo = this.form.value.correo;
             this.ur.contrasenia = this.form.value.contrasenia;
-
             if (this.edicion) {
                 this.uS.update(this.ur).subscribe(() => {
                     this.uS.list().subscribe((data) => {
                         this.uS.setList(data);
                     });
                 });
+                this.router.navigate(['app/usuariolistar']);
+
             } else {
                 this.uS.insert(this.ur).subscribe(() => {
                     this.uS.list().subscribe((data) => {
                         this.uS.setList(data);
                     });
                 });
+                this.router.navigate(['login']);
             }
 
-            this.router.navigate(['app/usuariolistar']);
+            
         }
     }
 
@@ -89,5 +101,8 @@ export class usuarioregistrar implements OnInit {
 
       });
     }
+  }
+  cerrar(){
+    this.router.navigate(['']);
   }
 }
