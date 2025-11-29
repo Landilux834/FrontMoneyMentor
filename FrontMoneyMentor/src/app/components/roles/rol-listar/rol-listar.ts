@@ -31,13 +31,11 @@ export class RolListar implements OnInit{
   this.rs.list().subscribe((data) => {
     this.dataSource = new MatTableDataSource(data);
     console.log('Datos recibidos del backend:', data); // <-- Aquí
-    this.dataSource = new MatTableDataSource(data);
   });
 
   this.rs.getList().subscribe((data) => {
     this.dataSource = new MatTableDataSource(data);
       console.log('Datos recibidos del getList:', data); // <-- Opcional
-    this.dataSource = new MatTableDataSource(data);
   });
 }
 
