@@ -117,8 +117,6 @@ export const routes: Routes = [{ path: '', component: Landigpage },
         { path: '', component: Recursolistar },
         { path: 'nuevo', component: Recursoregistrar },
         { path: 'edits/:id', component: Recursoregistrar },
-
-
         {
           path: 'filtrar-fecha',
           loadComponent: () =>

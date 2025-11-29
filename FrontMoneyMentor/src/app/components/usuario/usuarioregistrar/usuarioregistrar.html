@@ -21,7 +21,7 @@
           <img src="/assets/img/logocortado.png" alt="Logo de la empresa" style="width: 120px" />
         </div>
         <div style="text-align: center; margin: 5%">
-          <h2 style="color: #4158a6">Registro de Usuario</h2>
+          <h2 style="color: #4158a6">{{ edicion ? 'Editar usuario : 'Registrar usuario'}}</h2>
         </div>
 
         <div style="text-align: center; margin: 5%">
@@ -80,7 +80,7 @@
               </button>
 
               <button mat-raised-button color="primary" class="custom-button" (click)="aceptar()">
-                Ingresar
+                 {{ edicion ? 'Actualizar' : 'Registrar' }}
               </button>
             </div>
           </form>

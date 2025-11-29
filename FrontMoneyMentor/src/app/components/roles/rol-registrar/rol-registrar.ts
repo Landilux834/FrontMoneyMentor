@@ -21,7 +21,7 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    CommonModule, MatDatepickerModule, MatNativeDateModule,MatCardModule],
+    CommonModule, MatDatepickerModule, MatNativeDateModule, MatCardModule],
   templateUrl: './rol-registrar.html',
   styleUrl: './rol-registrar.css',
 })
@@ -62,14 +62,10 @@ export class RolRegistrar implements OnInit {
   aceptar(): void {
     if (this.form.valid) {
 
-      // Asegurar que exista usuario
-      if (!this.rol.usuario) {
-        this.rol.usuario = new Usuario();
-      }
+
       this.rol.id = this.form.value.idrol;
       this.rol.rol = this.form.value.rol;
-      this.rol.usuario.idUsuario = this.form.value.usuarioId;
-
+      this.rol.idUsuario = this.form.value.usuarioId;
       if (this.edicion) {
         this.rols.update(this.rol)
           .subscribe((data) => {
@@ -90,10 +86,11 @@ export class RolRegistrar implements OnInit {
     if (this.edicion) {
       this.rols.listId(this.id).subscribe((data) => {
         this.rol = data;
+
         this.form.patchValue({
-          id: (data.id),
-          rol: (data.rol),
-          usuarioId: (data.usuario?.idUsuario)
+          idrol: data.id,
+          rol: data.rol,
+          usuarioId: data.idUsuario,
         });
 
         console.log("Formulario cargado:", this.form.value);

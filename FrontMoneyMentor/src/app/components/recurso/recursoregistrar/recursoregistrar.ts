@@ -24,7 +24,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ],
   templateUrl: './recursoregistrar.html',
-  providers:[provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter()],
   styleUrl: './recursoregistrar.css',
 })
 export class Recursoregistrar implements OnInit {
@@ -42,11 +42,7 @@ export class Recursoregistrar implements OnInit {
     private route: ActivatedRoute
   ) { }
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+
     this.form = this.formBuilder.group({
       idRecurso: [''],
       titulo: ['', [Validators.required, Validators.maxLength(15)]],
@@ -58,7 +54,11 @@ export class Recursoregistrar implements OnInit {
       fechapublicacion: ['', [Validators.required, this.fechaPublicacionValidator.bind(this)]],
       fechasubida: [{ value: new Date(), disabled: true }, Validators.required]
     });
-
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
   }
   fechaPublicacionValidator(control: FormControl) {
     const fecha = new Date(control.value);
@@ -82,15 +82,15 @@ export class Recursoregistrar implements OnInit {
 
       if (this.edicion) {
         this.rs.update(this.rc).subscribe((data) => {
-          this.rs.list().subscribe((data) => {
-            this.rs.setList(data);
-          });
+          this.rs.list().subscribe((data) =>
+            this.rs.setList(data)
+          );
         });
       } else {
         this.rs.insert(this.rc).subscribe((data) => {
-          this.rs.list().subscribe((data) => {
-            this.rs.setList(data);
-          });
+          this.rs.list().subscribe((data) =>
+            this.rs.setList(data)
+          );
         });
       }
 
@@ -100,6 +100,7 @@ export class Recursoregistrar implements OnInit {
   init() {
     if (this.edicion) {
       this.rs.listId(this.id).subscribe((data) => {
+        this.rc = data;
         this.form.patchValue({
           idRecurso: (data.idRecurso),
           titulo: (data.titulo),
