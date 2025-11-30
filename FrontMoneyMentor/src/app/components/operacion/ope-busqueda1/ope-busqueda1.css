@@ -1,20 +1,25 @@
 /* Contenedor principal */
-div[formGroup] {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9f9f9; /* fondo suave */
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.container {
+    width: 90%;
+    margin: 40px auto;
 }
 
-/* Título */
-h3 {
-  text-align: center;
-  color: #4158A6;
-  margin-bottom: 20px;
-  font-weight: 600;
+.card-container {
+    padding: 25px;
+    max-width: 800px;
+    border-radius: 14px;
+    margin: 40px auto; 
 }
+
+.title-center {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.custom-field {
+    width: 260px; 
+}
+
 
 /* Mat-form-field */
 mat-form-field {

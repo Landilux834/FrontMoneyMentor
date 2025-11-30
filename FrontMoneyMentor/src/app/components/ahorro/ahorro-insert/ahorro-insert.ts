@@ -21,7 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatCardModule } from '@angular/material/card';
+import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-ahorro-insert',
@@ -34,7 +34,8 @@ import { MatCardModule } from '@angular/material/card';
     MatRadioModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatSelectModule,MatCardModule
+    MatSelectModule,MatCardModule,
+    MatCard
   ],
   templateUrl: './ahorro-insert.html',
   styleUrl: './ahorro-insert.css',

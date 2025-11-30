@@ -9,6 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-reporte-ahorro-sum',
@@ -21,7 +23,10 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     MatOptionModule,
     MatButtonModule,
-    BaseChartDirective
+    BaseChartDirective,
+    MatCard,
+    MatCardModule,
+    MatIcon
   ],
   providers: [provideCharts(withDefaultRegisterables())],
 })
