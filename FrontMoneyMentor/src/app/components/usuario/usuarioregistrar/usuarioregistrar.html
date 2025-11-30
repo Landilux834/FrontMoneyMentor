@@ -30,7 +30,6 @@
 
         <div style="text-align: center; margin: 5%">
           <form [formGroup]="form" (submit)="aceptar()">
-
             <!-- 🔵 ID SOLO EN EDICIÓN — READONLY Y COLOR PLOMO -->
             @if(edicion){
             <mat-form-field appearance="outline" class="custom-field">
@@ -39,7 +38,7 @@
                 matInput
                 formControlName="codigo"
                 readonly
-                style="background:#e6e6e6; color:#555;"
+                style="background: #e6e6e6; color: #555"
               />
             </mat-form-field>
             }
@@ -95,19 +94,25 @@
 
             <br />
 
+            @if(!edicion){
             <div class="button-group">
               <button mat-raised-button color="warn" class="custom-button" (click)="cerrar()">
                 Regresar
               </button>
 
               <button mat-raised-button color="primary" class="custom-button" (click)="aceptar()">
-                {{ edicion ? 'Actualizar' : 'Registrar' }}
+                Registrar
               </button>
             </div>
+            } @if(edicion){
 
+            <button mat-raised-button color="primary" class="custom-button" (click)="aceptar()">
+              Actualizar
+            </button>
+
+            }
           </form>
         </div>
-
       </div>
     </mat-card-content>
   </mat-card>

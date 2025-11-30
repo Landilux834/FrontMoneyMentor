@@ -29,7 +29,6 @@ export class usuariolistar implements OnInit {
 
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
-      console.log('usuarios recibidos', data);
       this.dataSource = new MatTableDataSource(data);
     });
 
