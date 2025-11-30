@@ -56,12 +56,12 @@ td.mat-cell {
 }
 
 button[mat-icon-button] {
-  background-color: rgb(242, 49, 35);
+  background-color: #ff8343;
   color: white;
   border-radius: 6px;
   transition: 0.25s ease;
 }
 
 button[mat-icon-button]:hover {
-  background-color: rgb(220, 40, 30);
+  background-color: #ff8343;
 }

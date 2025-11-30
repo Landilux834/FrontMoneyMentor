@@ -1,0 +1,60 @@
+<div class="container">
+
+  <h2>Reporte de Ahorros por Período</h2>
+
+  <div class="filtros">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha Inicio</mat-label>
+      <input matInput type="date" [(ngModel)]="fechaInicio">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha Fin</mat-label>
+      <input matInput type="date" [(ngModel)]="fechaFin">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="buscar()">
+      Buscar
+    </button>
+
+  </div>
+
+  <table mat-table [dataSource]="ahorros" class="mat-elevation-z8" *ngIf="ahorros.length > 0">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let a">{{ a.idAhorro }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="objetivo">
+      <th mat-header-cell *matHeaderCellDef>Objetivo</th>
+      <td mat-cell *matCellDef="let a">{{ a.objetivo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef>Monto</th>
+      <td mat-cell *matCellDef="let a">{{ a.monto_actual }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha_inicio">
+      <th mat-header-cell *matHeaderCellDef>Inicio</th>
+      <td mat-cell *matCellDef="let a">{{ a.fecha_inicio }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha_limite">
+      <th mat-header-cell *matHeaderCellDef>Límite</th>
+      <td mat-cell *matCellDef="let a">{{ a.fecha_limite }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef>Usuario</th>
+      <td mat-cell *matCellDef="let a">{{ a.usuario?.nombre }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+</div>

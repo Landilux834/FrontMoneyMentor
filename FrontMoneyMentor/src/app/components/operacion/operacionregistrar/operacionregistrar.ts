@@ -13,6 +13,7 @@ import { Usuario } from "../../../models/Usuario";
 import { UsuarioService } from "../../../services/usuario-service";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatCardContent, MatCardModule } from "@angular/material/card";
 
 @Component({
   selector: "app-operacionregistrar",
@@ -23,8 +24,9 @@ import { MatNativeDateModule } from "@angular/material/core";
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    CommonModule, MatDatepickerModule,MatNativeDateModule
-  ],
+    CommonModule, MatDatepickerModule, MatNativeDateModule,
+    MatCardContent,MatCardModule
+],
   templateUrl: "./operacionregistrar.html",
   styleUrls: ["./operacionregistrar.css"]
 })

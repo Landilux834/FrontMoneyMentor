@@ -6,6 +6,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ROLmodel } from '../../../models/Rol';
 import { RolServices } from '../../../services/rol-services';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-rol-listar',
@@ -13,7 +14,7 @@ import { RolServices } from '../../../services/rol-services';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    RouterLink],
+    RouterLink,MatPaginator,MatPaginatorModule],
   templateUrl: './rol-listar.html',
   styleUrl: './rol-listar.css',
 })
@@ -29,10 +30,12 @@ export class RolListar implements OnInit{
   ngOnInit(): void {
   this.rs.list().subscribe((data) => {
     this.dataSource = new MatTableDataSource(data);
+    console.log('Datos recibidos del backend:', data); // <-- Aquí
   });
 
   this.rs.getList().subscribe((data) => {
     this.dataSource = new MatTableDataSource(data);
+      console.log('Datos recibidos del getList:', data); // <-- Opcional
   });
 }
 

@@ -45,9 +45,4 @@ export class UsuarioService implements OnInit {
   delete(id: number) {
     return this.http.delete(`${this.url}/delete/${id}`, { responseType: 'text' });
   }
-
-  buscarUsuario(filtro: string) {
-  return this.http.get<Usuario[]>(`${this.url}/buscar?filtro=${filtro}`);
-}
-
 }

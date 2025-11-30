@@ -75,15 +75,18 @@ export class usuarioregistrar implements OnInit {
                         this.uS.setList(data);
                     });
                 });
+                this.router.navigate(['app/usuariolistar']);
+
             } else {
                 this.uS.insert(this.ur).subscribe(() => {
                     this.uS.list().subscribe((data) => {
                         this.uS.setList(data);
                     });
                 });
+                this.router.navigate(['login']);
             }
 
-            this.router.navigate(['login']);
+            
         }
     }
 

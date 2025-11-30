@@ -20,6 +20,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-ahorro-insert',
@@ -32,10 +34,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatRadioModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatSelectModule,
+    MatSelectModule,MatCardModule
   ],
   templateUrl: './ahorro-insert.html',
   styleUrl: './ahorro-insert.css',
+  providers:[provideNativeDateAdapter()]
 })
 export class AhorroInsert {
   form: FormGroup = new FormGroup({});
@@ -91,6 +94,7 @@ export class AhorroInsert {
   {
     codigo: [''],
     objetivo: ['', Validators.required],
+    monto_actual: ['', [Validators.required, Validators.min(0)]],
     fecha_inicio: [new Date().toISOString().substring(0,10),Validators.required],
     fecha_limite: ['', Validators.required],
     fk: ['', Validators.required]
@@ -108,9 +112,9 @@ export class AhorroInsert {
     if (this.form.valid) {
       this.ah.idAhorro = this.form.value.codigo;
       this.ah.objetivo = this.form.value.objetivo;
+      this.ah.monto_actual=this.form.value.monto_actual;
       this.ah.usuario = new Usuario();
       this.ah.usuario.idUsuario = this.form.value.fk;
-
       this.ah.fecha_inicio = this.form.value.fecha_inicio;
       this.ah.fecha_limite = this.form.value.fecha_limite;
 
@@ -134,6 +138,7 @@ export class AhorroInsert {
         this.form.patchValue({
           codigo: data.idAhorro,
           objetivo:  (data.objetivo),
+          monto_actual:(data.monto_actual),
           fecha_inicio: (data.fecha_inicio),
           fecha_limite: (data.fecha_limite),
           fk: (data.usuario.idUsuario),

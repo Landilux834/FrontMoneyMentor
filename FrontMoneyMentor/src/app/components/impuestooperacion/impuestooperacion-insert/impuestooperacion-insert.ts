@@ -13,6 +13,7 @@ import { OperacionService } from "../../../services/operacion-service";
 import { ImpuestoopService } from "../../../services/impuestoop-service";
 import { Impuesto } from "../../../models/Impuesto";
 import { impuestoop } from "../../../models/Impuestoop";
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
     selector:'app-impuestooperacion-insert',
@@ -22,7 +23,8 @@ import { impuestoop } from "../../../models/Impuestoop";
         MatRadioModule,
         MatButtonModule,
         MatSelectModule,
-        CommonModule
+        CommonModule,
+        MatCardModule
     ],
     templateUrl: './impuestooperacion-insert.html',
     styleUrl: './impuestooperacion-insert.css',
