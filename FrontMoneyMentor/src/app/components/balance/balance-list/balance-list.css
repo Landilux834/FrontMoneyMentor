@@ -19,6 +19,17 @@ table {
   border-collapse: collapse;
 }
 
+button[mat-icon-button] {
+  background-color: #ff8343;
+  color: white;
+  border-radius: 6px;
+  transition: 0.25s ease;
+}
+
+button[mat-icon-button]:hover {
+  background-color: #ff8343;
+}
+
 /* --- Responsivo (botones más compactos en pantallas pequeñas) --- */
 
 @media (max-width: 768px) {

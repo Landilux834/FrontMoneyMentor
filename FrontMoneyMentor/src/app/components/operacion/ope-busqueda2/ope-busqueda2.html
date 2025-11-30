@@ -4,12 +4,15 @@
       <h2>Reporte por Fecha</h2>
     </mat-card-title>
 
-    <mat-form-field appearance="outline" class="custom-field">
-      <mat-label>Fecha</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="fechabusqueda">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <!-- FormGroup agregado -->
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="custom-field">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechabusqueda">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
 
     <div *ngIf="mensaje" style="color: red;">{{ mensaje }}</div>
 
