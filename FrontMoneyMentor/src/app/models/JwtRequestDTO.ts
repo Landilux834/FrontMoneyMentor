@@ -1,4 +1,4 @@
 export class JwtRequestDTO {
-    nombre: string = "";
+    correo: string = "";
     contrasenia: string = "";
 }
