@@ -114,15 +114,15 @@ minFecha = new Date();
         this.operacionService.update(this.operacion)
           .subscribe((data) => {
             this.operacionService.list().subscribe((data) => this.operacionService.setList(data));
-            this.router.navigate(['app/operacion']);
+            
           });
       } else {
         this.operacionService.insert(this.operacion)
           .subscribe((data) => {
             this.operacionService.list().subscribe((data) => this.operacionService.setList(data));
-            this.router.navigate(['app/operacion']);
           });
       }
+      this.router.navigate(['app/operacion']);
     }
   }
 
