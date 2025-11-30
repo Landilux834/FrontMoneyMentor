@@ -4,7 +4,7 @@ import { OperacionList } from "./operacion-listar/operacion-list";
 
 @Component({
   selector: 'app-operacion',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, OperacionList],
   templateUrl: './operacion.html',
   styleUrl: './operacion.css',
 })
