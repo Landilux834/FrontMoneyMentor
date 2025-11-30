@@ -1,13 +1,13 @@
 <div class="container">
   <mat-card class="buscar-card">
 
-    <mat-card-title>Buscar Balance por Mes</mat-card-title>
+    <mat-card-title style="text-align: center; margin: 5%;"><h2>Buscar Balance por Mes</h2></mat-card-title>
 
     <mat-card-content>
 
       <div class="form-section">
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="custom-field">
           <mat-label>Mes</mat-label>
           <mat-select [(ngModel)]="mesBuscado">
             <mat-option *ngFor="let m of meses" [value]="m">
@@ -16,11 +16,11 @@
           </mat-select>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="buscarPorMes()">
+        <button mat-raised-button color="primary" class="btn-buscar" (click)="buscarPorMes()">
           Buscar
         </button>
 
-        <button mat-raised-button color="warn" (click)="limpiar()">
+        <button mat-raised-button color="primary" class="btn-limpiar" (click)="limpiar()">
           Limpiar
         </button>
 

@@ -1,31 +1,43 @@
-<div class="container">
+<div class="card-container">
 
-  <mat-form-field appearance="outline">
-    <mat-label>Selecciona un usuario</mat-label>
+  <mat-card>
 
-    <mat-select [(value)]="usuarioSeleccionado">
-      <mat-option *ngFor="let u of usuarios" [value]="u.idUsuario">
-        {{ u.nombre }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-card-header>
+      <mat-card-title>Reporte de ahorro por usuario</mat-card-title>
+      <mat-card-subtitle>
+        Selecciona un usuario para visualizar su gráfico de ahorro acumulado.
+      </mat-card-subtitle>
+    </mat-card-header>
 
-  <button mat-raised-button color="primary" (click)="cargarAhorro()">
-    Consultar
-  </button>
+    <mat-card-content>
 
-  <div *ngIf="hasData">
-    <canvas
-      baseChart
-      [data]="{ labels: barChartLabels, datasets: barChartData }"
-      [options]="barChartOptions"
-      [legend]="barChartLegend"
-      [type]="barChartType">
-    </canvas>
-  </div>
+      <div class="form-section">
+        <mat-form-field appearance="outline">
+          <mat-label>Selecciona un usuario</mat-label>
+          <mat-select [(value)]="usuarioSeleccionado">
+            <mat-option *ngFor="let u of usuarios" [value]="u.idUsuario">
+              {{ u.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-  <div *ngIf="!hasData">
-    <!-- Solo para debug visual -->
-    <p *ngIf="usuarios.length === 0">No se cargaron usuarios.</p>
-  </div>
+        <button mat-raised-button color="primary" (click)="cargarAhorro()">
+          Consultar
+        </button>
+      </div>
+
+      <div *ngIf="hasData" class="chart-container">
+        <canvas baseChart [data]="{ labels: barChartLabels, datasets: barChartData }" [options]="barChartOptions"
+          [legend]="barChartLegend" [type]="barChartType">
+        </canvas>
+      </div>
+
+      <div *ngIf="!hasData" class="no-data">
+        <mat-icon>info_outline</mat-icon>
+        <p>No hay datos disponibles.</p>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
 </div>
