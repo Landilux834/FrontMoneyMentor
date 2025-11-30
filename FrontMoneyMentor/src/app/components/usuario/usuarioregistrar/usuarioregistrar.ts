@@ -89,7 +89,7 @@ export class usuarioregistrar implements OnInit {
         });
       },
       () => {
-        this.mensajeError = "❌ Error al cargar tu información de usuario.";
+        this.mensajeError = " Error al cargar tu información de usuario.";
       }
     );
   }
@@ -118,7 +118,7 @@ export class usuarioregistrar implements OnInit {
     if (!this.id) {
       this.uS.updateMiUsuario(this.ur).subscribe(
         () => this.router.navigate(['app']),
-        (err) => this.mensajeError = err.status === 409 ? "⚠ Correo en uso" : "❌ Error al actualizar"
+        (err) => this.mensajeError = err.status === 409 ? " Correo en uso" : " Error al actualizar"
       );
       return;
     }
