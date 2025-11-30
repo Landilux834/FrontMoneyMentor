@@ -9,19 +9,25 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Balance } from '../../models/Balance';
 import { BalanceService } from '../../services/balance-service';
 import { MatSelectModule } from '@angular/material/select';
+import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-reporte-balance-mes',
   imports: [CommonModule,
     FormsModule,
     MatCardModule,
+    MatIconModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatTableModule],
+    MatTableModule,
+    BaseChartDirective],
   templateUrl: './reporte-balance-mes.html',
   styleUrl: './reporte-balance-mes.css',
+  providers: [provideCharts(withDefaultRegisterables())],
 })
 export class ReporteBalanceMes implements OnInit {
 
@@ -50,6 +56,19 @@ export class ReporteBalanceMes implements OnInit {
 
   constructor(private bs: BalanceService) { }
 
+  hasData = false
+  
+    barChartOptions:ChartOptions={
+      responsive:true
+    }
+  
+    barChartLabels:string[]=['Total Ingreso', 'Total Gasto', 'Total Ahorro']
+    barChartType:ChartType='pie'
+    barChartLegend=true
+    barChartData:ChartDataset[]=[]
+
+
+
   ngOnInit(): void {
   }
 
@@ -59,6 +78,19 @@ export class ReporteBalanceMes implements OnInit {
       this.dataSource = new MatTableDataSource<Balance>([]);
       return;
     }
+
+        this.bs.getBalancePorMes(this.mesBuscado).subscribe((data=>{
+      if(data.length>0){
+        this.hasData=true;
+        this.barChartData = [{
+          data: [data[0].total_ingreso, data[0].total_gasto, data[0].total_ahorro],
+          label: 'Balance del Mes',
+          backgroundColor:['#59EB73', '#AD95FC', '#ED517B']
+        }
+        ]
+      }
+    }
+    ));
 
     this.bs.getBalancePorMes(this.mesBuscado).subscribe({
       next: (data) => {
