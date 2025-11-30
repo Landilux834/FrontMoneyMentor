@@ -1,8 +1,10 @@
-<mat-card>
+<mat-card class="card-container">
 <div [formGroup]="form">
-  <h3>Reporte por Categoría</h3>
+  <mat-card-title class="title-center">
+  <h2>Reporte por Categoría</h2>
+  </mat-card-title>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="custom-field">
     <mat-label>Seleccione Categoría</mat-label>
     <mat-select formControlName="categoria">
       <mat-option value="">-- Seleccione --</mat-option>

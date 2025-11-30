@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatIcon } from '@angular/material/icon';
+import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-reporte-ahorro-periodo',
@@ -16,7 +18,10 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatIcon,
+    MatCard,
+    MatCardModule
   ],
   templateUrl: './reporte-ahorro-periodo.html',
   styleUrl: './reporte-ahorro-periodo.css'

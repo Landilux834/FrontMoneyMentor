@@ -6,11 +6,11 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { BalanceService } from '../../../services/balance-service';
 import { Balance } from '../../../models/Balance'; //modelo datasource
-import { MatCardModule } from '@angular/material/card';
+import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-balance-list',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterLink,CommonModule,MatCardModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterLink,CommonModule,MatCardModule,MatCard],
   templateUrl: './balance-list.html',
   styleUrl: './balance-list.css',
 })

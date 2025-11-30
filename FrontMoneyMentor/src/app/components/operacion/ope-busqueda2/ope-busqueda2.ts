@@ -8,10 +8,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { operacionModel } from '../../../models/operacionModel';
 import { OperacionService } from '../../../services/operacion-service';
+import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-ope-busqueda2',
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatTableModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatTableModule,
+    MatCard,MatCardModule
+  ],
   templateUrl: './ope-busqueda2.html',
   providers: [provideNativeDateAdapter()],
   standalone: true,

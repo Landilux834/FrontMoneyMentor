@@ -1,10 +1,12 @@
-mat-card {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 900px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.title-container {
+  padding: 10px;
+  margin: 40px auto;
+  max-width: 500px;
+  padding: 30px 40px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
   background: #ffffff;
+  text-align: center;
 }
 
 /* Título */
@@ -16,16 +18,16 @@ mat-card {
 }
 
 .title h2 {
-  font-size: 22px;
-  font-weight: 600;
-  color: #4158A6;
-  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 25px;
 }
 
 /* Contenedor del gráfico */
 .chart-container {
   width: 100%;
-  height: 350px;
+  height: 420px;
   position: relative;
 }
 
@@ -45,14 +47,15 @@ canvas {
 
 .no-data-icon {
   font-size: 48px;
-  color: #4158A6;
+  color: #ff8343;
   margin-bottom: 10px;
 }
 
 .no-data-message {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   text-align: center;
+  margin-top: 10px;
 }
 
 /* Responsive */

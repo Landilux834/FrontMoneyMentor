@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCard } from "@angular/material/card";
+import { MatCard, MatCardModule } from "@angular/material/card";
 
 @Component({
   selector: 'app-ope-busqueda1',
-  imports: [CommonModule, MatSelectModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatTableModule, MatCard],
+  imports: [CommonModule, MatSelectModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatTableModule, MatCard,
+    MatCardModule
+  ],
   templateUrl: './ope-busqueda1.html',
   styleUrl: './ope-busqueda1.css',
   standalone: true
