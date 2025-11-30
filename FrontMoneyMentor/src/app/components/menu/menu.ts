@@ -43,7 +43,7 @@ export class Menu {
     return this.role?.includes('ADMIN');
   }
 
-  isTester() {
-    return this.role?.includes('TESTER') || this.role?.includes('CLIENT');
+  isClient() {
+    return this.role?.includes('CLIENT');
   }
 }
