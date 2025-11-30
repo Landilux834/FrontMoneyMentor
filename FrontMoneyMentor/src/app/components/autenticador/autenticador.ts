@@ -21,13 +21,13 @@ export class Autenticador {
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
-  username: string = '';
+  correo: string = '';
   password: string = '';
   mensaje: string = '';
   ngOnInit(): void {}
   login() {
     let request = new JwtRequestDTO();
-    request.nombre = this.username;
+    request.correo = this.correo;
     request.contrasenia = this.password;
     this.loginService.login(request).subscribe(
       (data: any) => {

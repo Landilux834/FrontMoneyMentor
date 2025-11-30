@@ -22,8 +22,9 @@ export class UsuarioService implements OnInit {
     return this.http.get<Usuario[]>(`${this.url}/listar`);
   }
 
-  insert(a: Usuario): Observable<string> {
-    return this.http.post(`${this.url}/register`, a, { responseType: 'text' });
+  //CAMBIO: añadir observe: 'response'
+  insert(a: Usuario): Observable<any> {
+    return this.http.post(`${this.url}/register`, a, { responseType: 'text', observe: 'response' });
   }
 
   setList(listaNueva: Usuario[]) {

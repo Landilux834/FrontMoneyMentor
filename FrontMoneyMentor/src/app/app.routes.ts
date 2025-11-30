@@ -49,11 +49,6 @@ import { ReporteAhorroPeriodo } from './components/reporte-ahorro-periodo/report
 export const routes: Routes = [
   { path: '', component: Landigpage },
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
-  {
     path: 'login',
     component: Autenticador,
   },
