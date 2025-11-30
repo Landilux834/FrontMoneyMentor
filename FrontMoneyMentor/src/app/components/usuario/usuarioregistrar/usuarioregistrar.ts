@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,15 +16,10 @@ import {
   ActivatedRoute,
   Params,
   Router,
-  RouterOutlet,
   RouterLink,
-  RouterModule,
 } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { ROLmodel } from '../../../models/Rol';
-import { RolServices } from '../../../services/rol-services';
-import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
@@ -45,10 +40,10 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrls: ['./usuarioregistrar.css'],
 })
 export class usuarioregistrar implements OnInit {
+  
   form: FormGroup = new FormGroup({});
   ur: Usuario = new Usuario();
 
-  // 🔵 NUEVA LÍNEA
   mensajeError: string = '';
 
   edicion: boolean = false;
@@ -62,61 +57,76 @@ export class usuarioregistrar implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
-      this.edicion = this.id != null;
-      this.init();
+
+      if (this.id != null) {
+        this.edicion = true;
+        this.init();
+      } else {
+        this.edicion = true;
+        this.cargarMiPerfil();
+      }
     });
 
     this.form = this.formBuilder.group({
       codigo: [''],
       nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      contrasenia: ['', [Validators.required, Validators.minLength(10)]],
+      contrasenia: ['', [Validators.minLength(10)]],
     });
   }
 
-  aceptar(): void {
-    if (this.form.valid) {
-      this.ur.idUsuario = this.form.value.codigo;
-      this.ur.nombre = this.form.value.nombre;
-      this.ur.correo = this.form.value.correo;
-      this.ur.contrasenia = this.form.value.contrasenia;
-
-      if (this.edicion) {
-        this.uS.update(this.ur).subscribe(() => {
-          this.uS.list().subscribe((data) => this.uS.setList(data));
-          this.router.navigate(['app/usuariolistar']);
+  cargarMiPerfil() {
+    this.uS.getMiUsuario().subscribe(
+      (data) => {
+        this.form = new FormGroup({
+          codigo: new FormControl({ value: data.idUsuario, disabled: true }),
+          nombre: new FormControl(data.nombre),
+          correo: new FormControl(data.correo),
+          contrasenia: new FormControl('', []),
         });
-      } else {
-        this.uS.insert(this.ur).subscribe({
-          next: () => {
-            this.uS.list().subscribe((data) => this.uS.setList(data));
-            this.router.navigate(['login']);
-          },
-          error: (error) => {
-            if (error.status === 409 || error.status === 400) {
-              // 🔵 CAMBIO
-              this.mensajeError = '⚠ El correo ya se encuentra registrado.';
-            } else {
-              this.mensajeError = '❌ Error al registrar usuario.';
-            }
-          },
-        });
+      },
+      () => {
+        this.mensajeError = "❌ Error al cargar tu información de usuario.";
       }
-    }
+    );
   }
 
   init() {
-    if (this.edicion) {
+    if (this.id != null) {
       this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           codigo: new FormControl(data.idUsuario),
           nombre: new FormControl(data.nombre),
           correo: new FormControl(data.correo),
+          contrasenia: new FormControl('', []),
         });
       });
     }
+  }
+
+  aceptar(): void {
+    if (!this.form.valid) return;
+
+    this.ur.idUsuario = this.form.getRawValue().codigo;
+    this.ur.nombre = this.form.value.nombre;
+    this.ur.correo = this.form.value.correo;
+    this.ur.contrasenia = this.form.value.contrasenia;
+
+    if (!this.id) {
+      this.uS.updateMiUsuario(this.ur).subscribe(
+        () => this.router.navigate(['app']),
+        (err) => this.mensajeError = err.status === 409 ? "⚠ Correo en uso" : "❌ Error al actualizar"
+      );
+      return;
+    }
+
+    this.uS.update(this.ur).subscribe(() => {
+      this.uS.list().subscribe((data) => this.uS.setList(data));
+      this.router.navigate(['app/usuariolistar']);
+    });
   }
 
   cerrar() {

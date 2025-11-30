@@ -67,7 +67,7 @@ export const routes: Routes = [
 
       { path: 'usuariolistar', component: usuariolistar },
       { path: 'edits/:id', component: usuarioregistrar },
-
+      { path: 'perfil', component: usuarioregistrar },
       {
         path: 'buscar',
         component: UsuarioBuscarComponent,

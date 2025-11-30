@@ -22,7 +22,6 @@ export class UsuarioService implements OnInit {
     return this.http.get<Usuario[]>(`${this.url}/listar`);
   }
 
-  //CAMBIO: añadir observe: 'response'
   insert(a: Usuario): Observable<any> {
     return this.http.post(`${this.url}/register`, a, { responseType: 'text', observe: 'response' });
   }
@@ -36,8 +35,8 @@ export class UsuarioService implements OnInit {
   }
 
   listId(id: number) {
-  return this.http.get<Usuario>(`${this.url}/listar/${id}`);
-}
+    return this.http.get<Usuario>(`${this.url}/listar/${id}`);
+  }
 
   update(u: Usuario) {
     return this.http.put(`${this.url}/update`, u, { responseType: 'text' });
@@ -45,5 +44,15 @@ export class UsuarioService implements OnInit {
 
   delete(id: number) {
     return this.http.delete(`${this.url}/delete/${id}`, { responseType: 'text' });
+  }
+
+  // 🔵 NUEVO: obtener mi usuario logueado
+  getMiUsuario(): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.url}/me`);
+  }
+
+  // 🔵 NUEVO: actualizar mi usuario
+  updateMiUsuario(usuario: Usuario): Observable<any> {
+    return this.http.put(`${this.url}/me`, usuario, { responseType: 'text' });
   }
 }

@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token'); // ✔ CORRECTO
 
   const authReq = token
     ? req.clone({
@@ -9,5 +9,5 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
       })
     : req;
 
-  return next(authReq); // 👈 ESTA ES LA CLAVE. No se usa next(req).
+  return next(authReq);
 };
