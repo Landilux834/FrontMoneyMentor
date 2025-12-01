@@ -111,28 +111,17 @@ export const routes: Routes = [
           { path: '', component: Recursolistar },
           { path: 'nuevo', component: Recursoregistrar },
           { path: 'edits/:id', component: Recursoregistrar },
-          {
-            path: 'filtrar-fecha',
-            loadComponent: () =>
-              import('./components/recurso/recursofecha/recursofecha').then(
-                (m) => m.Recursobuscarfecha
-              ),
-          },
-          {
-            path: 'filtrar-autor',
-            loadComponent: () =>
-              import('./components/recurso/recursoautor/recursoautor').then(
-                (m) => m.Recursobuscarautor
-              ),
-          },
+          { path: 'filtrar-autor', component: Recursobuscarautor },
+          { path: 'filtrar-fecha', component: Recursobuscarfecha },
         ],
       },
+
 
       {
         path: 'impuesto',
         component: Impuesto,
         children: [
-          { path: '', component: ImpuestoList },
+          { path: 'list', component: ImpuestoList },
           { path: 'nuevo', component: ImpuestoInsert },
           { path: 'edits/:id', component: ImpuestoInsert },
         ],
