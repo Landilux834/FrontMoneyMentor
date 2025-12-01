@@ -31,15 +31,15 @@ button[mat-raised-button] {
 }
 
 .page-background {
-  background: url('/assets/img/fondo_landing.jpg') center/cover no-repeat fixed;
-  min-height: 100vh;
-
+ min-height: 100vh;
+  padding-top: 8rem;
+  background: linear-gradient(rgba(16,16,16,0.6), rgba(16,16,16,0.6)),
+  url('/assets/img/fondo_landing.jpg') center/cover no-repeat fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  padding-top: 90px;
-
+  text-align: center;
+  color: #fff;
 }
 
 .navbar ul li a {
@@ -49,6 +49,11 @@ button[mat-raised-button] {
 .custom-field {
   width: 100%;
 }
+
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
 
 header {
   width: 100%;

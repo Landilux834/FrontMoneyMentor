@@ -1,43 +1,27 @@
 /* FINAL OPTIMIZED RESPONSIVE CSS - COMPACT, BALANCED SIZES, CLEANED */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* ========================= */
-/* GLOBAL SETTINGS */
-/* ========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-html {
-  font-size: 56%; /* reduced size */
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-body {
-  background: #fff;
-  line-height: 1.5;
-}
+
 
 /* ========================= */
 /* HEADER */
 /* ========================= */
 header {
   width: 100%;
-  height: 70px;
+  height: 60px;
   background: #2B3D49;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
-  padding: 0 4rem;
+  padding: 0 0rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 header .logo img {
   width: 55px;
+  
 }
 header .navbar ul {
   list-style: none;
@@ -109,26 +93,54 @@ header .fa-bars {
 /* ========================= */
 /* DOWNLOAD */
 /* ========================= */
+/* Marco general */
 .download {
   width: 90%;
+  max-width: 1200px;        /* Evita que se haga gigante */
   margin: 5rem auto;
-  background: #fff;
-  padding: 3rem;
-  border-radius: 16px;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 20px;
   display: flex;
-  gap: 3rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  overflow: hidden;         /* Evita scroll horizontal */
 }
+
+/* Imagen grande de la izquierda */
+.download > img {
+  width: 48%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Caja con texto y botones */
 .download .content-box {
+  width: 50%;
   background: #0097A7;
   color: #fff;
-  padding: 3rem;
-  border-radius: 12px;
-  flex: 1;
+  padding: 2.5rem;
+  border-radius: 16px;
 }
+
+/* Texto */
 .download h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.download p {
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Imagen de Google Play */
+.download .content-box img {
+  width: 180px;
+  margin-top: 1.5rem;
 }
 
 /* ========================= */
@@ -148,6 +160,16 @@ header .fa-bars {
   font-size: 1.7rem;
   color: #0A2B59;
   margin-bottom: 4rem;
+}
+
+.nosotros .box img {
+  width: 600px;
+  height: auto;
+  border-radius: 20%;
+  margin-bottom: 1rem;
+  margin: 0;
+  text-align: center;
+  max-width: 80%;
 }
 .box-container {
   display: flex;
@@ -188,7 +210,20 @@ header .fa-bars {
   font-size: 1.7rem;
   margin-bottom: 4rem;
   color: #0A2B59;
+    line-height: 1.2;
+
 }
+
+.services .box img {
+  width: 600px;
+  height: auto;
+  border-radius: 20%;
+  margin-bottom: 1rem;
+  margin: 0;
+  text-align: center;
+  max-width: 80%;
+}
+
 
 /* ========================= */
 /* REVIEWS */
@@ -201,27 +236,22 @@ header .fa-bars {
 .review h2 {
   font-size: 3rem;
   color: #0A2B59;
-  margin-bottom: 2rem;
-}
-.review .box-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-.review .box {
-  width: 32rem;
-  background: #F6F6F6;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(56,56,56,0.1);
-}
-.review .box img {
-  width: 80px;
-  height: auto;
-  border-radius: 50%;
   margin-bottom: 1rem;
-  display: block;
+  
+}
+.review p {
+  font-size: 1.7rem;
+  color: #0A2B59;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+
+}
+
+.review .box img {
+  width: 300px;
+  height: auto;
+  border-radius: 20%;
+  margin-bottom: 1rem;
   margin: 0;
   text-align: center;
   max-width: 80%;
@@ -234,6 +264,25 @@ header .fa-bars {
   width: 90%;
   margin: 6rem auto;
   text-align: center;
+}
+.faq h3 {
+  font-size: 2rem;
+  color: #0A2B59;
+  margin-bottom: 1rem;
+  
+}
+.faq h2 {
+  font-size: 3rem;
+  color: #0A2B59;
+  margin-bottom: 1rem;
+  
+}
+.faq p {
+  font-size: 1.7rem;
+  color: #0A2B59;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+
 }
 .faq-box {
   background: #fff;
@@ -260,6 +309,13 @@ header .fa-bars {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: #0A2B59;
+}
+.contact p {
+  font-size: 1.7rem;
+  color: #0A2B59;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+
 }
 .contact .row {
   display: flex;
@@ -294,26 +350,77 @@ header .fa-bars {
 /* ========================= */
 /* FOOTER */
 /* ========================= */
+
 footer {
   background: #0A2B59;
   color: #fff;
   padding: 4rem 2rem;
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
-footer .footer-content {
+
+footer a {
+  color: #fff;                  /* ❗ Arregla el color púrpura */
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #FF914D;               /* Hover bonito */
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 5rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
 }
-footer ul {
+
+.footer-logo-description {
+  max-width: 350px;
+}
+
+.footer-logo {
+  width: 180px;
+  margin-bottom: 1rem;
+}
+
+.footer-sections ul,
+.footer-social ul {
   list-style: none;
-  font-size: 1.5rem;
+  padding: 0;
 }
-footer .copyright {
+
+footer h3 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #FF914D;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+footer ul li {
+  margin-bottom: 0.8rem;
   font-size: 1.4rem;
 }
+
+.footer-bar {
+  text-align: center;
+  border-top: 1px solid #ffffff50;
+  padding-top: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.footer-bar a {
+  margin: 0 1rem;
+}
+
 
 /* ========================= */
 /* RESPONSIVE */

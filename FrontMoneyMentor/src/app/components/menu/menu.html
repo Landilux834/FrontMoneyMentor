@@ -19,6 +19,10 @@
       <mat-icon> menu </mat-icon>Impuesto
     </button>
 
+    <button mat-button aria-label="menuReporteADMIN" [matMenuTriggerFor]="menuReporteADMIN">
+      <mat-icon> menu </mat-icon>Reportes
+    </button>
+
     }
 
     <!-- CLIENT -->
@@ -39,18 +43,17 @@
       <mat-icon> menu </mat-icon>Ahorro
     </button>
 
-    <button mat-button aria-label="menuReporte" [matMenuTriggerFor]="menuReporte">
-      <mat-icon> menu </mat-icon>Reportes
-    </button>
-
     <button mat-button aria-label="menuImpuestoop" [matMenuTriggerFor]="menuImpuestoop">
-      <mat-icon> menu </mat-icon>Impuesto-operacion
+      <mat-icon> menu </mat-icon>Impuestos a la operacion
     </button>
 
     <button mat-button aria-label="menuRecursoUs" [matMenuTriggerFor]="menuRecursoUs">
-      <mat-icon> menu </mat-icon>Recurso-usuario
+      <mat-icon> menu </mat-icon>Recursos de usuarios
     </button>
 
+    <button mat-button aria-label="menuReporte" [matMenuTriggerFor]="menuReporte">
+      <mat-icon> menu </mat-icon>Reportes
+    </button>
 
     }
 
@@ -80,12 +83,10 @@
     <button mat-menu-item routerLink="/app/balance/nuevo">Registrar Balance</button>
   </mat-menu>
 
-
   <mat-menu #menuAhorro="matMenu">
     <button mat-menu-item routerLink="/app/ahorro">Listar Ahorros</button>
     <button mat-menu-item routerLink="/app/ahorro/nuevo">Registrar Ahorro</button>
   </mat-menu>
-
 
   <mat-menu #menuRecursos="matMenu">
     <button mat-menu-item routerLink="/app/recurso">Listar Recursos</button>
@@ -104,20 +105,28 @@
     <button mat-menu-item routerLink="/app/impuesto/nuevo">registrar impuestos</button>
   </mat-menu>
 
-   <mat-menu #menuReporte="matMenu">
-    <button mat-menu-item routerLink="/app/sumaingresos">reporte 1</button>
-    <button mat-menu-item routerLink="/app/listarmes">reporte 2</button>
-    <button mat-menu-item routerLink="/app/sumaxusuario">reporte 3</button>
+  <mat-menu #menuReporte="matMenu">
+    <button mat-menu-item routerLink="/app/listarmes">Balance por mes</button>
     <button mat-menu-item routerLink="/app/sumaahorros">reporte 4</button>
-    <button mat-menu-item routerLink="/app/impuestomonto">reporte 5</button>
+    <button mat-menu-item routerLink="/app/impuestomonto">Impuesto x ingresos</button>
+  </mat-menu>
+
+  <mat-menu #menuReporteADMIN="matMenu">
+    <button mat-menu-item routerLink="/app/sumaingresos">Suma de ingresos de Usuarios</button>
+    <button mat-menu-item routerLink="/app/sumaxusuario">Ingresos vs Gastos por Usuario</button>
+    <button mat-menu-item routerLink="/app/sumaahorros">Ahorro por usuario</button>
   </mat-menu>
 
   <mat-menu #menuImpuestoop="matMenu">
-    <button mat-menu-item routerLink="/app/impuesto-operacion">lista de operaciones con impuestos</button>
-    <button mat-menu-item routerLink="/app/impuesto-operacion/nuevo">registrar impuesto a operacion</button>
+    <button mat-menu-item routerLink="/app/impuesto-operacion">
+      lista de operaciones con impuestos
+    </button>
+    <button mat-menu-item routerLink="/app/impuesto-operacion/nuevo">
+      registrar impuesto a operacion
+    </button>
   </mat-menu>
 
-   <mat-menu #menuRecursoUs="matMenu">
+  <mat-menu #menuRecursoUs="matMenu">
     <button mat-menu-item routerLink="/app/recurso-usuario">Listar Recursos</button>
     <button mat-menu-item routerLink="/app/recurso-usuario/nuevo">Registrar recurso</button>
   </mat-menu>
