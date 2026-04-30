@@ -1,5 +1,6 @@
 MONEY MENTOR - IHC - 2025-2
-ENFOQUE FRONTEND
+FRONTEND
+
 INFORMACIÓN DEL PROYECTO
 
 MoneyMentor es una plataforma web integral diseñada para facilitar la administración financiera de jóvenes mediante una interfaz clara, moderna e intuitiva. Desde el enfoque frontend, el proyecto se centra en la experiencia visual e interactiva del usuario, permitiendo que pueda registrarse, iniciar sesión, navegar por las funcionalidades financieras y visualizar su información de manera organizada.
