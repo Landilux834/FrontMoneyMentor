@@ -10,9 +10,13 @@ Este proyecto es desarrollado por la startup SmartSpend, una empresa dedicada a 
 AUTORES
 
 • Stefano Lucarelly Sanchez Heredia
+
 • Angie Sthefania Rosa Apaza Macotela
+
 • Mauricio Suwells Antonio Ascue
+
 • Omar Alessandro Collahua Huaranga
+
 • Orlando Gabriel Soto Ccopa
 
 SEGMENTOS OBJETIVOS
@@ -26,14 +30,23 @@ PRINCIPALES CARACTERÍSTICAS DEL FRONTEND
 MoneyMentor facilita la interacción del usuario con el sistema mediante una interfaz web organizada y funcional:
 
 Landing Page: Presenta la información principal de MoneyMentor, sus beneficios y acceso a la plataforma.
+
 Registro e Inicio de Sesión: Permite que el usuario cree una cuenta o acceda al sistema.
+
 Perfil de Usuario: Muestra los datos principales del usuario y permite gestionar su información.
+
 Formularios Financieros: Permiten registrar operaciones, balances, ahorros, recursos e impuestos.
+
 Tablas de Información: Muestran los registros financieros de manera ordenada.
+
 Filtros de Búsqueda: Ayudan a consultar información por fecha, autor, mes, categoría o periodo.
+
 Reportes Visuales: Permiten revisar resultados financieros de forma más clara.
+
 Botones de Navegación: Facilitan el desplazamiento entre módulos del sistema.
+
 Diseño UX/UI: Utiliza colores, tipografías, íconos y estructuras visuales definidas en la guía de estilos.
+
 DESCRIPCIÓN DEL FRONTEND
 
 El frontend de MoneyMentor corresponde a la capa visual e interactiva de la plataforma web. Su objetivo principal es permitir que los usuarios puedan utilizar el sistema de forma sencilla, clara y organizada, sin necesidad de conocimientos técnicos avanzados.
